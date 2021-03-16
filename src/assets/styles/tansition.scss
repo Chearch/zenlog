@@ -1,0 +1,36 @@
+$animation-time-fast: .1s;
+$animation-time-base: .2s;
+$animation-time-even: .3s;
+$animation-time-slow: .4s;
+$animation-time-cut: .7s;
+
+
+
+.slide-up-leave-to,
+.slide-up-enter {
+    transform: translateY(-100%);
+}
+
+.slide-up-enter-to,
+.slide-up-leave {
+    transform: translateY(0);
+}
+
+.slide-up-leave-active,
+.slide-up-enter-active {
+    transition: all $animation-time-even linear;
+}
+
+
+.zoom-leave-to,
+.zoom-enter {
+    transform: scale(1);
+}
+.zoom-leave,
+.zoom-enter-to{
+    transform: scale(1.5);
+}
+.zoom-leave-active,
+.zoom-enter-active{
+    transition: all $animation-time-even linear;
+}
