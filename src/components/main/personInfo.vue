@@ -49,7 +49,8 @@ export default {
 @import "@/assets/styles/global.scss";
 .person-info {
   width: 100%;
-  height: 50%;
+  height: 300px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
   @include center;
   flex-direction: column;
   position: relative;
@@ -90,7 +91,6 @@ export default {
       cursor: pointer;
       padding: 0 10px;
       &:hover {
-        // animation: avator 1s ease-in-out;
         color: $unflodColor;
       }
     }

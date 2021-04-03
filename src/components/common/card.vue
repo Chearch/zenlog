@@ -13,7 +13,7 @@
 <template>
   <div
     class="common-card"
-    @click="jumpto"
+    @click="linkTo(link)"
     :style="{ color: color, 'background-color': bgColor }"
   >
     <slot name="icon" class="card-icon"></slot>
@@ -41,11 +41,6 @@ export default {
     bgColor: {
       type: String,
       default: "#000",
-    },
-  },
-  methods: {
-    jumpto() {
-      window.open(this.link);
     },
   },
 };

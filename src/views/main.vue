@@ -48,18 +48,17 @@ export default {
   position: relative;
   .content {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 10%;
     width: 80%;
-    height: 100%;
+    
     display: flex;
     justify-content: center;
+
     .person {
       background: transparent;
       width: 25%;
-      border-right: 3px dashed gray;
-      height: 80vh;
-      border: 1px solid red;
+      margin-top: 10px;
     }
     .article {
       background: white;
@@ -68,7 +67,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .person {
     display: none !important;
   }
