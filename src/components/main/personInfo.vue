@@ -14,12 +14,6 @@
       <a class="icon icon-email email" :href="useremail" target="_blank"></a>
       <a class="icon icon-GitHub github" :href="usergithub" target="_blank"></a>
     </div>
-    <!-- 诗词 -->
-    <div class="poetry-wrapper">
-      <div class="poetry" v-for="(item, index) in poetryList" :key="index">
-        <p class="poetry-line">{{ item }}</p>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -46,18 +40,20 @@ export default {
       return `${process.env.VUE_APP_USER_github}`;
     },
   },
-  mounted() {},
+  mounted() {
+    // alert(document.body.offsetWidth)
+  },
 };
 </script>
 <style lang='scss' scoped>
 @import "@/assets/styles/global.scss";
 .person-info {
   width: 100%;
-  height: 100%;
+  height: 50%;
   @include center;
   flex-direction: column;
+  position: relative;
   .header-image-wrapper {
-    margin-top: -220px;
     @include center;
     img {
       width: 50%;
@@ -98,28 +94,9 @@ export default {
         color: $unflodColor;
       }
     }
-    .qq {}
-    .email {}
-    .github {}
-  }
-  .poetry-wrapper {
-    position: absolute;
-    bottom: 10vh;
-    width: 8%;
-    padding: 10px;
-    letter-spacing: 8px;
-    @include center;
-    .poetry {
-      padding: 0 5px;
-      .poetry-line {
-        writing-mode: tb-lr;
-        writing-mode: vertical-lr;
-        font-size: 16px;
-      }
-      &:nth-child(1) {
-        margin-top: 12vh;
-      }
-    }
+    // .qq {}
+    // .email {}
+    // .github {}
   }
 }
 

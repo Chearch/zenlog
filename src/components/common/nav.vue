@@ -73,8 +73,7 @@ $itemHeight: 50px;
   width: 100%;
   z-index: 1000;
   .nav-box {
-    padding-left:50px;
-    padding-right: 50px;
+    padding-left: 50px;
     border: none;
     position: relative;
     .nav-item {
@@ -83,7 +82,6 @@ $itemHeight: 50px;
       height: $itemHeight;
       line-height: $itemHeight;
       letter-spacing: 1px;
-      // "Fira Mono", "Andale Mono", "Consolas", monospace
       &:last-child {
         position: absolute;
         top: 0;
@@ -93,6 +91,17 @@ $itemHeight: 50px;
           background-color: white !important;
         }
         border: none !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav-box {
+    padding-left: 10px !important;
+    .nav-item {
+      &:last-child {
+        right: 0 !important;
       }
     }
   }
