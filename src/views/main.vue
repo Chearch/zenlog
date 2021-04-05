@@ -1,24 +1,26 @@
 <template>
-  <div class="main">
-    <div class="content">
-      <div class="person">
-        <person-info></person-info>
-      </div>
-      <div class="article">
-        <!-- <article-list></article-list> -->
-      </div>
+  <div class="main relative dark:bg-black">
+    <!-- 用户信息 -->
+    <div class="absolute top-3 left-16 shadow-md w-80 h-72 ">
+      <person-info></person-info>
+    </div>
+    <!-- 文章时间 X 篇/月 -->
+    <div class="article-time absolute top-80 w-80 left-16 shadow-md">
+      <time-line></time-line>
     </div>
   </div>
 </template>
 
 <script>
 import personInfo from "@/components/main/personInfo.vue";
+import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 
 export default {
   components: {
     personInfo,
     articleList,
+    timeLine,
   },
 };
 </script>
@@ -26,32 +28,6 @@ export default {
 @import "@/assets/styles/global.scss";
 .main {
   width: 100%;
-  height: 100%;
-  position: relative;
-  .content {
-    position: absolute;
-    top: 10px;
-    left: 10%;
-    width: 80%;
-
-    display: flex;
-    justify-content: center;
-
-    .person {
-      background: transparent;
-      width: 25%;
-      margin-top: 10px;
-    }
-    .article {
-      background: white;
-      width: 70%;
-    }
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .person {
-    display: none !important;
-  }
+  height: 100vh;
 }
 </style>
