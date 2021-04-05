@@ -5,7 +5,7 @@
     </div>
     <div class="links-wrapper">
       <div class="links" v-for="(item, index) in getLinks" :key="index">
-        <card :title="item.title" :link="item.link" class="link">
+        <card :title="item.title" :link="item.link" class="link" :bgColor="'#383A3F'" :color="'#EFFFE9'">
           <template v-slot:icon>
             <img :src="item.icon" class="card-icon" />
           </template>
@@ -28,12 +28,12 @@ export default {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 700.0,
+        minHeight: 800.0,
         minWidth: 200.0,
         scale: 1.0,
         scaleMobile: 1.0,
-        color: 0xf12193,
-        backgroundAlpha: 0.0,
+        backgroundColor:  0xffffff,
+        // backgroundAlpha: 0.0,
       },
     };
   },
@@ -54,6 +54,7 @@ export default {
   height: 93vh;
   position: relative;
   overflow: hidden;
+  background-color: #fff;
   .vvanta {
     z-index: 1;
     .vvanta-item {
@@ -75,6 +76,8 @@ export default {
       margin-top: 50px;
       margin-left: 70px;
       .link {
+        width: 9rem;
+        height: 3rem;
         .card-icon {
           width: 30px;
           height: 30px;

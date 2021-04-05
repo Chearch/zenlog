@@ -50,7 +50,10 @@ export default {
 .person-info {
   width: 100%;
   height: 300px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.15);
+  &:hover{
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+  }
   @include center;
   flex-direction: column;
   position: relative;
@@ -61,9 +64,6 @@ export default {
       height: auto;
       border-radius: 50%;
       cursor: pointer;
-      &:hover {
-        animation: avator 3s ease-in-out;
-      }
     }
   }
   .name-wrapper {

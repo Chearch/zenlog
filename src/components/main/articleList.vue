@@ -1,26 +1,22 @@
 <template>
   <div class="article-list-wrapper">
-    <el-timeline reverse="true">
-      <el-timeline-item
-        :timestamp="item.time"
-        placement="top"
+    <!-- <div class="cards-wrapper">
+      <card
         v-for="(item, index) in articleList"
         :key="index"
-        color="#0bbd87"
+        :title="item.title"
+        :link="item.link"
         class="article-list-card"
       >
-        <el-card class="article-list-card">
-          <div class="article-title" @click="linkTo(item.link)">
-            {{ item.title }}
-          </div>
-        </el-card>
-      </el-timeline-item>
-    </el-timeline>
+      </card>
+    </div> -->
   </div>
 </template>
 
 <script>
 import api from "@/api/index.js";
+import card from "@/components/common/card.vue";
+
 export default {
   computed: {
     articleList() {
@@ -31,6 +27,9 @@ export default {
       return `${year}/${month}/${day}`;
     },
   },
+  components: {
+    card,
+  },
   mounted() {
     console.log(api.articleList);
   },
@@ -38,17 +37,13 @@ export default {
 </script>
 <style lang='scss' scoped>
 .article-list-wrapper {
-  margin-left: 20px;
-  .article-list-card {
-    cursor: pointer;
-    .article-title {
-      padding: 10px;
-      font-size: 0.8rem;
-    }
-    .article-time {
-      font-size: 0.6rem;
-      margin-top: 0.3rem;
-      color: rgb(156, 149, 149);
+  margin-left: 3rem;
+  .cards-wrapper {
+    .article-list-card {
+      width: 20rem;
+      padding: 1.2rem 0;
+      margin-top: 1rem;
+      border: 1px solid red;
     }
   }
 }

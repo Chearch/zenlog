@@ -17,6 +17,7 @@
     :style="{ color: color, 'background-color': bgColor }"
   >
     <slot name="icon" class="card-icon"></slot>
+    <slot name="desc" class="card-desc"></slot>
     <div class="title-wrapper">
       <div>{{ title }}</div>
     </div>
@@ -36,11 +37,11 @@ export default {
     },
     color: {
       type: String,
-      default: "#fff",
+      default: "#000",
     },
     bgColor: {
       type: String,
-      default: "#000",
+      default: "#fff",
     },
   },
 };
@@ -48,18 +49,18 @@ export default {
 <style lang='scss' scoped>
 .common-card {
   cursor: pointer;
-  width: 10rem;
-  height: 3rem;
+  width: 100%;
+  height: 100%;
   z-index: 100;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5),
-    -4px -4px 10px rgba(255, 255, 255, 1);
+
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   font-weight: bold;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-sizing: content-box;
-  border-radius: 10px;
+  border-radius: 14px;
   transition: box-shadow 0.2s ease-out;
+  box-sizing: content-box;
 
   .card-icon {
     margin-left: 2.2rem;
@@ -73,8 +74,7 @@ export default {
     line-height: 1rem;
   }
   &:hover {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
-      -4px -4px 10px rgba(255, 255, 255, 1);
+    border-bottom: 3px solid #41D3BD;
     transition: box-shadow 0.2s ease-out;
   }
 }
