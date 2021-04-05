@@ -89,6 +89,10 @@
 ![image-20210405205604142](img/image-20210405205604142.png)
 
 
+10. Fix BUG Visual Studio Code CSS linting with Tailwind
+
+> https://www.meidev.co/blog/visual-studio-code-css-linting-with-tailwind/
+
 
 
 
