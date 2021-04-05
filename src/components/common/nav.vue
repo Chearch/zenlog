@@ -1,35 +1,28 @@
 <template>
-  <div
-    class="navagation bg-white-100 dark:bg-black h-16 shadow-md flex items-center relative dark:"
-  >
-    <div
-      class="title-wrapper m-8 text-xl cursor-pointer dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600"
-    >
+  <div class="navagation bg-white-100 dark:bg-black h-16 shadow-md flex items-center relative dark:">
+    <div class="title-wrapper subTitle">
       <div class="title font-semibold">首页</div>
     </div>
-    <div
-      class="recommand-wrapper m-8 text-xl cursor-pointer dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600"
-    >
+    <div class="recommand-wrapper subTitle">
       <div class="recommand font-semibold">推荐</div>
     </div>
-    <div
-      class="feature-wrapper m-8 text-xl cursor-pointer dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600"
-    >
+    <div class="feature-wrapper subTitle">
       <div class="feature font-semibold">精选</div>
     </div>
-
-    <div
-      class="feature-wrapper m-8 text-xl cursor-pointer dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600"
-    >
+    <div class="feature-wrapper subTitle">
       <div class="feature font-semibold">消遣</div>
     </div>
-
-    <div class="search-warpper text-3xl absolute right-24 cursor-pointer">
-      <div
-        class="search icon-search font-bold dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600"
-      ></div>
+    <div class="search-warpper text-3xl absolute right-32 flex items-center">
+        <transition name="search">
+        <div class="search-bar relative h-10 mr-6 w-96 bg-gray-200 dark:bg-gray-500 rounded-md flex items-center" v-if="searchVisible">
+          <input type="text" v-model="inpVal" class="inpstyle outline-none text-xl w-full h-full bg-transparent dark:text-gray-100" @keyup.enter.exact="search" @keyup.esc.exact="cancel"/>
+          <span class="icon-cancel icon mr-2 cursor-pointer" @click="cancel" ></span>
+        </div>
+        </transition>
     </div>
-
+    <div class="search-icon-wrapper text-3xl cursor-pointer flex items-center">
+      <span class="search icon-search icon absolute right-24 " @click="search"></span>
+    </div>
     <div class="search-warpper text-3xl absolute right-2 cursor-pointer">
       <ios-switch :onTodo="onTodo" :offTodo="offTodo"></ios-switch>
     </div>
@@ -38,27 +31,73 @@
 
 <script>
 import iosSwitch from "@/components/common/switch.vue";
-
 export default {
+  data() {
+    return {
+      searchVisible: false,
+      inpVal: "",
+    };
+  },
   components: {
     iosSwitch,
   },
-  methods:{
-    onTodo(){
-      document.documentElement.classList.add("dark")
+  methods: {
+    search() {
+      if (this.searchVisible) {
+        console.log(this.inpVal);
+      } else {
+        this.searchVisible = true;
+      }
     },
-    offTodo(){
-      document.documentElement.classList.remove("dark")
-    }
-  },
-  mounted() {
-    // if (
-    //   localStorage.theme === "dark" ||
-    //   (!("theme" in localStorage) &&
-    //     window.matchMedia("(prefers-color-scheme: dark)").matches)
-    // ) 
+    cancel() {
+      // 取消搜索
+      if(this.inpVal){
+        this.inpVal = "";
+      }else{
+        this.searchVisible = false;
+      }
+    },
+    onTodo() {
+      document.documentElement.classList.add("dark");
+    },
+    offTodo() {
+      document.documentElement.classList.remove("dark");
+    },
   },
 };
 </script>
-<style lang='scss' scoped>
+
+<style scoped>
+input[type="text"] {
+  padding-left: 0.7rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+.icon-cancel {
+  color: #9ca3af !important;
+  font-weight: normal !important;
+}
+
+
+.search-enter {
+  transform: translate(-1000%,0);
+}
+.search-leave-to{
+  transform: translate(1000%,0);
+}
+.search-leave,
+.search-enter-to {
+  transform: translate(0,0);
+}
+.search-leave-active,
+.search-enter-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.subTitle {
+  @apply m-8 text-xl cursor-pointer hover:text-blue-400 dark:text-gray-500 dark:hover:text-blue-400 text-gray-600;
+}
+.icon {
+  @apply font-bold dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600;
+}
 </style>

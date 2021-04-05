@@ -15,12 +15,6 @@ const routes = [
             import ( /* webpackChunkName: "main" */ '@/views/main.vue')
     },
     {
-        path: '/link',
-        name: 'link',
-        component: () =>
-            import ( /* webpackChunkName: "link" */ '@/views/link.vue')
-    },
-    {
         path: '/like',
         name: 'like',
         component: () =>
