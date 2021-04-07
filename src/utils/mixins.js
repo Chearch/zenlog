@@ -4,15 +4,28 @@ const flag = true;
 
 export default {
     computed: {
-        ...mapGetters([])
+        ...mapGetters([
+            'navItems',
+            'searchContent',
+            'tags',
+            'category'
+        ])
     },
 
     methods: {
-        ...mapMutations([]),
+        ...mapMutations([
+            'modifySearchContent',
+            'pushTags',
+            'modifyCategory',
+            'popTags',
+            'clearTags',
+            'defineTags'
+        ]),
 
         // 跳转到指定路由
         jumpto(pathName) {
             let path = "/" + pathName;
+            console.log('jumpto ',path);
             if (this.$route.fullPath !== path) {
                 this.$router.push({
                     path

@@ -1,15 +1,15 @@
 <template>
   <div class="navagation bg-white-100 dark:bg-black h-16 shadow-md flex items-center relative dark:">
-    <div class="title-wrapper subTitle">
+    <div class="title-wrapper subTitle" @click="jumpto(navItems[0].path)">
       <div class="title font-semibold">首页</div>
     </div>
-    <div class="recommand-wrapper subTitle">
+    <div class="recommand-wrapper subTitle" @click="jumpto(navItems[1].path)">
       <div class="recommand font-semibold">推荐</div>
     </div>
-    <div class="feature-wrapper subTitle">
+    <div class="feature-wrapper subTitle" @click="jumpto(navItems[2].path)">
       <div class="feature font-semibold">精选</div>
     </div>
-    <div class="feature-wrapper subTitle">
+    <div class="feature-wrapper subTitle" @click="jumpto(navItems[3].path)">
       <div class="feature font-semibold">消遣</div>
     </div>
     <div class="search-warpper text-3xl absolute right-32 flex items-center">
@@ -44,7 +44,10 @@ export default {
   methods: {
     search() {
       if (this.searchVisible) {
-        console.log(this.inpVal);
+        // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
+        this.modifySearchContent(this.inpVal);
+        console.log(this.searchContent);
+        
       } else {
         this.searchVisible = true;
       }
@@ -67,7 +70,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  scoped>
 input[type="text"] {
   padding-left: 0.7rem;
   height: 2rem;
@@ -79,15 +82,12 @@ input[type="text"] {
 }
 
 
-.search-enter {
-  transform: translate(-1000%,0);
-}
-.search-leave-to{
-  transform: translate(1000%,0);
+.search-enter,.search-leave-to {
+  transform: scaleX(0)
 }
 .search-leave,
 .search-enter-to {
-  transform: translate(0,0);
+  transform: scaleX(1)
 }
 .search-leave-active,
 .search-enter-active {

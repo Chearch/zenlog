@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,16 +10,8 @@ const routes = [
     {
         path: '/main',
         name: 'main',
-        component: () =>
-            import ( /* webpackChunkName: "main" */ '@/views/main.vue')
+        component: () => import ( /* webpackChunkName: "main" */ '@/views/main.vue')
     },
-    {
-        path: '/like',
-        name: 'like',
-        component: () =>
-            import ( /* webpackChunkName: "tool" */ '@/views/like.vue')
-    },
-
 ]
 
 const router = new VueRouter({
