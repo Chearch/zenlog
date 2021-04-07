@@ -66,14 +66,12 @@ export default {
             flag2=true
           }
         }
-        console.log(this.category,v.category);
         
         // 过滤搜索
         let flag3 = false;
         if(this.searchContent.length === 0){
           flag3 = true;
         }
-        console.log(flag1,flag2,flag3);
         return flag1 && flag2 && flag3 ;
       })
     }

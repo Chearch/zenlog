@@ -1,7 +1,7 @@
 // 用于过滤标签和分类字段
 
 <template>
-  <div class="filter-bar h-12  ml-3 flex items-center">
+  <div class="filter-bar h-12  w-9/12  ml-3 flex items-center" v-if="ifShowFilterBar">
     <div
       class="category relative ml-3 rounded-md text-md bg-green-100  p-1 px-3  flex items-center"
       v-if="category"
@@ -32,17 +32,28 @@ export default {
       ifHover: "false",
     };
   },
+  computed:{
+    ifShowFilterBar(){
+      if(this.tags.length !==0 || this.category.length !==0){
+        return true;
+      }else{
+        return false
+      }
+    }
+  },
   methods: {
     modifyTags(t) {
       //  从tags中删除t
       let newTag = [...this.tags].filter((v) => v !== t);
-      console.log(newTag);
       this.defineTags(newTag);
     },
   },
 };
 </script>
 <style lang='scss' scoped>
+.filter-bar{
+  border-bottom: 1px solid gray;
+}
 .tag,
 .category {
   .icon-error {

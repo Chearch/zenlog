@@ -1,5 +1,5 @@
 <template>
-  <div class="article-item w-9/12 h-28 my-6 p-9 flex flex-col justify-center darkmode">
+  <div class="article-item w-9/12 h-28 my-3 p-9 flex flex-col justify-center darkmode">
       <div class="title-wrapper my-3  darkmode">
           <div class="title text-xl cursor-pointer mb-1 darkmode" @click="linkTo(link)">{{title}}</div>
       </div>
@@ -58,11 +58,11 @@ export default {
 <style lang='scss' scoped>
 .article-item{
   // border-bottom: 1px solid red;
-  border-left: 2px solid gray;
+    border-bottom: 2px dotted gray;
+    box-sizing: border-box;
   &:hover{
-    border-left: 2px solid rgb(75, 223, 75);
-    box-shadow:  0 0 10px 2px rgba(0,0,0,.14);
-    // transition: all .1s linear;
+    border-bottom: 2px solid rgb(75, 223, 75);
+    transition: all .2s linear;
   }
 }
 
