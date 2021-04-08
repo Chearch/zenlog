@@ -20,6 +20,11 @@
       <div class="mx-6">运行时间:</div>
       <div class="mx-6">{{ runTime }}天</div>
     </div>
+
+     <div class="site-time-wrapper flex justify-between items-center py-1 darkmode">
+      <div class="mx-6">总访问量:</div>
+      <div class="mx-6">{{ visited }}次</div>
+    </div>
     <div
       class="last-modified-wrapper flex justify-between items-center py-1 mb-1 darkmode"
     >
@@ -49,6 +54,9 @@ export default {
         (1000 * 60 * 60 * 24);
       return parseInt(days);
     },
+    visited(){
+      return Math.ceil(Math.random() * 1000)
+    }
   },
 };
 </script>

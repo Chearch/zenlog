@@ -39,11 +39,14 @@ export default {
     articleItem,
   },
   mounted() {
-    this.articleList = api.articleList;
+    this.articleList = api.articleList.sort((a,b)=>{
+        let flag4 = new Date(b.time) - new Date(a.time)
+        return flag4
+      });
   },
   methods:{
     modifiedArticleList(){
-            this.articleList= api.articleList.filter(v=>{
+        this.articleList= api.articleList.filter(v=>{
         let articleTag = v.tag.split(',');
         let tags = [...this.tags];      
         // 过滤标签

@@ -57,13 +57,19 @@ export default {
 </script>
 <style lang='scss' scoped>
 .article-item{
-  // border-bottom: 1px solid red;
-    border-bottom: 2px dotted gray;
+    border-bottom: 2px solid gray;
     box-sizing: border-box;
+    &:nth-last-child(1) {
+      border-bottom: none;
+      margin-bottom: 9rem;
+    }
   &:hover{
-    border-bottom: 2px solid rgb(75, 223, 75);
+    box-shadow: 0 3px 0 rgba(0,0,0,.15);
     transition: all .2s linear;
   }
+    &:nth-last-child(1):hover {
+      box-shadow:none;
+    }
 }
 
 .darkmode {

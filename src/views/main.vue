@@ -1,11 +1,12 @@
 <template>
-  <div class="main relative flex dark:bg-black">
+<div class="page  relative flex flex-col">
+    <div class="main relative flex dark:bg-black">
     <!-- 左侧 -->
     <div class="left w-1/8">
       <!-- 用户信息 -->
       <person-info class="shadow-md h-72"></person-info>
       <!-- 网站咨询 -->
-      <site-info class="site-info h-44 shadow-md"></site-info>
+      <site-info class="site-info h-52 shadow-md"></site-info>
       <!-- 文章时间 X 篇/月 -->
       <time-line class="article-time shadow-md"></time-line>
     </div>
@@ -23,11 +24,11 @@
     <!-- 友情链接 -->
     </div>
 
-    <!-- mobile -->
-    <div class="mobile">
-      <h1>请在PC端打开</h1>
-    </div>
   </div>
+    <div class="footer mt-8 h-28">
+      <footer-bar class="w-full absolute bottom-0 bg-blue-400"></footer-bar>
+    </div>
+</div>
 </template>
 
 <script>
@@ -36,6 +37,8 @@ import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 import siteInfo from "@/components/main/siteInfo.vue";
 import filterBar from "@/components/main/filterBar.vue";
+import footerBar from "@/components/common/footer.vue"
+
 export default {
   components: {
     personInfo,
@@ -43,6 +46,7 @@ export default {
     timeLine,
     siteInfo,
     filterBar,
+    footerBar,
   },
 };
 </script>
