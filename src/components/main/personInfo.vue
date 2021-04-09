@@ -1,6 +1,6 @@
 <template>
   <div
-    class="person-info bg-white w-80 h-72 dark:bg-black dark:text-gray-500 relative flex flex-col justify-center items-center"
+    class="person-info bg-white h-72 dark:bg-black dark:text-gray-500 relative flex flex-col justify-center items-center"
   >
     <!-- 头像部分 -->
     <div class="header-img">

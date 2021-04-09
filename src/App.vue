@@ -7,6 +7,7 @@
 
 <script>
 import myNav from "@/components/common/nav.vue";
+import api from "@/api/index.js"
 
 // 初始化REM
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -20,6 +21,9 @@ export default {
   components: {
     myNav,
   },
+  beforeMount(){
+    this.modifyArticles(api.articleList);
+  }
 };
 </script>>
 

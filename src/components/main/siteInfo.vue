@@ -2,8 +2,6 @@
 // 站点运行时间
 // 文章数量
 // 最近一次更新
-
-
 <template>
   <div class="site-info">
     <div
@@ -12,21 +10,16 @@
       <span class="icon-lighting text-3xl text-blue-600 mt-1"></span>
       <span class="title font-bold">网站咨询</span>
     </div>
-    <div class="article-count flex justify-between items-center py-1 mt-1 darkmode">
+    <div class="article-count centerflex py-1 mt-1 darkmode">
       <div class="mx-6">文章数目:</div>
       <div class="mx-6">{{articleCount}} 篇</div>
     </div>
-    <div class="site-time-wrapper flex justify-between items-center py-1 darkmode">
+    <div class="site-time-wrapper centerflex py-1 darkmode">
       <div class="mx-6">运行时间:</div>
       <div class="mx-6">{{ runTime }}天</div>
     </div>
-
-     <div class="site-time-wrapper flex justify-between items-center py-1 darkmode">
-      <div class="mx-6">总访问量:</div>
-      <div class="mx-6">{{ visited }}次</div>
-    </div>
     <div
-      class="last-modified-wrapper flex justify-between items-center py-1 mb-1 darkmode"
+      class="last-modified-wrapper centerflex py-1 mb-1 darkmode"
     >
       <div class="mx-6">上次更新:</div>
       <div class="mx-6">{{ lastModified }}</div>
@@ -66,5 +59,9 @@ export default {
 }
 .icon {
   @apply font-bold dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600;
+}
+
+.centerflex{
+  @apply  flex justify-between items-center ;
 }
 </style>

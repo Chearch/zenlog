@@ -1,21 +1,17 @@
 <template>
-  <div class="article-item w-9/12 h-28 my-3 p-9 flex flex-col justify-center darkmode">
-      <div class="title-wrapper my-3  darkmode">
-          <div class="title text-xl cursor-pointer mb-1 darkmode" @click="linkTo(link)">{{title}}</div>
-      </div>
+  <div class="article-item w-9/12 h-8 my-5 px-3 py-6 flex items-center justify-between ">
+      <div class="title text-lg cursor-pointer text-green-800 hover:text-green-600 font-bold " @click="linkTo(link)">{{title}}</div>
 
-      <div class="info-wrapper flex items-center relative text-gray-500 darkmode">
         <!-- 分类 -->
-          <span 
-            class="category rounded-md bg-gray-200 p-1 px-3 cursor-pointer mr-2 -ml-1 hover:bg-gray-700 hover:text-gray-100 darkmode dark:bg-gray-900"
-            @click="modifyCategory(c)"
-            >{{c}}</span>
+      <div class="info-wrapper flex items-center relative text-gray-500 ">
+          <span class="category icon" @click="modifyCategory(c)" >{{c}}</span>
+
           <div class="tag-wrapper" v-for="(t,index) in tagsArray" :key="index">
-              <span class="tag  rounded-xl bg-gray-200 p-1 px-3 ml-2 cursor-pointer hover:bg-gray-700 hover:text-gray-100 darkmode dark:bg-gray-900"
-              @click="pushTags(t) " >{{t}}</span>
+              <div class="tag   icon"
+              @click="pushTags(t)">{{t}}</div>
           </div>
-          <span class="time absolute right-0 darkmode">{{time}}</span>
       </div>
+        <div class="time text-gray-400 ">{{time | fmtTime}}</div>
   </div>
 </template>
 
@@ -52,27 +48,23 @@ export default {
       addTags(t){
           this.pushTags(t);
       }
-  }
+  },
 };
 </script>
 <style lang='scss' scoped>
 .article-item{
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid rgb(196, 196, 196);
     box-sizing: border-box;
     &:nth-last-child(1) {
       border-bottom: none;
       margin-bottom: 9rem;
     }
-  &:hover{
-    box-shadow: 0 3px 0 rgba(0,0,0,.15);
-    transition: all .2s linear;
-  }
     &:nth-last-child(1):hover {
       box-shadow:none;
     }
 }
 
-.darkmode {
-  @apply dark:text-gray-200 dark:hover:text-blue-400;
+.icon{
+  @apply hover:bg-gray-700 w-12 h-8 flex justify-center items-center cursor-pointer rounded-md ;
 }
 </style>

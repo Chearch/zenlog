@@ -9,6 +9,14 @@ import mixins from '@/utils/mixins.js'
 
 Vue.mixin(mixins)
 Vue.config.productionTip = false
+Vue.filter('fmtTime',v=>{
+  if(!v) return ''
+  console.log(v);
+  let [year,month,day] = v.split('/');
+  month.length !== 2 ?month = '0'+month:null;
+  day.length !==2 ? day = '0'+day:null;
+  return `${year}/${month}/${day}`;
+})
 
 new Vue({
   router,

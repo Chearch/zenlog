@@ -2,16 +2,16 @@
 <div class="page  relative flex flex-col">
     <div class="main relative flex dark:bg-black">
     <!-- 左侧 -->
-    <div class="left w-1/8">
+    <div class="left w-3/12">
       <!-- 用户信息 -->
-      <person-info class="shadow-md h-72"></person-info>
+      <person-info class="shadow-md w-72 h-72"></person-info>
       <!-- 网站咨询 -->
-      <site-info class="site-info h-52 shadow-md"></site-info>
+      <site-info class="site-info w-72 h-44 shadow-md"></site-info>
       <!-- 文章时间 X 篇/月 -->
-      <time-line class="article-time shadow-md"></time-line>
+      <time-line class="article-time w-72 shadow-md"></time-line>
     </div>
     <!-- 中间 -->
-    <div class="center w-1/2">
+    <div class="center w-6/12">
     <!-- 过滤标签栏 -->
       <filter-bar></filter-bar>
     <!-- 文章列表 -->
@@ -19,9 +19,11 @@
     </div>
 
     <!-- 右侧 -->
-    <div class="right w-1/8 bg-red-100">
+    <div class="right w-3/12">
     <!-- 当前热门 -->
+    <hot-articles></hot-articles>
     <!-- 友情链接 -->
+    <friend-link></friend-link>
     </div>
 
   </div>
@@ -37,7 +39,9 @@ import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 import siteInfo from "@/components/main/siteInfo.vue";
 import filterBar from "@/components/main/filterBar.vue";
+import hotArticles from '@/components/main/hotArticles.vue'
 import footerBar from "@/components/common/footer.vue"
+import friendLink from "@/components/main/friendLink.vue"
 
 export default {
   components: {
@@ -47,6 +51,8 @@ export default {
     siteInfo,
     filterBar,
     footerBar,
+    hotArticles,
+    friendLink
   },
 };
 </script>
@@ -65,10 +71,10 @@ export default {
     }
   }
   .center {
-    margin: 1rem 0 0 8rem;
+    margin: 1rem 0 0 3rem;
   }
   .right{
-
+    margin: 2rem 0 0 0 ;
   }
   .mobile{
     display: none;

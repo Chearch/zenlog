@@ -8,7 +8,10 @@ export default {
             'navItems',
             'searchContent',
             'tags',
-            'category'
+            'category',
+            'articles',
+            'limit',
+            'friendLink'
         ])
     },
 
@@ -19,7 +22,8 @@ export default {
             'modifyCategory',
             'popTags',
             'clearTags',
-            'defineTags'
+            'defineTags',
+            'modifyArticles'
         ]),
 
         // 跳转到指定路由
