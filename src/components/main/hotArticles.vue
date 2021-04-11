@@ -1,11 +1,11 @@
 <template>
-  <div class="hot-artilces w-72 shadow-xl">
+  <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 text-lg darkmode bg-gray-700 z-10 text-white"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-yellow-500 z-10 text-white dark:bg-purple-700"
     >
       <span class="">Hot</span>
       <span
-        class="icon-integral text-3xl cursor-pointer"
+        class="icon-integral text-3xl cursor-pointer hover:text-blue-600"
         @click="hideHotList"
       ></span>
     </div>
@@ -16,15 +16,15 @@
         v-if="ifShow"
       >
         <div
-          class="h-item centerflex p-2 hover:bg-gray-300 cursor-pointer"
+          class="h-item centerflex p-2 hover:bg-gray-300 cursor-pointer px-6 dark:bg-black dark:text-gray-100 dark:text-blue-300 dark:hover:text-gray-100 dark:hover:bg-green-500"
           v-for="(item, index) in haticles"
           :key="index"
           @click="linkTo(item.link)"
         >
-          <div class="title darkmode">{{ item.title }}</div>
-          <div class="visited darkmode">
+          <div class="title">{{ item.title }}</div>
+          <div class="visited">
             <span> {{ item.visited }} </span>
-            <span class="icon-hot darkmode text-red-600"></span>
+            <span class="icon-hot text-red-600 "></span>
           </div>
         </div>
       </div>

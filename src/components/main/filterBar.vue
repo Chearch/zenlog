@@ -1,7 +1,7 @@
 // 用于过滤标签和分类字段
 
 <template>
-  <div class="filter-bar h-12  w-9/12  ml-3 flex items-center" v-if="ifShowFilterBar">
+  <div class="filter-bar h-12 w-6/12 ml-3 flex absolute top-0 items-center" v-if="ifShowFilterBar">
     <div
       class="category relative ml-3 rounded-md text-md bg-green-100  p-1 px-3  flex items-center"
       v-if="category"

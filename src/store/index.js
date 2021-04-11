@@ -15,7 +15,7 @@ export default new Vuex.Store({
     tags: [],           // 用户选择的标签，提供过滤效果
     category: '',       // 分类过滤
     articles: [],       // 文章数目
-    limit: 8,           // 文章limit
+    limit: 5,           // 文章limit
     friendLink: [       // 友情链接
       {title: 'Bilibili',link:'https://bilibili.com'},
       {title: '云芒的博客',link:'https://ymlog.com'},
