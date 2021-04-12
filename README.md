@@ -28,7 +28,7 @@
 
  
 
-![img](img/clip_image002.png)
+![](img/clip_image002.png)
 
  
 
@@ -52,9 +52,9 @@
 
 6. 解决了element导航栏默认只加载第一个，刷新页面后路由和标签不匹配的BUG
 
-![img](img/clip_image004.jpg)
+![](img/clip_image004.jpg)
 
-![img](img/clip_image006.jpg)
+![](img/clip_image006.jpg)
 
  
 
@@ -78,15 +78,15 @@
 
 8. 增加暗黑模式
 
-![img](img/clip_image008.jpg)
+![](img/clip_image008.jpg)
 
-![img](img/clip_image010.jpg)
+![](img/clip_image010.jpg)
 
 
 
 9. 完成顶部搜索框以及交互动画的编写
+![](img/image-20210405205604142.png)
 
-<img src="img/image-20210405205604142.png" alt="image-20210405205604142" style="zoom:33%;" />
 
 
 10. Fix BUG Visual Studio Code CSS linting with Tailwind
@@ -118,14 +118,10 @@
 - 精选页面
 - 消遣页面
 
+![](img/image-20210412103902000.png)
 
+![](img/image-20210412104607079.png)
 
-<img src="img/image-20210412103902000.png" alt="image-20210412103902000"  />
+![](img/image-20210412135248207.png)
 
-<img src="img/image-20210412104607079.png" alt="image-20210412104607079" />
-
-<img src="img/image-20210412135248207.png" alt="image-20210412135248207" />
-
-
-
-<img src="img/image-20210412195628223.png" alt="image-20210412195628223" />
+![](img/image-20210412195628223.png)
