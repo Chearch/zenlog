@@ -28,7 +28,7 @@
 
  
 
-![](img/clip_image002.png)
+![](img/10.png)
 
  
 
@@ -52,9 +52,9 @@
 
 6. 解决了element导航栏默认只加载第一个，刷新页面后路由和标签不匹配的BUG
 
-![](img/clip_image004.jpg)
+![](img/9.jpg)
 
-![](img/clip_image006.jpg)
+![](img/8.jpg)
 
  
 
@@ -78,22 +78,20 @@
 
 8. 增加暗黑模式
 
-![](img/clip_image008.jpg)
+![](img/7.jpg)
 
-![](img/clip_image010.jpg)
+![](img/6.jpg)
 
 
 
 9. 完成顶部搜索框以及交互动画的编写
-![](img/image-20210405205604142.png)
+![](img/5.png)
 
 
 
 10. Fix BUG Visual Studio Code CSS linting with Tailwind
 
 > https://www.meidev.co/blog/visual-studio-code-css-linting-with-tailwind/
-
-
 
 
 
@@ -118,28 +116,12 @@
 - 精选页面
 - 消遣页面
 
+![1](img/4.png)
 
 
 
-![](img/image-20210412103902000.png)
+![1](img/1.png)
 
+![3](img/2.png)
 
-
-![](img/image-20210412104607079.png)
-
-
-
-![](img/image-20210412135248207.png)
-
-
-
-![](img/image-20210412195628223.png)
-=======
-![1](img/image-20210412103902000.png)
-
-![2](img/image-20210412104607079.png)
-
-![3](img/image-20210412135248207.png)
-
-![4](img/image-20210412195628223.png)
->>>>>>> 149e6c550ddc8f754cc2009057ca0588e97b4378
+![](img/3.png)
