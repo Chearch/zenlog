@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
+import axios from 'axios'
 const flag = true;
 
 export default {
@@ -11,7 +12,8 @@ export default {
             'category',
             'articles',
             'limit',
-            'friendLink'
+            'friendLink',
+            'currentArticle'
         ])
     },
 
@@ -23,7 +25,8 @@ export default {
             'popTags',
             'clearTags',
             'defineTags',
-            'modifyArticles'
+            'modifyArticles',
+            'setCurrentArticle'
         ]),
 
         // 跳转到指定路由
@@ -39,6 +42,10 @@ export default {
         // 跳转到指定链接
         linkTo(href) {
             window.open(href);
+        },
+        // 跳转路由
+        showArticle(articleId){
+            this.$router.push({path: '/article?id='+articleId});
         },
         // 获取当前时间
         getNowTime() {

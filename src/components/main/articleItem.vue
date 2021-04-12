@@ -1,24 +1,19 @@
 <template>
-  <div
-    class="article-item w-full h-16 px-10  flex relative items-end justify-start cursor-pointer"
-  >
-    <div class="title" @click="linkTo(link)">{{ title }}</div>
+  <div class="article-item w-full h-16 px-10 flex items-center justify-between">
+    <!-- 时间和标题 -->
+    <div class="time-and-title flex">
+      <div class="time text-lg text-black w-32 darkmode">{{ created  }}</div>
+      <div class="title text-lg cursor-pointer text-blue-700 dark:text-blue-400" @click="showArticle(id)">{{ title }}</div>
+    </div>
 
     <!-- 分类 -->
-    <div class="info-wrapper flex items-center relative text-gray-500 w-48">
-      <span class="category icon" @click="modifyCategory(c)">{{ c }}</span>
-      <span>,</span>
-
-      <div
-        class="tag-wrapper flex items-center"
-        v-for="(t, index) in tagsArray"
-        :key="index"
-      >
-        <div class="tag icon" @click="pushTags(t)">{{ t }}</div>
-        <span class="dh" v-if="tlengthShow(index)">,</span>
+    <div class="flex items-center justify-end darkmode">
+      <span class="category icon cursor-pointer" @click="modifyCategory(c)">{{ c }},</span>
+      <div class="flex items-center" v-for="(t, index) in t" :key="index">
+        <div class="icon flex justify-center items-center cursor-pointer ml-1" @click="pushTags(t)">{{ t }}</div>
+        <span v-if="tlengthShow(index)">,</span>
       </div>
     </div>
-    <div class="time text-gray-400 absolute right-3 bottom-1">{{ time | fmtTime }}</div>
   </div>
 </template>
 
@@ -29,26 +24,21 @@ export default {
       type: String,
       required: true,
     },
-    link: {
-      type: String,
+    id: {
+      type: Number,
       required: true,
     },
-    time: {
+    created: {
       type: String,
       required: true,
     },
     t: {
-      type: String,
+      type: Array,
       required: true,
     },
     c: {
       type: String,
       required: true,
-    },
-  },
-  computed: {
-    tagsArray() {
-      return this.t.split(",");
     },
   },
   methods: {
@@ -57,23 +47,13 @@ export default {
     },
     tlengthShow(index) {
       //  前端,js,vue,html, 去除最后的逗号
-      return index !== this.tagsArray.length - 1;
-    },
-  },
-  filters: {
-    fmtTime: (v) => {
-      if (!v) return "";
-      let [year, month, day] = v.split("/");
-      month.length !== 2 ? (month = "0" + month) : null;
-      day.length !== 2 ? (day = "0" + day) : null;
-      return `${year}/${month}/${day}`;
+      return index !== this.t.length - 1;
     },
   },
 };
 </script>
 <style lang='scss' scoped>
 .article-item {
-  border-bottom: 1px solid rgb(196, 196, 196);
   box-sizing: border-box;
   &:nth-last-child(1) {
     border-bottom: none;
@@ -85,17 +65,24 @@ export default {
 }
 
 .icon {
-  @apply hover:text-red-300 h-8 flex justify-center items-center cursor-pointer rounded-md;
   overflow: hidden;
   text-overflow: ellipse;
   white-space: normal;
   word-break: keep-all;
+  &:hover{
+    border-bottom: 1px solid blue;
+  }
 }
 .title {
-  @apply text-lg cursor-pointer text-green-800 hover:text-green-600 font-bold w-96;
   overflow: hidden;
   text-overflow: ellipse;
   white-space: nowrap;
   word-break: keep-all;
+  &:hover{
+    border-bottom: 1px solid blue;
+  }
+}
+.darkmode{
+  @apply dark:text-white ;
 }
 </style>

@@ -1,30 +1,51 @@
+import axios from 'axios'
+
 export default {
-    articleList: [
-        { title: '前端Web安全1', link: 'https://ymlog.cn/', time: '2018/4/1' , tag: 'vue,html' , category: '后端',visited:'1'},
-        { title: '前端Web安全2', link: 'https://ymlog.cn/', time: '2018/4/2' , tag: 'vue,html' , category: '前端',visited:'2'},
-        { title: '前端Web安全3', link: 'https://ymlog.cn/', time: '2018/4/3' , tag: 'vue,html' , category: '前端',visited:'3'},
-        { title: '前端Web安全4', link: 'https://ymlog.cn/', time: '2018/4/4' , tag: 'vue,html' , category: '前端',visited:'4'},
-        { title: '前端Web安全5', link: 'https://ymlog.cn/', time: '2018/4/5' , tag: 'vue,html' , category: '前端',visited:'5'},
-        { title: '前端Web安全6', link: 'https://ymlog.cn/', time: '2018/4/6' , tag: 'vue,html' , category: '前端',visited:'6'},
-        { title: '前端Web安全7', link: 'https://ymlog.cn/', time: '2018/4/7' , tag: 'vue,html' , category: '前端',visited:'7'},
-        { title: '前端Web安全8', link: 'https://ymlog.cn/', time: '2018/4/8' , tag: 'vue,html' , category: '前端',visited:'8'},
-        { title: '前端Web安全9', link: 'https://ymlog.cn/', time: '2018/4/10', tag: 'vue,html' , category: '前端',visited:'9' },
-        { title: '前端Web安全10', link: 'https://ymlog.cn/', time: '2018/4/11', tag: 'js,vue,html' , category: '前端' ,visited:'10'},
-        { title: '前端Web安全11', link: 'https://ymlog.cn/', time: '2018/4/12', tag: 'js,vue,html' , category: '前端' ,visited:'12'},
-        { title: '前端Web安全12', link: 'https://ymlog.cn/', time: '2018/4/13', tag: 'js,vue,html' , category: '前端' ,visited:'12'},
-        { title: '前端Web安全13', link: 'https://ymlog.cn/', time: '2018/4/14', tag: 'js,vue,html' , category: '前端' ,visited:'11'},
-        { title: '前端Web安全14', link: 'https://ymlog.cn/', time: '2018/4/15', tag: 'js,vue,html' , category: '前端' ,visited:'13'},
-        { title: '前端Web安全15', link: 'https://ymlog.cn/', time: '2018/4/16', tag: 'js,vue,html' , category: '前端' ,visited:'14'},
-        { title: '前端Web安全16', link: 'https://ymlog.cn/', time: '2018/4/17', tag: 'js,vue,html' , category: '前端' ,visited:'15'},
-        { title: '前端Web安全17', link: 'https://ymlog.cn/', time: '2018/4/18', tag: 'js,vue,html' , category: '前端' ,visited:'16'},
-    ],
+    // articleListFormat: { title: '前端Web安全1', link: 'https://ymlog.cn/', created: '2018/4/1', tag: 'vue,html', category: '后端', visited: '1', id: 'x' },
+    articleLists() {
+        return new Promise((resolve, reject) => {
+            axios({
+                url: process.env.VUE_APP_API_ADDRESS + "/articles",
+                method: 'get'
+            }).then(res => {
+                let arr = [];
+                for (let item of res.data) {
+                    let { id, created, title, tags, category, visited } = item;
+                    // 格式化标题
+                    title = title.replace(/\.md/g, '');
+                    // 
+                    // 格式化标签数组
+                    tags = tags.split(/,/).map(v => v.trim());
+                    // 
+                    // 格式化时间
+                    created = created.replace(/T.*/g, '').replace(/-/g, '/');
+                    let [year, month, day] = created.split("/");
+                    month.length !== 2 ? (month = "0" + month) : null;
+                    day.length !== 2 ? (day = "0" + day) : null;
+                    created = `${year}/${month}/${day}`;
+
+                    arr.push({
+                        id,
+                        created,
+                        title,
+                        tags,
+                        category,
+                        visited
+                    })
+                }
+                resolve(arr)
+            }, rea => {
+                reject(rea);
+            })
+        })
+    },
     timeline: [
-        { time: '04/2021', count: '10' },
-        { time: '03/2021', count: '3' },
-        { time: '02/2021', count: '5' },
-        { time: '01/2020', count: '9' },
-        { time: '12/2020', count: '11' },
-        { time: '11/2020', count: '7' },
-        { time: '10/2020', count: '5' },
+        { created: '04/2021', count: '10' },
+        { created: '03/2021', count: '3' },
+        { created: '02/2021', count: '5' },
+        { created: '01/2020', count: '9' },
+        { created: '12/2020', count: '11' },
+        { created: '11/2020', count: '7' },
+        { created: '10/2020', count: '5' },
     ]
 }

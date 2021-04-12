@@ -86,7 +86,7 @@
 
 9. 完成顶部搜索框以及交互动画的编写
 
-![image-20210405205604142](img/image-20210405205604142.png)
+<img src="img/image-20210405205604142.png" alt="image-20210405205604142" style="zoom:33%;" />
 
 
 10. Fix BUG Visual Studio Code CSS linting with Tailwind
@@ -97,4 +97,35 @@
 
 
 
+## 2021/4/12
 
+- 页面重新设计
+- 文章排版
+- 热门推荐
+- 友情链接
+- 暗黑模式优化
+- 造数据库假数据
+- 测试后端接口
+- 渲染Markdown：https://www.cnblogs.com/youxam/p/vue-markdown-render.html
+- 编写markdown样式 markdown.scss
+- 优化网站咨询、优化归档、优化API接口数据结构
+
+待解决：
+
+- 利用timeline过滤文章
+- 利用search过滤文章
+- 推荐页面
+- 精选页面
+- 消遣页面
+
+
+
+<img src="img/image-20210412103902000.png" alt="image-20210412103902000"  />
+
+<img src="img/image-20210412104607079.png" alt="image-20210412104607079" />
+
+<img src="img/image-20210412135248207.png" alt="image-20210412135248207" />
+
+
+
+<img src="img/image-20210412195628223.png" alt="image-20210412195628223" />

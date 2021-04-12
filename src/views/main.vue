@@ -19,7 +19,7 @@
       </div>
 
       <!-- 中间 -->
-      <div class="center w-6/12">
+      <div class="center w-4/12">
         <!-- 过滤标签栏 -->
         <filter-bar></filter-bar>
         <!-- 文章列表 -->
@@ -65,6 +65,7 @@ export default {
     hotArticles,
     friendLink,
   },
+ 
 };
 </script>
 <style lang='scss' scoped>
@@ -72,6 +73,7 @@ export default {
 .main {
   width: 100%;
   height: 100%;
+  margin-bottom: 10rem;
   .left {
     margin: 4rem;
     .site-info {

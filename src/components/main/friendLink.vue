@@ -1,7 +1,7 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-yellow-500 z-10 text-white dark:bg-purple-700"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-yellow-500 z-10 text-white dark:bg-black"
     >
       <span class="">Link</span>
       <span

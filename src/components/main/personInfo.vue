@@ -75,4 +75,7 @@ export default {
   font-weight: bold;
   font-size: 1.4rem;
 }
+.person-info{
+  border: 1px solid #eee;
+}
 </style>

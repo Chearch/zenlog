@@ -21,8 +21,11 @@ export default {
   components: {
     myNav,
   },
-  beforeMount(){
-    this.modifyArticles(api.articleList);
+  created(){
+    api.articleLists().then(res=>{
+      this.modifyArticles(res);
+      // console.log(this.articles);
+    })
   }
 };
 </script>>

@@ -4,19 +4,17 @@
       v-for="(item, index) in articleList"
       :key="index"
       :title="item.title"
-      :link="item.link"
-      :t="item.tag"
+      :id="item.id"
+      :t="item.tags"
       :c="item.category"
-      :time="item.time"
+      :created="item.created"
     >
     </article-item>
   </div>
 </template>
 
 <script>
-import api from "@/api/index.js";
 import articleItem from "./articleItem";
-
 export default {
   watch: {
     tags(v) {
@@ -36,15 +34,15 @@ export default {
     articleItem,
   },
   mounted() {
-    this.articleList = api.articleList.sort((a, b) => {
+    this.articleList = [...this.articles].sort((a, b) => {
       let flag4 = new Date(b.time) - new Date(a.time);
       return flag4;
     });
   },
   methods: {
     modifiedArticleList() {
-      this.articleList = api.articleList.filter((v) => {
-        let articleTag = v.tag.split(",");
+      this.articleList = [...this.articles].filter((v) => {
+        let articleTag = v.tags;
         let tags = [...this.tags];
         // 过滤标签
         let flag1 = true;

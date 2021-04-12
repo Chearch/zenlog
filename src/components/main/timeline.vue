@@ -11,8 +11,9 @@
         class="item flex justify-between px-5 py-2 hover:bg-purple-500 cursor-pointer dark:text-gray-500 hover:text-white dark:hover:text-black"
         v-for="(item, index) in timeLines"
         :key="index"
+        @click="filterByTime(item.created)"
       >
-        <div class="time pl-3">{{ item.time }}</div>
+        <div class="time pl-3 text-black dark:text-gray-500">{{ item.created }}</div>
         <div class="count pr-4">{{ item.count }} 篇</div>
       </div>
     </div>
@@ -20,17 +21,41 @@
 </template>
 
 <script>
-import api from "@/api/index.js";
-
 export default {
   computed: {
     timeLines() {
-      return api.timeline;
+      let obj = {};
+      let articles = [...this.articles];
+      for (let item of articles) {
+        let { created } = item;
+        created = created.split("/");
+        created.pop();
+        created = created.join("/");
+        if(obj[created]){
+          obj[created] += 1;
+        }else{
+          obj[created] = 1;
+        }
+      }
+      let res = [];
+      for(let v in obj){
+        res.push({created: v,count:obj[v]})
+      }
+      return res;
     },
   },
+  methods:{
+    filterByTime(time){
+      // 2021/04
+
+    }
+  }
 };
 </script>
 <style lang='scss' scoped>
+.time-line {
+  border: 1px solid #eee;
+}
 .time-line:hover {
   .Filing-wrapper {
     -webkit-background-clip: text;

@@ -10,16 +10,16 @@
       <span class="icon-lighting text-3xl text-blue-600 mt-1"></span>
       <span class="title font-bold">网站咨询</span>
     </div>
-    <div class="article-count centerflex py-1 mt-1 darkmode">
+    <div class="article-count flex justify-between items-center py-2 mt-1 darkmode">
       <div class="mx-6">文章数目:</div>
       <div class="mx-6">{{articleCount}} 篇</div>
     </div>
-    <div class="site-time-wrapper centerflex py-1 darkmode">
+    <div class="site-time-wrapper flex justify-between items-center py-2 darkmode">
       <div class="mx-6">运行时间:</div>
       <div class="mx-6">{{ runTime }}天</div>
     </div>
     <div
-      class="last-modified-wrapper centerflex py-1 mb-1 darkmode"
+      class="last-modified-wrapper flex justify-between items-center py-2 mb-1 darkmode"
     >
       <div class="mx-6">上次更新:</div>
       <div class="mx-6">{{ lastModified }}</div>
@@ -28,18 +28,18 @@
 </template>
 
 <script>
-import api from "@/api/index.js";
 export default {
   computed: {
     articleCount() {
-      return api.articleList.length;
+      return this.articles.length;
     },
     lastModified() {
-      let sublist = [...api.articleList];
+      let sublist = [...this.articles];
       let lastArticle = sublist.sort((a, b) => {
-        return new Date(b.time) - new Date(a.time) ;
+        return new Date(b.created) - new Date(a.created) ;
       });
-      return lastArticle[0].time;
+      let lastMdify = lastArticle[0].created || new Date().toLocaleDateString();
+      return lastMdify;
     },
     runTime() {
       let days =
@@ -47,9 +47,6 @@ export default {
         (1000 * 60 * 60 * 24);
       return parseInt(days);
     },
-    visited(){
-      return Math.ceil(Math.random() * 1000)
-    }
   },
 };
 </script>
@@ -57,11 +54,9 @@ export default {
 .darkmode {
   @apply dark:text-gray-500 dark:hover:text-blue-400 text-gray-600
 }
-.icon {
-  @apply font-bold dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600;
-}
 
-.centerflex{
-  @apply  flex justify-between items-center ;
+.site-info{
+  border: 1px solid #eee;
+  user-select: none;
 }
 </style>
