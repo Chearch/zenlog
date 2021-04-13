@@ -140,6 +140,7 @@
 - 修改articleItem在首页  和 进入markdown页面退出后 title渲染位置不一致的BUG
 - 修复filterBar在首页 和 进入markdown页面退出后，filterbar不一致的问题
 - 完成文章搜索功能的后端接口
+- 完成搜索结果hover展示
 
 
 
@@ -159,3 +160,4 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
+![image-20210413154510850](img/14.png)

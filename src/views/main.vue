@@ -8,14 +8,14 @@
           <person-info class="shadow-md h-72 w-72"></person-info>
         </div>
 
-                <!-- 文章时间 X 篇/月 -->
+        <!-- 文章时间 X 篇/月 -->
         <div class="showcenter">
           <time-line class="article-time shadow-md w-72"></time-line>
         </div>
         
         <!-- 网站咨询 -->
         <div class="showcenter">
-          <site-info class="site-info h-44 shadow-md w-72"></site-info>
+          <site-info class="site-info h-46 shadow-md w-72"></site-info>
         </div>
 
 

@@ -4,9 +4,7 @@
 // 最近一次更新
 <template>
   <div class="site-info">
-    <div
-      class="title-wrapper text-xl p-2 cursor-pointer dark:text-gray-500 hover:text-blue-400 dark:hover:text-blue-400 text-gray-600 flex items-center"
-    >
+    <div class="title-wrapper text-xl px-1 pt-3 cursor-pointer dark:text-gray-500 hover:text-blue-400 dark:hover:text-blue-400 text-gray-600 flex items-center">
       <span class="icon-lighting text-3xl text-blue-600 mt-1"></span>
       <span class="title font-bold">网站咨询</span>
     </div>
@@ -19,7 +17,7 @@
       <div class="mx-6">{{ runTime }}天</div>
     </div>
     <div
-      class="last-modified-wrapper flex justify-between items-center py-2 mb-1 darkmode"
+      class="last-modified-wrapper flex justify-between items-center py-2 mb-1 darkmode pb-4"
     >
       <div class="mx-6">上次更新:</div>
       <div class="mx-6">{{ lastModified }}</div>

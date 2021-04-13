@@ -3,7 +3,7 @@
     <!-- 时间和标题 -->
     <div class="time-and-title" @mouseenter="enterItem" @mouseleave="leaveItem">
       <div class="time text-black darkmode">{{ created  }}</div>
-      <div class="title text-blue-700 dark:text-blue-400" @click="showArticle(id)">{{ title }}</div>
+      <div class="title text-blue-700 dark:text-blue-400" @click="showArticle(id)" v-html="title"></div>
     </div>
 
     <!-- 分类 -->
@@ -18,7 +18,6 @@
     <!-- 搜索内容  -->
     <div class="search-content-info absolute" v-if="ifShowSearchContent" >
       <div class="content-card">
-        <!-- <span class="icon icon-code"></span> -->
         <div class="content" v-html="articleContent"></div>
       </div>
     </div>
@@ -54,10 +53,12 @@ export default {
       this.setItemVisible();
        let item  = [...this.searchResult].filter(v=>v.id == this.id)[0];
        this.articleContent = item.content;
-       if(this.articleContent.length === 0) return;
        let keyword = item.keyword;
+
+       if(this.articleContent.length === 0) return;
+       
        this.articleContent = '.....' + this.articleContent + '......';
-       this.articleContent = this.articleContent.replace(keyword,`<i style='color: #D97706; font-weight:bold;'>${keyword}</i>`);
+       this.articleContent = this.articleContent.replace(keyword,`<i style='color: #D97706; font-weight:bold;'>${keyword}</i>`);       
     },
     ifMouseEnter(v){
       this.setItemVisible();
