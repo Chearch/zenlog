@@ -1,22 +1,25 @@
 <template>
   <div class="article-view flex">
     <div class="right w-3/12"></div>
+
     <div class="center w-6/12 flex items-center justify-center flex-col">
       <div class="bar w-full h-36 text-black ">
+        <!-- 标题 -->
         <div class="title-wrapper  flex w-full items-center justify-center text-3xl ">
           <span class="icon-back cursor-pointer" @click="goback"></span>
           <div class="title dark:text-red">{{article.title}}</div>
-          </div>
-        <div class="info ct mt-4 text-lg">
-          <div class="fis px-6 ct">
+        </div>
+        <!-- 信息 -->
+        <div class="info ct mt-4">
+          <div class="fis ct">
               <span class="icon-time mr-1 text-blue-500"></span>
               <span class="time-info">{{article.created}}</span>
           </div>
-            <div class="sec px-6 ct">
+          <div class="sec ct">
               <span class="icon-biaoqian mr-1 text-green-500"></span>
               <span class="tags-info">{{article.tags.join(' / ').toUpperCase()}}</span>
-            </div>
-          <div class="thi px-6 ct">
+          </div>
+          <div class="thi ct">
               <span class="icon-uniE903 mr-1 text-yellow-500"></span>
               <span class="category-info">{{article.category}}</span>
           </div>
@@ -83,8 +86,7 @@ export default {
   },
 };
 </script>
-<style lang='scss'>
-@import "@/assets/styles/global.scss";
+<style lang='scss' scoped>
 .article-view {
   margin-top: 3rem;
   margin-bottom: 10rem;
@@ -94,16 +96,29 @@ export default {
 }
 .center{
   position: relative;
-  .icon-back{
-    position: absolute;
-    left: 0;
-    top: 0;
+  .title-wrapper{
+    font-size: 1.8rem;
+    .icon-back{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .title{
+      margin-left: 3rem;
+    }
   }
-  .title{
-    margin-left: 3rem;
-  }
+
   .info{
     margin-left: 3rem;
+    .fis{
+      padding: 0 1rem;
+    }
+    .sec{
+      padding: 0 1rem;
+    }
+    .thi{
+      padding: 0 1rem;
+    }
   }
 }
 </style>

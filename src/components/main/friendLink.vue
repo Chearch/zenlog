@@ -1,9 +1,9 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-yellow-500 z-10 text-white dark:bg-black"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-gray-400 z-10 text-white dark:bg-black"
     >
-      <span class="">Link</span>
+      <span class="">LINK</span>
       <span
         class="icon-shuqian text-2xl cursor-pointer hover:text-blue-600"
         @click="toAllSite"

@@ -115,6 +115,7 @@
 - 推荐页面
 - 精选页面
 - 消遣页面
+- 文章访问次数统计
 
 ![1](img/4.png)
 
@@ -129,4 +130,32 @@
 
 
 ## 2021/4/13
+
+- 完善filterbar的过滤，包含过滤timeline、searchContent、tags、category
+- 添加一键清除按钮
+- 调整filterbar的样式
+- 修改timeline选中操作
+- 访问文章更新visited
+- 添加nav动画效果
+- 修改articleItem在首页  和 进入markdown页面退出后 title渲染位置不一致的BUG
+- 修复filterBar在首页 和 进入markdown页面退出后，filterbar不一致的问题
+- 完成文章搜索功能的后端接口
+
+
+
+![image-20210413105913074](img/11.png)
+
+![image-20210413134747019](img/13.png)
+
+
+
+- FIX BUG：数据库自动更新
+
+<img src="img/12.png" style="zoom:67%;" />
+
+```sql
+update articles set visited=visited+1,created=created where id = ${id};
+```
+
+
 

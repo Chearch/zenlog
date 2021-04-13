@@ -12,6 +12,7 @@ export default new Vuex.Store({
       { name: '消遣', path: 'entertainment' },
     ],
     searchContent: '',  // 导航栏搜索框的内容
+    searchResult: '',   // 导航栏搜索结果
     tags: [],           // 用户选择的标签，提供过滤效果
     category: '',       // 分类过滤
     articles: [],       // 文章数目
@@ -56,6 +57,9 @@ export default new Vuex.Store({
     setSelectTimeLine(state, options) {
       state.selectTimeLine = options;
     },
+    setSearchResult(state,options){
+      state.searchResult = options;
+    }
   },
   actions: {
   },
@@ -71,5 +75,6 @@ export default new Vuex.Store({
     friendLink: state => state.friendLink,
     currentArticle: state => state.currentArticle,
     selectTimeLine: state => state.selectTimeLine,
+    searchResult: state => state.searchResult,
   },
 })

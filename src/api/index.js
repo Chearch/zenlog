@@ -39,7 +39,6 @@ export default {
                 arr.sort((a,b)=>{
                     return new Date(b.created) - new Date(a.created);
                 })
-                console.log(arr);
                 resolve(arr)
             }, rea => {
                 alert("请求文章失败");
@@ -47,13 +46,25 @@ export default {
             })
         })
     },
-    timeline: [
-        { created: '04/2021', count: '10' },
-        { created: '03/2021', count: '3' },
-        { created: '02/2021', count: '5' },
-        { created: '01/2020', count: '9' },
-        { created: '12/2020', count: '11' },
-        { created: '11/2020', count: '7' },
-        { created: '10/2020', count: '5' },
-    ]
+    search(keyword){
+        return new Promise((resolve,reject)=>{
+            axios({
+                url: process.env.VUE_APP_API_ADDRESS + "/search?keyword=" + keyword,
+                method: 'get',
+                timeout: 2000
+            }).then(res=>{
+                let arr = res.data;
+                arr = arr.map(({id,content})=>{
+                    return {
+                        id,
+                        content: content.split(/\n/).join('').replace(/[=,· ·、\.。\?！~@#￥% \r\n]/,'').replace(/^[·《》]/,'').replace(/[·《》]$/,'').replace(/(·| )/g,''),
+                        keyword
+                    }
+                })
+                resolve(arr);
+            }).catch(rea=>{
+                reject(rea);
+            })
+        })
+    }
 }

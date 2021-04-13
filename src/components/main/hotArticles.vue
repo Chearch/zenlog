@@ -1,9 +1,9 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-yellow-500 z-10 text-white dark:bg-black"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-gray-400 text-white dark:bg-black"
     >
-      <span class="">Hot</span>
+      <span class="">HOT</span>
       <span
         class="icon-integral text-3xl cursor-pointer hover:text-blue-600"
         @click="hideHotList"
@@ -54,7 +54,6 @@ export default {
       })
       .slice(0, this.limit);
     this.haticles = this.tmpAtcles;
-      console.log(this.haticles);
   },
 };
 </script>

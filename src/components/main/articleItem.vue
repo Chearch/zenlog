@@ -1,7 +1,7 @@
 <template>
-  <div class="article-item">
+  <div class="article-item relative" >
     <!-- 时间和标题 -->
-    <div class="time-and-title">
+    <div class="time-and-title" @mouseenter="enterItem" @mouseleave="leaveItem">
       <div class="time text-black darkmode">{{ created  }}</div>
       <div class="title text-blue-700 dark:text-blue-400" @click="showArticle(id)">{{ title }}</div>
     </div>
@@ -12,6 +12,14 @@
       <div class="tags" v-for="(t, index) in t" :key="index">
         <div class="icon" @click="pushTags(t)">{{ t }}</div>
         <span v-if="tlengthShow(index)">,</span>
+      </div>
+    </div>
+
+    <!-- 搜索内容  -->
+    <div class="search-content-info absolute" v-if="ifShowSearchContent" >
+      <div class="content-card">
+        <!-- <span class="icon icon-code"></span> -->
+        <div class="content" v-html="articleContent"></div>
       </div>
     </div>
   </div>
@@ -41,6 +49,27 @@ export default {
       required: true,
     },
   },
+  watch:{
+    searchResult(v){
+      this.setItemVisible();
+       let item  = [...this.searchResult].filter(v=>v.id == this.id)[0];
+       this.articleContent = item.content;
+       if(this.articleContent.length === 0) return;
+       let keyword = item.keyword;
+       this.articleContent = '.....' + this.articleContent + '......';
+       this.articleContent = this.articleContent.replace(keyword,`<i style='color: #D97706; font-weight:bold;'>${keyword}</i>`);
+    },
+    ifMouseEnter(v){
+      this.setItemVisible();
+    }
+  },
+  data(){
+    return {
+      ifShowSearchContent: false,  
+      ifMouseEnter: false,
+      articleContent: '',
+    }
+  },
   methods: {
     addTags(t) {
       this.pushTags(t);
@@ -49,10 +78,26 @@ export default {
       //  前端,js,vue,html, 去除最后的逗号
       return index !== this.t.length - 1;
     },
+    enterItem(){
+      this.ifMouseEnter = true;
+    },
+    leaveItem(){
+      this.ifMouseEnter = false;
+    },
+    setItemVisible(){
+      let searchResult = [...this.searchResult];
+      if(searchResult.length !== 0 && this.ifMouseEnter && this.articleContent.length !== 0){
+        this.ifShowSearchContent = true;
+      }else{
+        this.ifShowSearchContent = false;
+      }
+    }
+
   },
 };
 </script>
 <style lang='scss' scoped>
+@import "@/assets/styles/global.scss";
 .article-item {
   width: 100%;
   height: 4rem;
@@ -67,7 +112,6 @@ export default {
   .time-and-title{
     font-size: 1.1rem;
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     .time{
       padding-right: 3rem !important; 
@@ -115,5 +159,28 @@ export default {
 
 .darkmode{
   @apply dark:text-white ;
+}
+
+.search-content-info {
+  top: 50%;
+  right: 10rem;
+  transform: translate(100%,-50%);
+  margin: 1rem 0;
+  .content-card{
+    background-color: white;
+    border-radius: 3px;
+    opacity: 1;
+    z-index: 1000;
+    box-shadow: -3px 3px 3px 3px rgba(0, 0, 0, .15);
+    .content{
+      width: 100%;
+      padding: .8rem .4rem;
+      text-indent: .4rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      color: black;
+    }
+  }
 }
 </style>

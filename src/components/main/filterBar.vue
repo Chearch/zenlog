@@ -1,28 +1,28 @@
 // 用于过滤标签和分类字段
 <template>
-<div class="filter-bar" v-if="ifShowFilterBar">
+<div class="filter-bar w-5/12" v-if="ifShowFilterBar">
   <!-- 过滤分类 -->
-  <div class="category relative ml-3 rounded-md text-md bg-green-100  p-1 px-3  flex items-center" v-if="category">
+  <div class="category relative ml-3 rounded-md text-md bg-purple-400  p-1 px-3  flex items-center" v-if="category">
     <span class="text-md">{{ category }}</span>
     <span class="icon-error text-2xl cursor-pointer" @click="clearCategory()"></span>
   </div>
 
   <!-- 过滤标签 -->
   <div class="tags ml-3 h-10 flex items-center" v-for="(item, index) in tags" :key="index">
-    <div class="tag relative  p-1 px-3  rounded-md bg-pink-100">
+    <div class="tag relative  p-1 px-3  rounded-md bg-green-400">
       <span class="text-md">{{ item }}</span>
       <span class="icon-error text-2xl cursor-pointer" @click="modifyTags(item)"></span>
     </div>
   </div>
 
   <!-- 过滤timeline -->
-  <div class="timeline relative ml-3 rounded-md text-md bg-green-100  p-1 px-3  flex items-center" v-if="selectTimeLine">
+  <div class="timeline relative ml-3 rounded-md text-md bg-yellow-400  p-1 px-3  flex items-center" v-if="selectTimeLine">
     <span class="text-md">{{ selectTimeLine }}</span>
     <span class="icon-error text-2xl cursor-pointer absolute error-icon" @click="clearTimeline()"></span>
   </div>
 
   <!-- 过滤searchContent -->
-  <div class="searchContent relative ml-3 rounded-md text-md bg-green-100  p-1 px-3  flex items-center" v-if="searchContent">
+  <div class="searchContent relative ml-3 rounded-md text-md bg-pink-400  p-1 px-3  flex items-center" v-if="searchContent">
     <span class="text-md">{{ searchContent }}</span>
     <span class="icon-error text-2xl cursor-pointer absolute error-icon" @click="clearSearchContent()"></span>
   </div>
@@ -78,12 +78,14 @@ export default {
 <style lang='scss' scoped>
 .filter-bar{
   position: absolute;
-  top: -3rem;
-  left: 0;
-  width: 100%;
+  top: 1rem;
+  left: 50%;
+  padding: .3rem;
+  transform: translate(-50%,0);
   display: flex;
   align-items: center;
   border-bottom: 1px solid gray;
+  // box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .15);
 }
 .tag,
 .category,

@@ -7,10 +7,14 @@ import './assets/styles/icon.scss'
 import 'tailwindcss/tailwind.css'
 import mixins from '@/utils/mixins.js'
 import 'github-markdown-css/github-markdown.css'
-
-Vue.mixin(mixins)
 Vue.config.productionTip = false
 
+Vue.mixin(mixins)
+Vue.directive('focus', {
+  inserted: function (el) {
+    el.focus()
+  }
+})
 
 new Vue({
   router,

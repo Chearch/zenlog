@@ -16,7 +16,7 @@
     <div class="search-warpper text-3xl absolute right-32 flex items-center">
       <transition name="search">
         <div class="search-bar relative h-10 mr-6 w-96 bg-gray-200 dark:bg-gray-500 rounded-md flex items-center" v-if="searchVisible">
-          <input type="text" v-model="inpVal" class="inpstyle outline-none text-xl w-full h-full bg-transparent dark:text-gray-100" @keyup.enter.exact="search" @keyup.esc.exact="cancel"/>
+          <input type="text" v-model="inpVal" v-focus class="inpstyle outline-none text-xl w-full h-full bg-transparent dark:text-gray-100" @keyup.enter.exact="search" @keyup.esc.exact="cancel"/>
           <span class="icon-cancel icon mr-2 cursor-pointer" @click="cancel"></span>
         </div>
       </transition>
@@ -33,6 +33,8 @@
 
 <script>
 import iosSwitch from "@/components/common/switch.vue";
+import api from "@/api/index.js"
+
 export default {
   data() {
     return {
@@ -48,18 +50,22 @@ export default {
     search() {
       if (this.searchVisible) {
         // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
+        this.inpVal = this.inpVal.trim();
         this.modifySearchContent(this.inpVal);
+        api.search(this.inpVal).then(result=>{
+          this.setSearchResult(result)
+        }).catch(reason=>{
+          console.log(reason);
+        })
       } else {
         this.searchVisible = true;
       }
     },
     cancel() {
       // 取消搜索
-      if (this.inpVal) {
         this.inpVal = "";
-      } else {
         this.searchVisible = false;
-      }
+        this.modifySearchContent('');
     },
     onTodo() {
       document.documentElement.classList.add("dark");

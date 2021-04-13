@@ -23,10 +23,13 @@ export default {
     category(v) {
       this.modifiedArticleList();
     },
-    searchContent(v){
+    searchResult(v){
       this.modifiedArticleList();
     },
     selectTimeLine(v){
+      this.modifiedArticleList();
+    },
+    searchContent(v){
       this.modifiedArticleList();
     }
   },
@@ -41,10 +44,6 @@ export default {
   },
   mounted() {
     this.articleList = [...this.articles];
-    // .sort((a, b) => {
-    //   let flag4 = new Date(b.time) - new Date(a.time);
-    //   return flag4;
-    // });
   },
   methods: {
     modifiedArticleList() {
@@ -78,6 +77,12 @@ export default {
         let flag3 = false;
         if (this.searchContent.length === 0) {
           flag3 = true;
+        }else{
+          [...this.searchResult].forEach(result=>{
+            if(result.id === v.id){
+              flag3 = true;
+            }
+          })
         }
 
         // 过滤timeline
