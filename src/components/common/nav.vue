@@ -49,7 +49,6 @@ export default {
       if (this.searchVisible) {
         // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
         this.modifySearchContent(this.inpVal);
-        console.log(this.searchContent);
       } else {
         this.searchVisible = true;
       }

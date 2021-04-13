@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?x7yer3');
-  src:  url('fonts/icomoon.eot?x7yer3#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?x7yer3') format('truetype'),
-    url('fonts/icomoon.woff?x7yer3') format('woff'),
-    url('fonts/icomoon.svg?x7yer3#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?xp8c45');
+  src:  url('fonts/icomoon.eot?xp8c45#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?xp8c45') format('truetype'),
+    url('fonts/icomoon.woff?xp8c45') format('woff'),
+    url('fonts/icomoon.svg?xp8c45#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-Back-icon1:before {
+  content: "\e902";
+}
+.icon-back:before {
+  content: "\e908";
+}
+.icon-time:before {
+  content: "\e90e";
+}
 .icon-hot:before {
   content: "\e90d";
 }
@@ -33,15 +42,6 @@
 }
 .icon-uniE903:before {
   content: "\e903";
-}
-.icon-book .path1:before {
-  content: "\e911";
-  color: rgb(220, 218, 200);
-}
-.icon-book .path2:before {
-  content: "\e912";
-  margin-left: -1em;
-  color: rgb(242, 239, 220);
 }
 .icon-cancel:before {
   content: "\e913";
@@ -73,9 +73,6 @@
 .icon-shuqian:before {
   content: "\e901";
 }
-.icon-retry:before {
-  content: "\e902";
-}
 .icon-code:before {
   content: "\e904";
 }
@@ -84,12 +81,6 @@
 }
 .icon-GitHub:before {
   content: "\e907";
-}
-.icon-gongju:before {
-  content: "\e908";
-}
-.icon-ic_email_round:before {
-  content: "\e909";
 }
 .icon-integral:before {
   content: "\e90a";

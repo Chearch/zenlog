@@ -6,7 +6,8 @@ export default {
         return new Promise((resolve, reject) => {
             axios({
                 url: process.env.VUE_APP_API_ADDRESS + "/articles",
-                method: 'get'
+                method: 'get',
+                timeout: 2000
             }).then(res => {
                 let arr = [];
                 for (let item of res.data) {
@@ -33,8 +34,15 @@ export default {
                         visited
                     })
                 }
+
+                // 按照时间排序
+                arr.sort((a,b)=>{
+                    return new Date(b.created) - new Date(a.created);
+                })
+                console.log(arr);
                 resolve(arr)
             }, rea => {
+                alert("请求文章失败");
                 reject(rea);
             })
         })

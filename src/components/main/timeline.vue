@@ -1,17 +1,16 @@
 <template>
   <div class="time-line">
     <div class="tline-wrapper py-5">
-      <div
-        class="Filing-wrapper py-2 flex items-center select-none dark:text-gray-500"
-      >
+      <div class="Filing-wrapper py-2 flex items-center select-none dark:text-gray-500">
         <span class="icon-logs text-2xl pl-5"></span>
         <span class="text-xl px-2 leading-8 mb-1">归档</span>
       </div>
       <div
-        class="item flex justify-between px-5 py-2 hover:bg-purple-500 cursor-pointer dark:text-gray-500 hover:text-white dark:hover:text-black"
+        class="item flex justify-between px-5 py-2 hover:bg-gray-300 cursor-pointer dark:text-gray-500 hover:text-white dark:hover:text-black"
         v-for="(item, index) in timeLines"
         :key="index"
         @click="filterByTime(item.created)"
+        :class="{'selected' : item.created === selectTimeLine }"
       >
         <div class="time pl-3 text-black dark:text-gray-500">{{ item.created }}</div>
         <div class="count pr-4">{{ item.count }} 篇</div>
@@ -47,9 +46,9 @@ export default {
   methods:{
     filterByTime(time){
       // 2021/04
-
-    }
-  }
+      this.setSelectTimeLine(time);
+    },
+  },
 };
 </script>
 <style lang='scss' scoped>
@@ -83,6 +82,14 @@ export default {
 @keyframes iconAnimate {
   100% {
     filter: hue-rotate(360deg);
+  }
+}
+
+.selected{
+  background: #6B7280 !important;
+  color: white !important;
+  .time{
+    color: white !important;
   }
 }
 </style>

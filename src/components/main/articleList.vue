@@ -23,6 +23,12 @@ export default {
     category(v) {
       this.modifiedArticleList();
     },
+    searchContent(v){
+      this.modifiedArticleList();
+    },
+    selectTimeLine(v){
+      this.modifiedArticleList();
+    }
   },
   computed: {
     nowday() {
@@ -34,16 +40,18 @@ export default {
     articleItem,
   },
   mounted() {
-    this.articleList = [...this.articles].sort((a, b) => {
-      let flag4 = new Date(b.time) - new Date(a.time);
-      return flag4;
-    });
+    this.articleList = [...this.articles];
+    // .sort((a, b) => {
+    //   let flag4 = new Date(b.time) - new Date(a.time);
+    //   return flag4;
+    // });
   },
   methods: {
     modifiedArticleList() {
       this.articleList = [...this.articles].filter((v) => {
-        let articleTag = v.tags;
-        let tags = [...this.tags];
+        let articleTag = v.tags;    // 文章自带标签
+        let tags = [...this.tags];  // 用户想要的标签
+
         // 过滤标签
         let flag1 = true;
         if (tags.length === 0) {
@@ -55,6 +63,7 @@ export default {
             }
           });
         }
+
         // 过滤分类
         let flag2 = false;
         if (this.category.length === 0) {
@@ -70,7 +79,17 @@ export default {
         if (this.searchContent.length === 0) {
           flag3 = true;
         }
-        return flag1 && flag2 && flag3;
+
+        // 过滤timeline
+        let flag4 = false;
+        let t = v.created.replace(/\/\d+$/,''); // 将2021/03/12 -> 2021/03
+        if(this.selectTimeLine.length === 0){
+          flag4 = true;
+        }else if(this.selectTimeLine === t){
+          flag4 = true;
+        }
+
+        return flag1 && flag2 && flag3 && flag4;
       });
     },
   },

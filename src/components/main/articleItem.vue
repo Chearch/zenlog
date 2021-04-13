@@ -1,16 +1,16 @@
 <template>
-  <div class="article-item w-full h-16 px-10 flex items-center justify-between">
+  <div class="article-item">
     <!-- 时间和标题 -->
-    <div class="time-and-title flex">
-      <div class="time text-lg text-black w-32 darkmode">{{ created  }}</div>
-      <div class="title text-lg cursor-pointer text-blue-700 dark:text-blue-400" @click="showArticle(id)">{{ title }}</div>
+    <div class="time-and-title">
+      <div class="time text-black darkmode">{{ created  }}</div>
+      <div class="title text-blue-700 dark:text-blue-400" @click="showArticle(id)">{{ title }}</div>
     </div>
 
     <!-- 分类 -->
-    <div class="flex items-center justify-end darkmode">
-      <span class="category icon cursor-pointer" @click="modifyCategory(c)">{{ c }},</span>
-      <div class="flex items-center" v-for="(t, index) in t" :key="index">
-        <div class="icon flex justify-center items-center cursor-pointer ml-1" @click="pushTags(t)">{{ t }}</div>
+    <div class="category darkmode">
+      <span class="icon" @click="modifyCategory(c)">{{ c }},</span>
+      <div class="tags" v-for="(t, index) in t" :key="index">
+        <div class="icon" @click="pushTags(t)">{{ t }}</div>
         <span v-if="tlengthShow(index)">,</span>
       </div>
     </div>
@@ -54,14 +54,52 @@ export default {
 </script>
 <style lang='scss' scoped>
 .article-item {
-  box-sizing: border-box;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   &:nth-last-child(1) {
     border-bottom: none;
     margin-bottom: 9rem;
   }
-  &:nth-last-child(1):hover {
-    box-shadow: none;
+
+  .time-and-title{
+    font-size: 1.1rem;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    .time{
+      padding-right: 3rem !important; 
+    }
+    .title{
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipse;
+      white-space: nowrap;
+      word-break: keep-all;
+      margin-left: 0 !important;
+      &:hover{
+        border-bottom: 1px solid blue;
+      }
+    }
+}
+
+.category{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .icon{
+    cursor: pointer;
   }
+  .tags{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: .3rem;
+  }
+}
 }
 
 .icon {
@@ -69,19 +107,12 @@ export default {
   text-overflow: ellipse;
   white-space: normal;
   word-break: keep-all;
+  box-sizing: border-box;
   &:hover{
     border-bottom: 1px solid blue;
   }
 }
-.title {
-  overflow: hidden;
-  text-overflow: ellipse;
-  white-space: nowrap;
-  word-break: keep-all;
-  &:hover{
-    border-bottom: 1px solid blue;
-  }
-}
+
 .darkmode{
   @apply dark:text-white ;
 }

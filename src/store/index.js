@@ -17,7 +17,7 @@ export default new Vuex.Store({
     articles: [],       // 文章数目
     limit: 8,           // 文章limit
     currentArticle: '', // 当前打开的文章
-
+    selectTimeLine: '', // 选中的timeline
     friendLink: [       // 友情链接
       { title: '云芒的博客', link: 'https://ymlog.com' },
       { title: '面向信仰编程', link: 'https://draveness.me/' },
@@ -52,7 +52,10 @@ export default new Vuex.Store({
     },
     setCurrentArticle(state, options) {
       state.currentArticle = options;
-    }
+    },
+    setSelectTimeLine(state, options) {
+      state.selectTimeLine = options;
+    },
   },
   actions: {
   },
@@ -67,5 +70,6 @@ export default new Vuex.Store({
     limit: state => state.limit,
     friendLink: state => state.friendLink,
     currentArticle: state => state.currentArticle,
+    selectTimeLine: state => state.selectTimeLine,
   },
 })

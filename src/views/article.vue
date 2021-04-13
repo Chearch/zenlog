@@ -1,8 +1,30 @@
 <template>
   <div class="article-view flex">
     <div class="right w-3/12"></div>
-    <div class="center w-6/12 flex items-center justify-center">
-      <div v-html="articleContent" class="markdown-body"></div>
+    <div class="center w-6/12 flex items-center justify-center flex-col">
+      <div class="bar w-full h-36 text-black ">
+        <div class="title-wrapper  flex w-full items-center justify-center text-3xl ">
+          <span class="icon-back cursor-pointer" @click="goback"></span>
+          <div class="title dark:text-red">{{article.title}}</div>
+          </div>
+        <div class="info ct mt-4 text-lg">
+          <div class="fis px-6 ct">
+              <span class="icon-time mr-1 text-blue-500"></span>
+              <span class="time-info">{{article.created}}</span>
+          </div>
+            <div class="sec px-6 ct">
+              <span class="icon-biaoqian mr-1 text-green-500"></span>
+              <span class="tags-info">{{article.tags.join(' / ').toUpperCase()}}</span>
+            </div>
+          <div class="thi px-6 ct">
+              <span class="icon-uniE903 mr-1 text-yellow-500"></span>
+              <span class="category-info">{{article.category}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div v-html="articleContent" class="markdown-body"></div>
+      </div>
     </div>
     <div class="left w-3/12"></div>
   </div>
@@ -18,10 +40,12 @@ export default {
     return {
       articleId: null,
       articleContent: "",
+      article: [],
     };
   },
   beforeMount() {
     this.articleId = this.$route.query.id;
+    this.article = [...this.articles].filter(v=> v.id == this.articleId)[0];
     this.getContent();
   },
   mounted() {
@@ -64,5 +88,22 @@ export default {
 .article-view {
   margin-top: 3rem;
   margin-bottom: 10rem;
+}
+.ct{
+  @apply flex items-center justify-center;
+}
+.center{
+  position: relative;
+  .icon-back{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .title{
+    margin-left: 3rem;
+  }
+  .info{
+    margin-left: 3rem;
+  }
 }
 </style>

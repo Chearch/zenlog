@@ -19,7 +19,7 @@
           class="h-item centerflex p-2 hover:bg-gray-300 cursor-pointer px-6 dark:bg-black dark:text-gray-100 dark:text-blue-300 dark:hover:text-gray-100 dark:hover:bg-green-500"
           v-for="(item, index) in haticles"
           :key="index"
-          @click="linkTo(item.link)"
+          @click="showArticle(item.id)"
         >
           <div class="title">{{ item.title }}</div>
           <div class="visited">
@@ -54,6 +54,7 @@ export default {
       })
       .slice(0, this.limit);
     this.haticles = this.tmpAtcles;
+      console.log(this.haticles);
   },
 };
 </script>

@@ -13,7 +13,8 @@ export default {
             'articles',
             'limit',
             'friendLink',
-            'currentArticle'
+            'currentArticle',
+            'selectTimeLine',
         ])
     },
 
@@ -26,7 +27,8 @@ export default {
             'clearTags',
             'defineTags',
             'modifyArticles',
-            'setCurrentArticle'
+            'setCurrentArticle',
+            'setSelectTimeLine',
         ]),
 
         // 跳转到指定路由
@@ -57,6 +59,10 @@ export default {
             let minute = d.getMinutes();
             let second = d.getSeconds();
             return [year, month + 1, day, hour, minute, second]
+        },
+        // 返回上层
+        goback(){
+            this.$router.go(-1);
         },
         info(msg) {
             if (typeof msg !== 'string') {
