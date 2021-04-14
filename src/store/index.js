@@ -12,7 +12,7 @@ export default new Vuex.Store({
       { name: '消遣', path: 'entertainment' },
     ],
     searchContent: '',  // 导航栏搜索框的内容
-    searchResult: '',   // 导航栏搜索结果
+    searchResult: [],   // 导航栏搜索结果
     tags: [],           // 用户选择的标签，提供过滤效果
     category: '',       // 分类过滤
     articles: [],       // 文章数目
@@ -26,6 +26,7 @@ export default new Vuex.Store({
       { title: '张鑫旭', link: 'https://www.zhangxinxu.com/wordpress/' },
       { title: 'CoolShell', link: 'https://coolshell.cn/featured' },
     ],
+    recommandArticles: [], // 推荐文章
   },
   mutations: {
     modifySearchContent(state, option) {
@@ -59,7 +60,10 @@ export default new Vuex.Store({
     },
     setSearchResult(state,options){
       state.searchResult = options;
-    }
+    },
+    setRecommandArticles(state,options){
+      state.recommandArticles = options;
+    },
   },
   actions: {
   },
@@ -76,5 +80,6 @@ export default new Vuex.Store({
     currentArticle: state => state.currentArticle,
     selectTimeLine: state => state.selectTimeLine,
     searchResult: state => state.searchResult,
+    recommandArticles: state => state.recommandArticles,
   },
 })

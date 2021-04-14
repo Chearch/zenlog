@@ -40,8 +40,7 @@ export default {
                     return new Date(b.created) - new Date(a.created);
                 })
                 resolve(arr)
-            }, rea => {
-                alert("请求文章失败");
+            }).catch(rea => {
                 reject(rea);
             })
         })
@@ -64,6 +63,19 @@ export default {
                 resolve(arr);
             }).catch(rea=>{
                 reject(rea);
+            })
+        })
+    },
+    getRecommandArticles(platform){
+        return new Promise((resolve,reject)=>{
+            axios({
+                url: process.env.VUE_APP_API_ADDRESS + "/hot?platform=" + platform,
+                method: 'get',
+                timeout: 2000
+            }).then(result=>{
+                resolve(result.data);
+            }).catch(reason=>{
+                reject(reason)
             })
         })
     }

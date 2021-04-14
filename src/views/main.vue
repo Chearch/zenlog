@@ -1,6 +1,6 @@
 <template>
   <div class="page relative flex flex-col">
-    <div class="main relative flex dark:bg-black">
+    <div class="main relative flex bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100">
       <!-- 左侧 -->
       <div class="left w-3/12">
         <!-- 用户信息 -->
@@ -41,8 +41,8 @@
         </div>
       </div>
     </div>
-    <div class="footer mt-8 h-28">
-      <footer-bar class="w-full absolute bottom-0 bg-blue-400"></footer-bar>
+    <div class="footer mt-8 h-14">
+      <wave-bar class="w-full absolute bottom-0 bg-blue-400"></wave-bar>
     </div>
   </div>
 </template>
@@ -55,6 +55,7 @@ import siteInfo from "@/components/main/siteInfo.vue";
 import filterBar from "@/components/main/filterBar.vue";
 import hotArticles from "@/components/main/hotArticles.vue";
 import footerBar from "@/components/common/footer.vue";
+import waveBar from "@/components/common/wave.vue";
 import friendLink from "@/components/main/friendLink.vue";
 
 export default {
@@ -67,6 +68,7 @@ export default {
     footerBar,
     hotArticles,
     friendLink,
+    waveBar,
   },
  
 };
@@ -76,7 +78,7 @@ export default {
 .main {
   width: 100%;
   height: 100%;
-  margin-bottom: 10rem;
+  padding-bottom: 10rem;
   .left {
     margin: 4rem;
     .site-info {

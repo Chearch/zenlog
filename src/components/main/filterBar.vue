@@ -63,7 +63,8 @@ export default {
     },
     // 删除searchContent
     clearSearchContent(){
-      this.modifySearchContent('');
+        this.modifySearchContent('');
+        this.setSearchResult([]);
     },
     // 删除所有
     clearAll(){

@@ -1,7 +1,7 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-gray-400 z-10 text-white dark:bg-black"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg z-10"
     >
       <span class="">LINK</span>
       <span
@@ -10,9 +10,9 @@
       ></span>
     </div>
 
-    <div class="content-area overflow-hidden flex flex-col bg-gray-50 dark:bg-black dark:text-blue-300 ">
+    <div class="content-area overflow-hidden flex flex-col ">
       <div
-        class="h-item centerflex p-2 hover:bg-gray-300 cursor-pointer px-6 dark:hover:bg-green-500 dark:hover:text-gray-100"
+        class="h-item centerflex p-2 cursor-pointer px-6  hover:text-blue-400"
         v-for="(item, index) in friendLink"
         :key="index"
         @click="linkTo(item.link)"

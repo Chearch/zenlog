@@ -1,18 +1,18 @@
 <template>
   <div class="time-line">
     <div class="tline-wrapper py-5">
-      <div class="Filing-wrapper py-2 flex items-center select-none dark:text-gray-500">
+      <div class="Filing-wrapper py-2 flex items-center select-none ">
         <span class="icon-logs text-2xl pl-5"></span>
         <span class="text-xl px-2 leading-8 mb-1">归档</span>
       </div>
       <div
-        class="item flex justify-between px-5 py-2 hover:bg-gray-300 cursor-pointer dark:text-gray-500 hover:text-white dark:hover:text-black"
+        class="item flex justify-between px-5 py-2 hover:bg-yellow-300 cursor-pointer"
         v-for="(item, index) in timeLines"
         :key="index"
         @click="filterByTime(item.created)"
         :class="{'selected' : item.created === selectTimeLine }"
       >
-        <div class="time pl-3 text-black dark:text-gray-500">{{ item.created }}</div>
+        <div class="time pl-3">{{ item.created }}</div>
         <div class="count pr-4">{{ item.count }} 篇</div>
       </div>
     </div>
@@ -86,7 +86,7 @@ export default {
 }
 
 .selected{
-  background: #6B7280 !important;
+  background: #F59E0B !important;
   color: white !important;
   .time{
     color: white !important;

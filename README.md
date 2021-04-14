@@ -161,3 +161,27 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 ![image-20210413154510850](img/14.png)
+
+
+
+
+
+
+
+## 2021/4/14
+
+- 重写滚动事件，重写鼠标滚动事件，搜索结果支持水平滚动
+- 重写footer组件，添加波浪标识
+- 重写背景和nav的颜色，包括暗黑模式
+- 修复搜索功能第一次searchResult不显示的BUG
+- 微调用户信息展示界面的样式
+
+
+
+
+
+![image-20210414143935640](img/15.png)
+
+
+
+<img src="img/16.png" alt="image-20210414144054141" style="zoom:63%;" />

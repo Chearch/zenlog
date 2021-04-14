@@ -24,7 +24,6 @@ export default {
   created(){
     api.articleLists().then(res=>{
       this.modifyArticles(res);
-      // console.log(this.articles);
     })
   }
 };

@@ -15,7 +15,8 @@ export default {
             'friendLink',
             'currentArticle',
             'selectTimeLine',
-            'searchResult'
+            'searchResult',
+            'recommandArticles'
         ])
     },
 
@@ -30,7 +31,8 @@ export default {
             'modifyArticles',
             'setCurrentArticle',
             'setSelectTimeLine',
-            'setSearchResult'
+            'setSearchResult',
+            'setRecommandArticles'
         ]),
 
         // 跳转到指定路由

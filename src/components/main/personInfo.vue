@@ -1,6 +1,6 @@
 <template>
   <div
-    class="person-info bg-white h-72 dark:bg-black dark:text-gray-500 relative flex flex-col justify-center items-center"
+    class="person-info relative flex flex-col justify-evenly items-center"
   >
     <!-- 头像部分 -->
     <div class="header-img">
@@ -71,11 +71,12 @@ export default {
   padding: 0 0.8rem;
 }
 .name {
-  margin: 0.4rem 0 0.3rem 0;
-  font-weight: bold;
+  margin-top: 0.4rem;
   font-size: 1.4rem;
+  font-weight: bold;
 }
 .person-info{
   border: 1px solid #eee;
+  height: 18rem;
 }
 </style>

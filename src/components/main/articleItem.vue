@@ -1,13 +1,13 @@
 <template>
-  <div class="article-item relative" >
+  <div class="article-item relative" @mouseenter="enterItem" @mouseleave="leaveItem">
     <!-- 时间和标题 -->
-    <div class="time-and-title" @mouseenter="enterItem" @mouseleave="leaveItem">
-      <div class="time text-black darkmode">{{ created  }}</div>
-      <div class="title text-blue-700 dark:text-blue-400" @click="showArticle(id)" v-html="title"></div>
+    <div class="time-and-title" >
+      <div class="time">{{ created  }}</div>
+      <div class="title " @click="showArticle(id)" v-html="title"></div>
     </div>
 
     <!-- 分类 -->
-    <div class="category darkmode">
+    <div class="category">
       <span class="icon" @click="modifyCategory(c)">{{ c }},</span>
       <div class="tags" v-for="(t, index) in t" :key="index">
         <div class="icon" @click="pushTags(t)">{{ t }}</div>
@@ -16,7 +16,7 @@
     </div>
 
     <!-- 搜索内容  -->
-    <div class="search-content-info absolute" v-if="ifShowSearchContent" >
+    <div class="search-content-info absolute" v-if="ifShowSearchContent" @mousewheel="mswheel" ref="scroll" id="scroll">
       <div class="content-card">
         <div class="content" v-html="articleContent"></div>
       </div>
@@ -50,15 +50,8 @@ export default {
   },
   watch:{
     searchResult(v){
-      this.setItemVisible();
-       let item  = [...this.searchResult].filter(v=>v.id == this.id)[0];
-       this.articleContent = item.content;
-       let keyword = item.keyword;
-
-       if(this.articleContent.length === 0) return;
-       
-       this.articleContent = '.....' + this.articleContent + '......';
-       this.articleContent = this.articleContent.replace(keyword,`<i style='color: #D97706; font-weight:bold;'>${keyword}</i>`);       
+      console.log('searchResult Changed');
+      this.searchResultChange();
     },
     ifMouseEnter(v){
       this.setItemVisible();
@@ -92,15 +85,34 @@ export default {
       }else{
         this.ifShowSearchContent = false;
       }
-    }
+    },
+    searchResultChange(){
+      this.setItemVisible();
+      if([...this.searchResult].length === 0) return;
+       let item  = [...this.searchResult].filter(v=>v.id == this.id)[0];
+       this.articleContent = item.content;
+       let keyword = item.keyword;
 
+       if(this.articleContent.length === 0) return;
+       
+       this.articleContent = '.....' + this.articleContent + '......';
+       this.articleContent = this.articleContent.replace(keyword,`<i style='color: #D97706; font-weight:bold;'>${keyword}</i>`);     
+    },
+    // 水平滚动
+    mswheel(e){
+        e.preventDefault();
+        let step = e.deltaY > 0 ? 20 : -20;
+        this.$refs.scroll.scrollLeft += step;
+    },
   },
+  mounted(){
+    this.searchResultChange();
+  }
 };
 </script>
 <style lang='scss' scoped>
 @import "@/assets/styles/global.scss";
 .article-item {
-  width: 100%;
   height: 4rem;
   display: flex;
   justify-content: space-between;
@@ -158,17 +170,18 @@ export default {
   }
 }
 
-.darkmode{
-  @apply dark:text-white ;
-}
-
 .search-content-info {
   top: 50%;
   right: 10rem;
+  width: 50rem;
   transform: translate(100%,-50%);
   margin: 1rem 0;
+  overflow-x: scroll;
+  background-color: white;
+  &::-webkit-scrollbar{
+    height: 0;
+  }
   .content-card{
-    background-color: white;
     border-radius: 3px;
     opacity: 1;
     z-index: 1000;
@@ -177,8 +190,8 @@ export default {
       width: 100%;
       padding: .8rem .4rem;
       text-indent: .4rem;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      // text-overflow: ellipsis;
+      // overflow: hidden;
       white-space: nowrap;
       color: black;
     }

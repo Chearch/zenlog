@@ -1,6 +1,6 @@
 <template>
 <transition name="slide-down">
-  <div class="navagation bg-white-100 dark:bg-black h-16 shadow-md flex items-center relative dark:" v-if="ifShowNav">
+  <div class="navagation h-16 flex items-center bg-gray-100 text-black dark:bg-gray-900 dark:text-white" v-if="ifShowNav">
     <div class="title-wrapper subTitle" @click="jumpto(navItems[0].path)">
       <div class="title font-semibold">首页</div>
     </div>
@@ -66,6 +66,7 @@ export default {
         this.inpVal = "";
         this.searchVisible = false;
         this.modifySearchContent('');
+        this.setSearchResult([]);
     },
     onTodo() {
       document.documentElement.classList.add("dark");
@@ -95,14 +96,16 @@ input[type="text"] {
 }
 
 .subTitle {
-  @apply m-8 text-xl cursor-pointer hover:text-blue-400 dark:text-gray-500 dark:hover:text-blue-400 text-gray-600;
+  @apply m-8 text-xl cursor-pointer hover:text-blue-400 dark:hover:text-blue-400;
 }
 .icon {
-  @apply font-bold dark:text-gray-500  hover:text-blue-400 dark:hover:text-blue-400 text-gray-600;
+  @apply font-bold hover:text-blue-400;
 }
-
 
 .navagation {
   width: 100%;
+  // box-shadow: 0 .3rem .3rem rgba(0, 0, 0, 0.15) !important; 
+  // margin-bottom: .3rem;
+  position: relative;
 }
 </style>

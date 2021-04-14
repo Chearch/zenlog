@@ -1,7 +1,7 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg bg-gray-400 text-white dark:bg-black"
+      class="title-bar centerflex h-10 p-2 px-4 text-lg "
     >
       <span class="">HOT</span>
       <span
@@ -12,11 +12,11 @@
 
     <transition name="height-zero">
       <div
-        class="content-area overflow-hidden flex flex-col h-76 bg-gray-50"
+        class="content-area overflow-hidden flex flex-col h-76 "
         v-if="ifShow"
       >
         <div
-          class="h-item centerflex p-2 hover:bg-gray-300 cursor-pointer px-6 dark:bg-black dark:text-gray-100 dark:text-blue-300 dark:hover:text-gray-100 dark:hover:bg-green-500"
+          class="h-item centerflex p-2 cursor-pointer px-6 "
           v-for="(item, index) in haticles"
           :key="index"
           @click="showArticle(item.id)"
