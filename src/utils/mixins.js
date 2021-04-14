@@ -68,6 +68,13 @@ export default {
         goback(){
             this.$router.go(-1);
         },
+        // 格式化时间为英文字符
+        // 2021/04/03 => 03 March 2021
+        fmtEn(time){
+            let [year,month,day] = time.split('/');
+            month = this.monthToEn(month);
+            return `${day} ${month} ${year}`
+        },
         info(msg) {
             if (typeof msg !== 'string') {
                 throw new Error("msg must be string")
@@ -89,5 +96,24 @@ export default {
             let styles = ['color: green', 'background: white', 'font-weight: 900'].join(';');
             flag ? console.log('%c%s', styles, msg) : null;
         },
+        monthToEn(m){
+            console.log(m);
+            m = String(m);
+            m = m.length === 1 ? '0' + m : m;
+            switch(m){
+                case '01': return 'January';
+                case '02': return 'February';
+                case '03': return 'March';
+                case '04': return 'April';
+                case '05': return 'May';
+                case '06': return 'June';
+                case '07': return 'July';
+                case '08': return 'August';
+                case '09': return 'September';
+                case '10': return 'October';
+                case '11': return 'November';
+                case '12': return 'December';
+            }
+        }
     }
 }

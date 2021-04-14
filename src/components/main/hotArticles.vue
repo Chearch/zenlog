@@ -1,7 +1,7 @@
 <template>
   <div class="hot-artilces shadow-xl">
     <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg "
+      class="title-bar centerflex h-10 p-2 px-4 text-lg"
     >
       <span class="">HOT</span>
       <span
@@ -16,7 +16,7 @@
         v-if="ifShow"
       >
         <div
-          class="h-item centerflex p-2 cursor-pointer px-6 "
+          class="h-item centerflex p-2 cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500 "
           v-for="(item, index) in haticles"
           :key="index"
           @click="showArticle(item.id)"

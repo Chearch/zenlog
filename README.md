@@ -1,3 +1,11 @@
+**Begin FROM 2021/3/7**
+
+**Author ZENDU**
+
+**DESC 'Personal Blog Project'**
+
+
+
 ## 2021/3/7 
 
 1. 完成数据库建表、录入数据
@@ -28,7 +36,7 @@
 
  
 
-![](img/10.png)
+![完成导航菜单](img/10.png)
 
  
 
@@ -52,9 +60,9 @@
 
 6. 解决了element导航栏默认只加载第一个，刷新页面后路由和标签不匹配的BUG
 
-![](img/9.jpg)
+![完成左侧信息列表](img/9.jpg)
 
-![](img/8.jpg)
+![完成友链动画特效](img/8.jpg)
 
  
 
@@ -78,14 +86,14 @@
 
 8. 增加暗黑模式
 
-![](img/7.jpg)
+![修改个人信息列表](img/7.jpg)
 
-![](img/6.jpg)
+![添加暗黑模式](img/6.jpg)
 
 
 
 9. 完成顶部搜索框以及交互动画的编写
-![](img/5.png)
+![完成顶部搜索框](img/5.png)
 
 
 
@@ -110,22 +118,22 @@
 
 待解决：
 
-- 利用timeline过滤文章
-- 利用search过滤文章
-- 推荐页面
+- 利用timeline过滤文章 √ END 2021/4/14
+- 利用search过滤文章 √ END 2021/4/14
+- 推荐页面 √ END 2021/4/14
 - 精选页面
 - 消遣页面
-- 文章访问次数统计
+- 文章访问次数统计 √ END 2021/4/14
 
-![1](img/4.png)
+<img src="img/4.png" alt="完善前端页面展示" style="zoom:63%;" />
 
 
 
-![1](img/1.png)
+<img src="img/1.png" alt="添加暗黑模式" style="zoom:63%;" />
 
-![3](img/2.png)
+![解决文章created时间变化BUG](img/2.png)
 
-![](img/3.png)
+<img src="img/3.png" alt="完成markdown渲染" style="zoom:63%;" />
 
 
 
@@ -144,9 +152,9 @@
 
 
 
-![image-20210413105913074](img/11.png)
+<img src="img/11.png" alt="完成过滤功能" style="zoom:63%;" />
 
-![image-20210413134747019](img/13.png)
+<img src="img/13.png" alt="完成搜索功能" style="zoom:63%;" />
 
 
 
@@ -160,7 +168,7 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
-![image-20210413154510850](img/14.png)
+<img src="img/14.png" alt="采用hover完成搜索结果展示" style="zoom:63%;" />
 
 
 
@@ -171,17 +179,117 @@ update articles set visited=visited+1,created=created where id = ${id};
 ## 2021/4/14
 
 - 重写滚动事件，重写鼠标滚动事件，搜索结果支持水平滚动
-- 重写footer组件，添加波浪标识
+- 重写footer组件，添加动态波浪效果
 - 重写背景和nav的颜色，包括暗黑模式
 - 修复搜索功能第一次searchResult不显示的BUG
 - 微调用户信息展示界面的样式
+- 完善知乎热榜的链接功能，用cheerio+re的方式解析出链接
+- 添加微博热榜、36Kr
+- 完善热榜动画效果，采用卡片动画实现
+
+- 重写Article_Item，将搜索结果展示到左侧image-wrapper，取消鼠标滚动
+
+
+
+![重写鼠标滚轮事件，实现水平滚动](img/15.png)
+
+
+
+<img src="img/16.png" alt="修改footer标签，添加wave效果" style="zoom:63%;" />
+
+
+
+<img src="img/image-20210414222513583.png" alt="重写Article-Item" style="zoom:63%;" />
+
+
+
+<img src="img/image-20210414223600862.png" alt="推荐页面编写" style="zoom:63%;" />
+
+
+
+后续待实现：
+
+- 推荐页面保持热榜标题显示，目前是hover之后显示
+- 首页文章目录分页功能待实现
+- 导航菜单的选中样式有待添加
 
 
 
 
 
-![image-20210414143935640](img/15.png)
 
 
 
-<img src="img/16.png" alt="image-20210414144054141" style="zoom:63%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 后端接口
+
+```bash
+# 获取所有文章
+http://106.15.107.100:3000/articles
+
+# 获取指定文章
+http://106.15.107.100:3000/article?id=1
+
+# 搜索数据库
+http://106.15.107.100:3000/search?keyword=王阳明
+
+# 获取热榜
+http://106.15.107.100:3000/hot?platform=weibo
+http://106.15.107.100:3000/hot?platform=zhihu
+http://106.15.107.100:3000/hot?platform=kr
+```
+
+
+
+
+

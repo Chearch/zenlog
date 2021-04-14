@@ -85,7 +85,7 @@ export default {
   transform: translate(-50%,0);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid gray;
+  // border-bottom: 1px solid gray;
   // box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .15);
 }
 .tag,

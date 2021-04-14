@@ -56,7 +56,7 @@ export default {
                 arr = arr.map(({id,content})=>{
                     return {
                         id,
-                        content: content.split(/\n/).join('').replace(/[=,· ·、\.。\?！~@#￥% \r\n]/,'').replace(/^[·《》]/,'').replace(/[·《》]$/,'').replace(/(·| )/g,''),
+                        content: content.split(/\n/).join('').replace(/[=,· ·、\.。\?！~@#￥% \r\n]/,'').replace(/^[·《》]/,'').replace(/[·《》]$/,'').replace(/(·| )/g,'').replace(/  /g,' '),
                         keyword
                     }
                 })

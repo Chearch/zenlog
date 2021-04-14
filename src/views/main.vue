@@ -90,9 +90,10 @@ export default {
   }
   .center {
     margin-top: 4rem;
+    margin-left: 4rem;
   }
   .right {
-    margin: 4rem;
+    margin: 4rem ;
   }
   .mobile {
     display: none;
