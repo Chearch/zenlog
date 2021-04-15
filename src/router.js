@@ -5,23 +5,19 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        redirect: '/main'
+        name: 'page',
+        component: ()=> import (/*webpackChunkName: "page" */ '@/views/index.vue')
     },
-    {
-        path: '/main',
-        name: 'main',
-        component: () => import ( /* webpackChunkName: "main" */ '@/views/main.vue')
-    },
-    {
-        path: '/article',
-        name: 'article',
-        component: () => import ( /* webpackChunkName: "article" */ '@/views/article.vue')
-    },
-    {
-        path: '/recommand',
-        name: 'recommand',
-        component: () => import ( /* webpackChunkName: "article" */ '@/views/recommand.vue')
-    }
+    // {
+    //     path: '/main',
+    //     name: 'main',
+    //     component: () => import ( /* webpackChunkName: "main" */ '@/views/main.vue')
+    // },
+    // {
+    //     path: '/article',
+    //     name: 'article',
+    //     component: () => import ( /* webpackChunkName: "article" */ '@/views/article.vue')
+    // },
 ]
 
 const router = new VueRouter({

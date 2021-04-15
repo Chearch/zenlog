@@ -1,6 +1,7 @@
 <template>
-  <div class="page relative flex flex-col">
-    <div class="main relative flex bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100">
+
+  <div class="page relative flex flex-col" v-if="this.ifViewVisible === 0">
+    <div class="main relative flex">
       <!-- 左侧 -->
       <div class="left w-3/12">
         <!-- 用户信息 -->
@@ -23,8 +24,6 @@
 
       <!-- 中间 -->
       <div class="center w-4/12">
-        <!-- 过滤标签栏 -->
-        <filter-bar></filter-bar>
         <!-- 文章列表 -->
         <article-list></article-list>
       </div>
@@ -52,7 +51,6 @@ import personInfo from "@/components/main/personInfo.vue";
 import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 import siteInfo from "@/components/main/siteInfo.vue";
-import filterBar from "@/components/main/filterBar.vue";
 import hotArticles from "@/components/main/hotArticles.vue";
 import footerBar from "@/components/common/footer.vue";
 import waveBar from "@/components/common/wave.vue";
@@ -64,7 +62,6 @@ export default {
     articleList,
     timeLine,
     siteInfo,
-    filterBar,
     footerBar,
     hotArticles,
     friendLink,
@@ -80,7 +77,8 @@ export default {
   height: 100%;
   padding-bottom: 10rem;
   .left {
-    margin: 4rem;
+    margin: 0 4rem;
+    // margin-top: 6rem;
     .site-info {
       margin-top: 3rem;
     }
@@ -89,11 +87,12 @@ export default {
     }
   }
   .center {
-    margin-top: 4rem;
     margin-left: 4rem;
+    // margin-top: 6rem;
   }
   .right {
-    margin: 4rem ;
+    margin: 0 4rem ;
+    // margin-top: 6rem;
   }
   .mobile {
     display: none;

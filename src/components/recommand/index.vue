@@ -1,6 +1,6 @@
 <template>
-  <div class="recommand">
-    <div class="center w-full h-full bg-gray-50">
+  <div class="recommand w-full h-full relative" v-if="ifViewVisible === 1">
+    <div class="center w-full h-full ">
       <parallax-carousel></parallax-carousel>
     </div>
   </div>

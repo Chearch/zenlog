@@ -1,6 +1,5 @@
 import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
-import axios from 'axios'
 const flag = true;
 
 export default {
@@ -16,7 +15,14 @@ export default {
             'currentArticle',
             'selectTimeLine',
             'searchResult',
-            'recommandArticles'
+            'recommandArticles',
+            'ifViewVisible',
+            'ifShowNav',
+            'searchVisible',
+            'currentIndex',
+            'pageIndex',
+            'totalIndex',
+            'ifDarkMode'
         ])
     },
 
@@ -32,13 +38,19 @@ export default {
             'setCurrentArticle',
             'setSelectTimeLine',
             'setSearchResult',
-            'setRecommandArticles'
+            'setRecommandArticles',
+            'setIfViewVisible',
+            'setIfShowNav',
+            'setSearchVisible',
+            'addCurrentIndex',
+            'delCurrentIndex',
+            'setIfDarkMode',
         ]),
 
         // 跳转到指定路由
         jumpto(pathName) {
             let path = "/" + pathName;
-            console.log('jumpto ',path);
+            this.info('jumpto ',path);
             if (this.$route.fullPath !== path) {
                 this.$router.push({
                     path
@@ -75,6 +87,23 @@ export default {
             month = this.monthToEn(month);
             return `${day} ${month} ${year}`
         },
+        clearAllTags(){
+            this.modifySearchContent('');
+            this.setSearchResult([]);
+            this.setSelectTimeLine('');
+            this.modifyCategory('');
+            this.clearTags();
+        },
+        throttle(func,time,params){
+            let task = null;
+            return function(){
+                if(task) return ;
+                func.call(null,params);
+                task = setTimeout(() => {
+                    task = null;
+                }, time);
+            }
+        },
         info(msg) {
             if (typeof msg !== 'string') {
                 throw new Error("msg must be string")
@@ -97,7 +126,6 @@ export default {
             flag ? console.log('%c%s', styles, msg) : null;
         },
         monthToEn(m){
-            console.log(m);
             m = String(m);
             m = m.length === 1 ? '0' + m : m;
             switch(m){
@@ -115,5 +143,5 @@ export default {
                 case '12': return 'December';
             }
         }
-    }
+    },
 }

@@ -62,7 +62,7 @@ export default {
 <style lang='scss' scoped>
 .height-zero-enter-to,
 .height-zero-leave {
-  height: 19rem;
+  height: 10rem;
 }
 .height-zero-leave-to,
 .height-zero-enter {

@@ -12,7 +12,7 @@
 
     <div class="content-area overflow-hidden flex flex-col ">
       <div
-        class="h-item centerflex p-2 cursor-pointer px-6  hover:text-blue-400"
+        class="h-item centerflex p-2 cursor-pointer px-6  cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500"
         v-for="(item, index) in friendLink"
         :key="index"
         @click="linkTo(item.link)"

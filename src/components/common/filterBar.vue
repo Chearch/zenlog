@@ -1,6 +1,6 @@
 // 用于过滤标签和分类字段
 <template>
-<div class="filter-bar w-5/12" v-if="ifShowFilterBar">
+<div class="filter-bar" v-if="ifShowFilterBar">
   <!-- 过滤分类 -->
   <div class="category relative ml-3 rounded-md text-md bg-purple-400  p-1 px-3  flex items-center" v-if="category">
     <span class="text-md">{{ category }}</span>
@@ -28,10 +28,10 @@
   </div>
 
 
-  <!-- 清除所有 -->
-  <div class="clear-all flex items-center h-full" v-if="ifShowFilterBar" @click="clearAll">
-    <span class="icon-error text-2xl " @click="clearSearchContent()"></span>
-  </div>
+  <!-- 清除所有 icon-error -->
+  <!-- <div class="clear-all flex items-center h-full hover:text-red-500" v-if="ifShowFilterBar" @click="clearAllTags()">
+    <span class="icon-error text-xl hover:text-red-500 "> </span>
+  </div> -->
 
 </div>
 </template>
@@ -66,27 +66,14 @@ export default {
         this.modifySearchContent('');
         this.setSearchResult([]);
     },
-    // 删除所有
-    clearAll(){
-      this.clearSearchContent();
-      this.clearTimeline();
-      this.clearCategory();
-      this.clearTags();
-    }
+    
   },
 };
 </script>
 <style lang='scss' scoped>
 .filter-bar{
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  padding: .3rem;
-  transform: translate(-50%,0);
   display: flex;
   align-items: center;
-  // border-bottom: 1px solid gray;
-  // box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .15);
 }
 .tag,
 .category,
@@ -109,13 +96,15 @@ export default {
   }
 }
 .clear-all{
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #ccc;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // color: #ccc;
   &:hover{
     color: #333;
-    cursor: pointer;
   }
+  margin: 0 3rem;
+    cursor: pointer;
+
 }
 </style>

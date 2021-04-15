@@ -6,7 +6,7 @@
         <span class="text-xl px-2 leading-8 mb-1">归档</span>
       </div>
       <div
-        class="item flex justify-between px-5 py-2 hover:bg-yellow-300 cursor-pointer"
+        class="item flex justify-between px-5 py-2 cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500"
         v-for="(item, index) in timeLines"
         :key="index"
         @click="filterByTime(item.created)"

@@ -1,6 +1,6 @@
 <template>
-  <div class="article-item">
-    <div class="item-card">
+  <div class="article-item" :class="{'test': title == 'test'}">
+    <div class="item-card" v-if="title !== 'test'">
       <!-- 左侧图片 -->
       <div class="image-wrapper">
         <img
@@ -15,7 +15,7 @@
         ></div>
       </div>
       <!-- 右侧信息 -->
-      <div class="info-wrapper">
+      <div class="info-wrapper" >
         <!-- 时间 -->
         <div class="time-wrapper">
           <div class="time">{{ fmtEn(created) }}</div>
@@ -40,7 +40,7 @@
         <div class="read-wrapper" @click="showArticle(id)">READ MORE</div>
       </div>
     </div>
-    <div class="decoration">
+    <div class="decoration" v-if="title !== 'test'">
       <img src="@/assets/image/wave.svg" alt="">
     </div>
   </div>
@@ -133,12 +133,16 @@ export default {
     border-radius: 1.5rem;
     height: 18rem;
     transition: all 0.3s;
+    &.test{
+      box-shadow: none !important;
+      background: transparent !important;
+    }
     @media screen and (max-width: 992px) {
       max-width: 45rem;
     }    
     @media screen and (max-width: 768px) {
-      min-height: 25rem;
-      height: auto;
+      width: 90%;
+      height: 20rem;
       margin: 12rem auto;
     }
     @media screen and (max-height: 500px) and (min-width: 992px) {
@@ -189,24 +193,26 @@ export default {
         }
         @media screen and (max-width: 768px) {
         transform: translateY(-50%);
-          width: 90%;
+          width: 80%;
         }
         @media screen and (max-width: 576px) {
-          width: 95%;
+          width: 80%;
+          height: 10rem;
         }
         @media screen and (max-height: 500px) and (min-width: 992px) {
             height: 18rem;
         }
     }
     .info-wrapper {
-      padding-left: 1rem;
+      padding-left: .3rem;
       height: 18rem;
-      // width: 30rem;
       overflow: hidden;
+      
       @media screen and (max-width: 992px) {
-        // width: 55%;
+        width: 55%;
       }
       @media screen and (max-width: 768px) {
+        width: 100%;
         margin-top: -8rem;
         text-align: center;
         padding: 0 30px;
@@ -235,7 +241,9 @@ export default {
         color: #4e4a67;
         line-height: 1.5em;
         display: flex;
+        justify-content: flex-start;
         z-index: 10000;
+
         .category-wrapper{}
         .tags-wrapper{
           display: flex;
@@ -260,9 +268,9 @@ export default {
         letter-spacing: 1px;
         color: #fff;
         background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
-        box-shadow: 0px 1rem 4rem rgba(252, 56, 56, 0.4);
+        box-shadow: 0px 1rem 3rem rgba(252, 56, 56, 0.4);
         @media screen and (max-width: 576px) {
-          width: 100%;
+          // width: 10rem;
         }
       }
     }

@@ -1,7 +1,6 @@
 <template>
   <div class="parallax-carousel ">
-    <div class="stage bg-gray-50 dark:bg-black"></div>
-
+    <div class="stage"></div>
     <div class="container">
       <div class="ring">
         <div 
@@ -21,6 +20,10 @@
       </div>
     </div>
 
+    <div class="select-platform-wrapper">
+      <div class="select-platform">{{selectPlatform}}</div>
+    </div>
+
     <div class="cards">
         <span class="c1 c dark:text-white text-black" @click="load(1)"></span>
         <span class="c2 c dark:text-white text-black" @click="load(2)"></span>
@@ -38,6 +41,7 @@ export default {
         return {
             parallaxShowArticles: [],
             maxShowNumber: 10,
+            selectPlatform: '知乎',
         }
     },
   mounted() {
@@ -121,18 +125,21 @@ export default {
             // 加载微博
             api.getRecommandArticles('weibo').then(resz=>{
                 this.setRecommandArticles(resz.data)
+                this.selectPlatform = '微博';
                 this.parallaxShowArticles = [...this.recommandArticles].slice(0,this.maxShowNumber);
             })
           }else if(n==2){
             // 加载知乎
             api.getRecommandArticles('zhihu').then(resz=>{
                 this.setRecommandArticles(resz.data)
+                this.selectPlatform = '知乎';
                 this.parallaxShowArticles = [...this.recommandArticles].slice(0,this.maxShowNumber);
             })
           }else if(n==3){
             //   加载36kr
             api.getRecommandArticles('kr').then(resz=>{
                 this.setRecommandArticles(resz.data)
+                this.selectPlatform = '36Kr';
                 this.parallaxShowArticles = [...this.recommandArticles].slice(0,this.maxShowNumber);
             })
           }
@@ -158,7 +165,6 @@ export default {
 .parallax-carousel,
 .stage {
   overflow: hidden;
-//   background: #F9FAFB;
 }
 div,
 svg {
@@ -199,9 +205,26 @@ svg {
         color: white;
      }
 }
+.select-platform-wrapper{
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  z-index: 1000;
+  width: 15rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  transform: translate(-50%,0);
+  .select-platform{
+
+  }
+}
 .cards{
     position: absolute;
-    bottom: 10%;
+    bottom: 13%;
     left: 50%;
     transform: translate(-50%,0);
     z-index: 1000;
@@ -215,14 +238,13 @@ svg {
         height: 100%;
         border-radius: 4px;
         cursor: pointer;
+        position: relative;
         &:hover{
             box-shadow: inset 0 3px 6px rgba(0, 0, 0, .15);
         }
         &:hover::before{
             position: absolute;
-            font-size: 1.5rem;
-            font-weight: bold;
-            top: -4rem;
+            top: -1.4rem;
             left: 50%;
             transform: translate(-50%,0);
         }

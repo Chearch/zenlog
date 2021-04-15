@@ -1,7 +1,7 @@
 <template>
   <div class="article-list w-full">
     <article-item
-      v-for="(item, index) in articleList"
+      v-for="(item, index) in dynamicItems"
       :key="index"
       :title="item.title"
       :id="item.id"
@@ -10,11 +10,15 @@
       :created="item.created"
     >
     </article-item>
+   <pagination></pagination>
   </div>
 </template>
 
 <script>
 import articleItem from "./articleItem";
+import util from "@/utils/util.js"
+import pagination from "../common/pagination.vue"
+
 export default {
   watch: {
     tags(v) {
@@ -38,9 +42,17 @@ export default {
       let [year, month, day] = this.getNowTime();
       return `${year}/${month}/${day}`;
     },
+    dynamicItems(){
+      if(this.articleList.length !==0){
+        return util.group([...this.articleList],this.pageIndex)[this.currentIndex];
+      }else{
+        return [];
+      }
+    }
   },
   components: {
     articleItem,
+    pagination,
   },
   mounted() {
     this.articleList = [...this.articles];
@@ -105,5 +117,4 @@ export default {
   },
 };
 </script>
-<style lang='scss' scoped>
-</style>
+<style lang='scss' scoped></style>

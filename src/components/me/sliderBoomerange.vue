@@ -1,15 +1,14 @@
 <template>
-  <div>
-
-  </div>
+    <div>
+      自我介绍
+    </div>
 </template>
 
 <script>
 export default {
-  mounted(){
-    console.log(process.env.VUE_APP_USER_name);
-  }
-};
+
+}
 </script>
 <style lang='scss' scoped>
+
 </style>

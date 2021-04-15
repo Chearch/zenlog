@@ -1,7 +1,18 @@
 import axios from 'axios'
 
+
 export default {
-    // articleListFormat: { title: '前端Web安全1', link: 'https://ymlog.cn/', created: '2018/4/1', tag: 'vue,html', category: '后端', visited: '1', id: 'x' },
+    /*
+    articleListFormat: { 
+        title: '前端Web安全1', 
+        link: 'https://ymlog.cn/', 
+        created: '2018/4/1', 
+        tag: 'vue,html', 
+        category: '后端', 
+        visited: '1', 
+        id: 'x'
+    },
+    */
     articleLists() {
         return new Promise((resolve, reject) => {
             axios({
@@ -34,11 +45,10 @@ export default {
                         visited
                     })
                 }
-
                 // 按照时间排序
                 arr.sort((a,b)=>{
                     return new Date(b.created) - new Date(a.created);
-                })
+                });
                 resolve(arr)
             }).catch(rea => {
                 reject(rea);
