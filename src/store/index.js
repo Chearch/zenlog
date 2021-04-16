@@ -1,21 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import util from "@/utils/util.js"
+import api from "@/api/index.js"
+import {setCurrentIndex,getCurrentIndex,setDarkMode,getDarkMode} from "@/utils/localstorage.js"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // 导航路由显示信息
+    // 显示信息
     ifViewVisible: 0, // 0 首页 1 推荐 2 精选 3 简历
     ifShowNav: false,       // 是否显示导航栏
     searchVisible: false,   // 是否显示导航栏搜索框
     ifDarkMode: false,    // 是否开启暗黑模式
-    navItems: [
-      { name: 'home', path: 'main' },
-      { name: 'recommand', path: 'recommand' },
-      { name: 'about me', path: 'me' },
-    ],
 
     // 过滤字段
     searchContent: '',  // 导航栏搜索框的内容
@@ -62,23 +59,51 @@ export default new Vuex.Store({
     setIfViewVisible(state,options){state.ifViewVisible = options;},
     setIfShowNav(state,options){state.ifShowNav = options;},
     setSearchVisible(state,options){state.searchVisible = options;},
-    setIfDarkMode(state,options){state.ifDarkMode = options;},
+    setIfDarkMode(state,options){
+      state.ifDarkMode = options;
+      setDarkMode(options);
+      if(options){ 
+        document.documentElement.classList.add("dark")
+      }else{
+        document.documentElement.classList.remove("dark");
+      }
+    },
     addCurrentIndex(state){
       if(!state.totalIndex){
         state.totalIndex = util.group(state.articles,state.pageIndex).length;
       }
       if(state.currentIndex < state.totalIndex -1){
         state.currentIndex = state.currentIndex +1;
+        setCurrentIndex(state.currentIndex); // 每一次加减页数，都将当前页码存放到localStorage中
       }
     },
-    delCurrentIndex(state){ state.currentIndex > 0 ? state.currentIndex = state.currentIndex -1 : null;},
+    delCurrentIndex(state){ 
+      if(state.currentIndex > 0){
+        state.currentIndex = state.currentIndex -1 
+        setCurrentIndex(state.currentIndex);
+      }
+    },
+    clearCurrentIndex(state){
+        state.currentIndex = 0; 
+        setCurrentIndex(state.currentIndex);
+    },
+    setTotalIndex(state,option){
+      state.totalIndex = option;
+    }
   },
   getters: {
     navItems: state => state.navItems,
     searchContent: state => state.searchContent,
     tags: state => state.tags,
     category: state => state.category,
-    articles: state => state.articles,
+    articles: state => {
+      if(!state.articles){
+        api.articleLists().then(res=>{
+          state.articles = res;
+        })
+      }
+      return state.articles;
+    },
     limit: state => state.limit,
     friendLink: state => state.friendLink,
     currentArticle: state => state.currentArticle,
@@ -88,9 +113,28 @@ export default new Vuex.Store({
     ifViewVisible: state => state.ifViewVisible,
     ifShowNav: state => state.ifShowNav,
     searchVisible: state => state.searchVisible,
-    currentIndex: state => state.currentIndex,
+    currentIndex: state => {
+      let index = getCurrentIndex();
+      if(index != null){
+        state.currentIndex = index;
+      }
+      return state.currentIndex;
+    },
     pageIndex: state => state.pageIndex,
-    ifDarkMode: state => state.ifDarkMode,
+    ifDarkMode: state => {
+      let flag = getDarkMode();
+      if(String(flag)){
+        state.ifDarkMode = flag;
+      }
+
+      if(flag){ 
+        document.documentElement.classList.add("dark")
+      }else{
+        document.documentElement.classList.remove("dark");
+      }
+
+      return state.ifDarkMode;
+    },
     totalIndex: state=>{
       if(!state.totalIndex){
         state.totalIndex = util.group(state.articles,state.pageIndex).length;

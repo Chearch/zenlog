@@ -26,13 +26,6 @@
     <span class="text-md">{{ searchContent }}</span>
     <span class="icon-error text-2xl cursor-pointer absolute error-icon" @click="clearSearchContent()"></span>
   </div>
-
-
-  <!-- 清除所有 icon-error -->
-  <!-- <div class="clear-all flex items-center h-full hover:text-red-500" v-if="ifShowFilterBar" @click="clearAllTags()">
-    <span class="icon-error text-xl hover:text-red-500 "> </span>
-  </div> -->
-
 </div>
 </template>
 
@@ -96,10 +89,6 @@ export default {
   }
 }
 .clear-all{
-  // position: absolute;
-  // top: 0;
-  // right: 0;
-  // color: #ccc;
   &:hover{
     color: #333;
   }

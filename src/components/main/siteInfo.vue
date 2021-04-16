@@ -5,21 +5,21 @@
 <template>
   <div class="site-info">
     <div class="title-wrapper text-xl px-1 pt-3 cursor-pointer hover:text-blue-400   flex items-center">
-      <span class="icon-lighting text-3xl text-blue-600 mt-1"></span>
-      <span class="title font-bold">网站咨询</span>
+      <span class="icon-lighting text-3xl icon mt-1"></span>
+      <span class="title font-bold">{{ $t('card.siteinfo') }}</span>
     </div>
     <div class="article-count flex justify-between items-center py-2 mt-1 ">
-      <div class="mx-6">文章数目:</div>
-      <div class="mx-6">{{articleCount}} 篇</div>
+      <div class="mx-6">{{ $t('card.articleCount') }}:</div>
+      <div class="mx-6">{{articleCount}} {{ $t('card.unit') }}</div>
     </div>
     <div class="site-time-wrapper flex justify-between items-center py-2 ">
-      <div class="mx-6">运行时间:</div>
-      <div class="mx-6">{{ runTime }}天</div>
+      <div class="mx-6">{{ $t('card.runTime') }}:</div>
+      <div class="mx-6">{{ runTime }} {{ $t('card.day') }}</div>
     </div>
     <div
       class="last-modified-wrapper flex justify-between items-center py-2 mb-1  pb-4"
     >
-      <div class="mx-6">上次更新:</div>
+      <div class="mx-6">{{ $t('card.latestUpdate') }}:</div>
       <div class="mx-6">{{ lastModified }}</div>
     </div>
   </div>
@@ -52,5 +52,9 @@ export default {
 .site-info{
   border: 1px solid #eee;
   user-select: none;
+ box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
+}
+.icon{
+  color: #fd3838;
 }
 </style>

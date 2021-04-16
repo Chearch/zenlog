@@ -78,5 +78,6 @@ export default {
 .person-info{
   border: 1px solid #eee;
   height: 18rem;
+  box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
 }
 </style>

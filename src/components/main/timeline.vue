@@ -3,7 +3,7 @@
     <div class="tline-wrapper py-5">
       <div class="Filing-wrapper py-2 flex items-center select-none ">
         <span class="icon-logs text-2xl pl-5"></span>
-        <span class="text-xl px-2 leading-8 mb-1">归档</span>
+        <span class="text-xl px-2 leading-8 mb-1">{{ $t('card.filing') }}</span>
       </div>
       <div
         class="item flex justify-between px-5 py-2 cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500"
@@ -13,7 +13,7 @@
         :class="{'selected' : item.created === selectTimeLine }"
       >
         <div class="time pl-3">{{ item.created }}</div>
-        <div class="count pr-4">{{ item.count }} 篇</div>
+        <div class="count pr-4">{{ item.count }} {{ $t('card.unit') }}</div>
       </div>
     </div>
   </div>
@@ -54,6 +54,7 @@ export default {
 <style lang='scss' scoped>
 .time-line {
   border: 1px solid #eee;
+ box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
 }
 .time-line:hover {
   .Filing-wrapper {

@@ -37,7 +37,7 @@
         </div>
 
         <!-- 点击阅读 -->
-        <div class="read-wrapper" @click="showArticle(id)">READ MORE</div>
+        <div class="read-wrapper" @click="showArticle(id)">{{ $t('card.readmore') }}</div>
       </div>
     </div>
     <div class="decoration" v-if="title !== 'test'">
@@ -55,19 +55,19 @@ export default {
     },
     id: {
       type: Number,
-      required: true,
+      default: -1,
     },
     created: {
       type: String,
-      required: true,
+      default: '2021/04/16',
     },
     t: {
       type: Array,
-      required: true,
+      default: ()=>[],
     },
     c: {
       type: String,
-      required: true,
+      default: 'NoC',
     },
   },
   watch: {
@@ -132,6 +132,7 @@ export default {
     box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
     border-radius: 1.5rem;
     height: 18rem;
+    
     transition: all 0.3s;
     &.test{
       box-shadow: none !important;
@@ -143,7 +144,13 @@ export default {
     @media screen and (max-width: 768px) {
       width: 90%;
       height: 20rem;
-      margin: 12rem auto;
+      margin: 8rem auto;
+      &:nth-child(1){
+        margin-top: 8rem;
+      }
+      &:nth-last-child(1) {
+        margin-bottom: 2rem ;
+      }
     }
     @media screen and (max-height: 500px) and (min-width: 992px) {
           height: 24rem;
@@ -243,6 +250,10 @@ export default {
         display: flex;
         justify-content: flex-start;
         z-index: 10000;
+
+ @media screen and (max-width: 768px) {
+      justify-content: center;
+      }
 
         .category-wrapper{}
         .tags-wrapper{

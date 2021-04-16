@@ -18,7 +18,11 @@ export default {
   created(){
     api.articleLists().then(res=>{
       this.modifyArticles(res);
+    }).catch(reason=>{
+      console.log(reason);
+      alert('网络请求失败，请刷新或放弃！')
     })
+    console.log('i18n: ',this.$i18n.locale );
   }
 };
 </script>>

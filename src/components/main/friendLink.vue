@@ -1,18 +1,18 @@
 <template>
-  <div class="hot-artilces shadow-xl">
+  <div class="hot-artilces">
     <div
       class="title-bar centerflex h-10 p-2 px-4 text-lg z-10"
     >
-      <span class="">LINK</span>
+      <span class="">{{ $t('card.link') }}</span>
       <span
-        class="icon-shuqian text-2xl cursor-pointer hover:text-blue-600"
+        class="icon-friends icon text-3xl cursor-pointer"
         @click="toAllSite"
       ></span>
     </div>
 
     <div class="content-area overflow-hidden flex flex-col ">
       <div
-        class="h-item centerflex p-2 cursor-pointer px-6  cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500"
+        class="h-item centerflex cursor-pointer px-6 py-3  hover:bg-gray-200 dark:hover:bg-gray-500"
         v-for="(item, index) in friendLink"
         :key="index"
         @click="linkTo(item.link)"
@@ -45,5 +45,12 @@ export default {
 
 .hot-artilces {
   margin-top: 3rem;
+  box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
+}
+.icon{
+  color: #e97a7a;
+  &:hover{
+    color: #fd3838;
+  }
 }
 </style>

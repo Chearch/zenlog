@@ -2,7 +2,7 @@
 // https://codepen.io/hakimel/pen/gfIsk
 
 <template>
-  <div>
+  <div class="pagination-wrapper">
     <!-- 翻页功能 -->
     <div class="pagination w-full h-20">
       <div class="counter text-black dark:text-white">{{currentIndex + 1}}/{{totalIndex}}</div>
@@ -50,7 +50,7 @@ export default {
   z-index: 10000;
 }
 // @import "compass/css3";
-$size: 30px;
+$size: 2rem;
 $thickness: 5px;
 $angle: 40deg;
 $angleHover: 30deg;
@@ -75,7 +75,7 @@ button {
 .pagination{
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-left: -1rem;
 }
@@ -153,7 +153,7 @@ button {
   position: absolute;
   width: 100%;
   height: 3rem;
-  font-size: 30px;
+  font-size: 2rem;
   font-family: Helvetica, sans-serif;
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
 //   color: #fff;

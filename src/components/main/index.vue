@@ -1,25 +1,24 @@
 <template>
-
   <div class="page relative flex flex-col" v-if="this.ifViewVisible === 0">
-    <div class="main relative flex">
+    <div
+      class="main bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100 relative flex"
+    >
       <!-- 左侧 -->
       <div class="left w-3/12">
         <!-- 用户信息 -->
         <div class="showcenter">
-          <person-info class="shadow-md h-72 w-72"></person-info>
+          <person-info class="mobile shadow-md h-72 w-72"></person-info>
         </div>
 
         <!-- 文章时间 X 篇/月 -->
         <div class="showcenter">
-          <time-line class="article-time shadow-md w-72"></time-line>
+          <time-line class=" mobile article-time shadow-md w-72"></time-line>
         </div>
-        
+
         <!-- 网站咨询 -->
         <div class="showcenter">
-          <site-info class="site-info h-46 shadow-md w-72"></site-info>
+          <site-info class=" mobile site-info h-46 shadow-md w-72"></site-info>
         </div>
-
-
       </div>
 
       <!-- 中间 -->
@@ -52,7 +51,6 @@ import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 import siteInfo from "@/components/main/siteInfo.vue";
 import hotArticles from "@/components/main/hotArticles.vue";
-import footerBar from "@/components/common/footer.vue";
 import waveBar from "@/components/common/wave.vue";
 import friendLink from "@/components/main/friendLink.vue";
 
@@ -62,12 +60,10 @@ export default {
     articleList,
     timeLine,
     siteInfo,
-    footerBar,
     hotArticles,
     friendLink,
     waveBar,
   },
- 
 };
 </script>
 <style lang='scss' scoped>
@@ -91,19 +87,26 @@ export default {
     // margin-top: 6rem;
   }
   .right {
-    margin: 0 4rem ;
+    margin: 0 4rem;
     // margin-top: 6rem;
   }
-  .mobile {
-    display: none;
-  }
-}
 
-@media screen and (max-width: 800px) {
-  .page {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+
     .left {
-      display: none;
+      width: 100%;
+      margin: 0;
+      margin-top: 4rem;
+      .showcenter{
+        width: 100% !important;
+      .mobile{
+        width: 80% !important;
+      }
+      }
     }
+
     .center {
       margin: 0 !important;
       width: 100% !important;
@@ -111,10 +114,8 @@ export default {
     .right {
       display: none;
     }
-    .mobile {
-      display: block;
-    }
   }
+
 }
 
 .showcenter {

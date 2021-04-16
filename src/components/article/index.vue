@@ -1,27 +1,26 @@
 <template>
   <div class="article-view flex">
     <div class="right w-3/12"></div>
-
     <div class="center w-6/12 flex items-center justify-center flex-col">
       <div class="bar w-full h-36 text-black ">
         <!-- 标题 -->
         <div class="title-wrapper  flex w-full items-center justify-center text-3xl ">
-          <span class="icon-back cursor-pointer" @click="goback"></span>
+          <span class="icon-back-1 icon-abs cursor-pointer" @click="goback"></span>
           <div class="title dark:text-red">{{article.title}}</div>
         </div>
         <!-- 信息 -->
         <div class="info ct mt-4">
           <div class="fis ct">
-              <span class="icon-time mr-1 text-blue-500"></span>
-              <span class="time-info">{{article.created}}</span>
+              <!-- <span class="icon-time mr-1 text-blue-500"></span> -->
+              <span class="time-info text">{{article.created}}</span>
           </div>
           <div class="sec ct">
-              <span class="icon-biaoqian mr-1 text-green-500"></span>
-              <span class="tags-info">{{article.tags.join(' / ').toUpperCase()}}</span>
+              <!-- <span class="icon-biaoqian mr-1 text-green-500"></span> -->
+              <span class="tags-info text">{{article.tags.join(' / ').toUpperCase()}}</span>
           </div>
           <div class="thi ct">
-              <span class="icon-uniE903 mr-1 text-yellow-500"></span>
-              <span class="category-info">{{article.category}}</span>
+              <!-- <span class="icon-uniE903 mr-1 text-yellow-500"></span> -->
+              <span class="category-info text">{{article.category}}</span>
           </div>
         </div>
       </div>
@@ -36,7 +35,7 @@
 <script>
 import axios from "axios";
 import marked from "marked";
-import hljs from "../utils/highlight.min.js";
+import hljs from "@/utils/highlight.min.js";
 
 export default {
   data() {
@@ -90,12 +89,65 @@ export default {
 .article-view {
   margin-top: 3rem;
   margin-bottom: 10rem;
+  .right{}
+  .center{
+    .title-wrapper{
+      position: relative;
+      .icon-abs{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0,-100%);
+      }
+    }
+  }
+  .left{}
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .right{
+      display: none;
+    }
+    .left{
+      display: none;
+    }
+    .center {
+      width: 90% !important ;
+
+      // margin-top: 2rem;
+      .title-wrapper{
+        font-weight: bold;
+        padding: 0 0 1rem 0;
+        .title{
+          margin-right: -2rem;
+        }
+      }
+        .info{
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-left: -1rem;
+          .icon-biaoqian{
+            width: 12px;
+            height: 12px;
+          }
+          .text{
+            color: #ccc;
+          }
+        }
+        .content{
+          width: 80%;
+        }
+    }
+  }
 }
 .ct{
   @apply flex items-center justify-center;
 }
 .center{
   position: relative;
+  margin-bottom: 5rem;
   .title-wrapper{
     font-size: 1.8rem;
     .icon-back{
@@ -104,7 +156,6 @@ export default {
       top: 0;
     }
     .title{
-      margin-left: 3rem;
     }
   }
 

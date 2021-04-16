@@ -1,13 +1,8 @@
 <template>
-  <div class="hot-artilces shadow-xl">
-    <div
-      class="title-bar centerflex h-10 p-2 px-4 text-lg"
-    >
-      <span class="">HOT</span>
-      <span
-        class="icon-integral text-3xl cursor-pointer hover:text-blue-600"
-        @click="hideHotList"
-      ></span>
+  <div class="hot-artilces">
+    <div class="title-bar centerflex h-10 p-2 px-4 text-lg">
+      <span class="">{{ $t('card.hot') }}</span>
+      <span class="icon-open text-2xl cursor-pointer icon" @click="hideHotList" :class="{'selected':ifShow}"></span>
     </div>
 
     <transition name="height-zero">
@@ -16,7 +11,7 @@
         v-if="ifShow"
       >
         <div
-          class="h-item centerflex p-2 cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500 "
+          class="h-item centerflex py-3 cursor-pointer px-6 hover:bg-gray-200 dark:hover:bg-gray-500 "
           v-for="(item, index) in haticles"
           :key="index"
           @click="showArticle(item.id)"
@@ -60,6 +55,15 @@ export default {
 
 
 <style lang='scss' scoped>
+.hot-artilces{
+  box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);
+}
+.h-item{
+  &:nth-last-child(1){
+    padding-bottom: 1rem;
+  }
+}
+
 .height-zero-enter-to,
 .height-zero-leave {
   height: 10rem;
@@ -78,5 +82,14 @@ export default {
 }
 .centerflex {
   @apply flex items-center justify-between;
+}
+
+.icon{
+  color: #fd3838;
+  // transform: rotateZ(180deg);
+  transition: all .3s linear;
+}
+.selected{
+  transform: rotateZ(-90deg);
 }
 </style>

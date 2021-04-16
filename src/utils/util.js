@@ -17,7 +17,6 @@ export default {
                 id: 100000,
             });
         }
-        console.log(res);
         return res;
     }
 }

@@ -10,7 +10,7 @@
       :created="item.created"
     >
     </article-item>
-   <pagination></pagination>
+   <pagination class="pag-index"></pagination>
   </div>
 </template>
 
@@ -43,8 +43,15 @@ export default {
       return `${year}/${month}/${day}`;
     },
     dynamicItems(){
-      if(this.articleList.length !==0){
-        return util.group([...this.articleList],this.pageIndex)[this.currentIndex];
+      let totalLength =this.articleList.length;
+      if( totalLength !==0){
+        let res  = util.group([...this.articleList],this.pageIndex);
+        let pagesLength = res.length;
+        this.setTotalIndex(pagesLength);
+        if( totalLength < this.pageIndex ){
+          this.clearCurrentIndex(0);
+        }
+        return res[this.currentIndex];
       }else{
         return [];
       }
@@ -117,4 +124,11 @@ export default {
   },
 };
 </script>
-<style lang='scss' scoped></style>
+<style lang='scss' scoped>
+ @media screen and (max-width: 768px){
+  .pag-index{
+    margin-top: -6rem;
+  }
+ }
+
+</style>

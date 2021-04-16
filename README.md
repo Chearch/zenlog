@@ -237,11 +237,19 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
+## 2021/4/16
+
+- 添加vue-i18n国际化
+- 修改主页卡片排版 
+- 微调图标
+- 添加Fixed菜单控件，支持主题切换、分享本页、回到顶部、语言切换
+- 移动端适配
+
+![menu](img/image-20210416184102820.png)
 
 
 
-
-
+![mobile-project](img/mobile-project.gif)
 
 
 

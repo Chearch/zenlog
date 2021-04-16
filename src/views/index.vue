@@ -13,6 +13,10 @@
         <!-- 自我介绍 -->
         <me-view></me-view>
       </div>
+
+      <div class="menu-abs">
+          <my-menu></my-menu>
+      </div>
     </div>
 </template>
 
@@ -21,6 +25,7 @@ import mainView from '@/components/main/index.vue'
 import recommandView from '@/components/recommand/index.vue'
 import meView from '@/components/me/index.vue'
 import myNav from "@/components/common/nav.vue"
+import myMenu from "@/components/common/menu.vue"
 
 export default {
     data(){
@@ -32,7 +37,8 @@ export default {
         mainView,
         recommandView,
         myNav,
-        meView
+        meView,
+        myMenu
     },
     methods:{
         mswheel(e){
@@ -60,7 +66,7 @@ export default {
         msmove(e){
             if(this.task) return ;
             let Y = e.clientY;
-            console.log(Y);
+            // console.log(Y);
             if(Y < 200 && this.ifShowNav === false){
                 this.setIfShowNav(true);
                 setTimeout(() => {
@@ -86,6 +92,11 @@ export default {
         margin-top: 2rem;
         width: 100%;
         height: 100%;
+    }
+    .menu-abs{
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
     }
 }
 </style>
