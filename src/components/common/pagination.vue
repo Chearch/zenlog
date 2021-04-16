@@ -2,7 +2,7 @@
 // https://codepen.io/hakimel/pen/gfIsk
 
 <template>
-  <div class="pagination-wrapper">
+  <div class="pagination-wrapper" v-if="articles.length !== 0">
     <!-- 翻页功能 -->
     <div class="pagination w-full h-20">
       <div class="counter text-black dark:text-white">{{currentIndex + 1}}/{{totalIndex}}</div>
@@ -41,14 +41,13 @@ export default {
         }
     },
     mounted(){
+      if( this.articles.length !== 0){
         this.setArrowStatus();
+      }
     }
 };
 </script>
 <style lang='scss' scoped>
-.pagation {
-  z-index: 10000;
-}
 // @import "compass/css3";
 $size: 2rem;
 $thickness: 5px;

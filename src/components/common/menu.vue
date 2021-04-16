@@ -89,12 +89,9 @@ export default {
 * {
   box-sizing: border-box;
 }
-// $body-bg: #84a0f4;
-// $button-bg: #5c67ff;
-// $list-bg: #fff;
-// $text-color: #1c3991;
-// $text-color-hover: #5c67ff;
-// $body-bg: #8EC0E4;
+.menu-button{
+  z-index: 100;
+}
 $button-bg: #fd3838;
 $list-bg: rgb(247, 242, 242);
 $text-color: #252c41;

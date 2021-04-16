@@ -3,7 +3,7 @@
 // 文章数量
 // 最近一次更新
 <template>
-  <div class="site-info">
+  <div class="site-info" v-if="articleCount !== 0">
     <div class="title-wrapper text-xl px-1 pt-3 cursor-pointer hover:text-blue-400   flex items-center">
       <span class="icon-lighting text-3xl icon mt-1"></span>
       <span class="title font-bold">{{ $t('card.siteinfo') }}</span>
@@ -29,7 +29,7 @@
 export default {
   computed: {
     articleCount() {
-      return this.articles.length;
+      return [...this.articles].length;
     },
     lastModified() {
       let sublist = [...this.articles];

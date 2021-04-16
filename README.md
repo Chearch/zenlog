@@ -244,6 +244,12 @@ update articles set visited=visited+1,created=created where id = ${id};
 - 微调图标
 - 添加Fixed菜单控件，支持主题切换、分享本页、回到顶部、语言切换
 - 移动端适配
+- meta优化
+- 重写导航栏搜索框
+- FIX 解决网络连接失败后，再次连接文章无法渲染的问题，使用watch监听articles，如果变化，则重新渲染；只监听articles会导致翻页无法渲染，所以还需要监听currentIndex，最后articlelist这个组件需要同时监听tag、category、timeline、searchResult、searchContent、articles、currentIndex多个值
+- FIX 解决从"推荐"切换到"首页"时，文章列表消失的问题
+- FIX wave在Mobile模式下距离顶部太近
+- 初始化DarkMode为暗黑模式
 
 ![menu](img/image-20210416184102820.png)
 

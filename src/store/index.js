@@ -12,7 +12,7 @@ export default new Vuex.Store({
     ifViewVisible: 0, // 0 首页 1 推荐 2 精选 3 简历
     ifShowNav: false,       // 是否显示导航栏
     searchVisible: false,   // 是否显示导航栏搜索框
-    ifDarkMode: false,    // 是否开启暗黑模式
+    ifDarkMode: true,    // 是否开启暗黑模式
 
     // 过滤字段
     searchContent: '',  // 导航栏搜索框的内容
@@ -62,6 +62,7 @@ export default new Vuex.Store({
     setIfDarkMode(state,options){
       state.ifDarkMode = options;
       setDarkMode(options);
+      console.log('设置的darkMode为：',options);
       if(options){ 
         document.documentElement.classList.add("dark")
       }else{

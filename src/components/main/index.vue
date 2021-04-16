@@ -1,5 +1,5 @@
 <template>
-  <div class="page relative flex flex-col" v-if="this.ifViewVisible === 0">
+  <div class="page relative flex flex-col  " v-if="this.ifViewVisible === 0">
     <div
       class="main bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100 relative flex"
     >
@@ -25,6 +25,8 @@
       <div class="center w-4/12">
         <!-- 文章列表 -->
         <article-list></article-list>
+        <!-- 分页 -->
+         <!-- <pagination class="pag-index"></pagination> -->
       </div>
 
       <!-- 右侧 -->
@@ -39,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="footer mt-8 h-14">
+    <div class="footer mt-12 h-14">
       <wave-bar class="w-full absolute bottom-0 bg-blue-400"></wave-bar>
     </div>
   </div>
@@ -53,6 +55,7 @@ import siteInfo from "@/components/main/siteInfo.vue";
 import hotArticles from "@/components/main/hotArticles.vue";
 import waveBar from "@/components/common/wave.vue";
 import friendLink from "@/components/main/friendLink.vue";
+import pagination from "../common/pagination.vue"
 
 export default {
   components: {
@@ -63,6 +66,7 @@ export default {
     hotArticles,
     friendLink,
     waveBar,
+    pagination
   },
 };
 </script>
@@ -71,10 +75,8 @@ export default {
 .main {
   width: 100%;
   height: 100%;
-  padding-bottom: 10rem;
   .left {
     margin: 0 4rem;
-    // margin-top: 6rem;
     .site-info {
       margin-top: 3rem;
     }
@@ -84,11 +86,10 @@ export default {
   }
   .center {
     margin-left: 4rem;
-    // margin-top: 6rem;
+    margin-bottom: 4rem;
   }
   .right {
     margin: 0 4rem;
-    // margin-top: 6rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -98,7 +99,8 @@ export default {
     .left {
       width: 100%;
       margin: 0;
-      margin-top: 4rem;
+      margin-top: -3rem;
+      margin-bottom: 6rem;
       .showcenter{
         width: 100% !important;
       .mobile{

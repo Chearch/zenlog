@@ -55,6 +55,10 @@ export default {
     block.forEach((el) => {
       hljs.highlightBlock(el);
     });
+    if(this.ifDarkMode === true){
+      // 取消暗黑模式
+      this.setIfDarkMode(false);
+    }
   },
   methods: {
     getContent() {

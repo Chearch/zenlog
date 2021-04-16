@@ -10,7 +10,7 @@
       :created="item.created"
     >
     </article-item>
-   <pagination class="pag-index"></pagination>
+   <pagination class="pag-index "></pagination>
   </div>
 </template>
 
@@ -22,47 +22,35 @@ import pagination from "../common/pagination.vue"
 export default {
   watch: {
     tags(v) {
-      this.modifiedArticleList();
+      this.getDynamicItems();
     },
     category(v) {
-      this.modifiedArticleList();
+      this.getDynamicItems();
     },
     searchResult(v){
-      this.modifiedArticleList();
+      this.getDynamicItems();
     },
     selectTimeLine(v){
-      this.modifiedArticleList();
+      this.getDynamicItems();
     },
     searchContent(v){
-      this.modifiedArticleList();
-    }
-  },
-  computed: {
-    nowday() {
-      let [year, month, day] = this.getNowTime();
-      return `${year}/${month}/${day}`;
+      this.getDynamicItems();
     },
-    dynamicItems(){
-      let totalLength =this.articleList.length;
-      if( totalLength !==0){
-        let res  = util.group([...this.articleList],this.pageIndex);
-        let pagesLength = res.length;
-        this.setTotalIndex(pagesLength);
-        if( totalLength < this.pageIndex ){
-          this.clearCurrentIndex(0);
-        }
-        return res[this.currentIndex];
-      }else{
-        return [];
-      }
+    articles(v){
+      this.getDynamicItems();
+    },
+    currentIndex(v){
+      this.getDynamicItems();
     }
   },
+
   components: {
     articleItem,
     pagination,
   },
   mounted() {
     this.articleList = [...this.articles];
+    this.getDynamicItems();
   },
   methods: {
     modifiedArticleList() {
@@ -116,15 +104,38 @@ export default {
         return flag1 && flag2 && flag3 && flag4;
       });
     },
+    getDynamicItems(){
+      this.modifiedArticleList();
+      let totalLength =this.articleList.length;
+      if( totalLength !==0){
+        let res  = util.group([...this.articleList],this.pageIndex);
+        let pagesLength = res.length;
+        this.setTotalIndex(pagesLength);
+        if( totalLength < this.pageIndex ){
+          this.clearCurrentIndex(0);
+        }
+        this.dynamicItems = res[this.currentIndex];
+      }else{
+        this.dynamicItems = [];
+      }
+    },
+    nowday() {
+      let [year, month, day] = this.getNowTime();
+      return `${year}/${month}/${day}`;
+    },
   },
   data() {
     return {
       articleList: [],
+      dynamicItems: [],
     };
   },
 };
 </script>
 <style lang='scss' scoped>
+.pag-index{
+  margin-bottom: 10rem;
+}
  @media screen and (max-width: 768px){
   .pag-index{
     margin-top: -6rem;

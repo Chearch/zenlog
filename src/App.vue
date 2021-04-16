@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import api from "@/api/index.js"
+import api from "@/api/index.js";
 // 初始化REM
 document.addEventListener("DOMContentLoaded", (e) => {
   let fontSize = window.innerWidth / 37.5 > 15 ? 15 : window.innerWidth / 37.5;
@@ -16,22 +16,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 export default {
   created(){
-    api.articleLists().then(res=>{
-      this.modifyArticles(res);
-    }).catch(reason=>{
-      console.log(reason);
-      alert('网络请求失败，请刷新或放弃！')
-    })
-    console.log('i18n: ',this.$i18n.locale );
+    console.log("i18n: ", this.$i18n.locale);
+    if(this.ifDarkMode == undefined){
+      this.setIfDarkMode(true)
+    }
   }
 };
 </script>>
 
 <style lang="scss" >
-html,body{
+html,
+body {
   height: 100%;
   width: 100%;
-  body > div{
+  body > div {
     height: 100%;
   }
   @apply bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100;

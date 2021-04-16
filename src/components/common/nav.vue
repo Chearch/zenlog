@@ -4,58 +4,38 @@
       class="navagation flex items-center bg-gray-100 text-black dark:bg-gray-900 dark:text-white"
       v-if="ifShowNav"
     >
-      <div
-        class="title-wrapper subTitle"
-        @click="navClick(0)"
-        :class="{ selected: ifViewVisible === 0 }"
-      >
-        <div class="title font-semibold">{{ $t("nav.home") }}</div>
-      </div>
-      <div
-        class="recommand-wrapper subTitle"
-        @click="navClick(1)"
-        :class="{ selected: ifViewVisible === 1 }"
-      >
-        <div class="recommand font-semibold">{{ $t("nav.recommand") }}</div>
-      </div>
-      <div
-        class="feature-wrapper subTitle"
-        @click="navClick(2)"
-        :class="{ selected: ifViewVisible === 2 }"
-      >
-        <div class="feature font-semibold">{{ $t("nav.about") }}</div>
+      <div class="title-item-wrapper">
+        <div
+          class="title-wrapper subTitle"
+          @click="navClick(0)"
+          :class="{ selected: ifViewVisible === 0 }"
+        >
+          <div class="title font-semibold">{{ $t("nav.home") }}</div>
+        </div>
+        <div
+          class="recommand-wrapper subTitle"
+          @click="navClick(1)"
+          :class="{ selected: ifViewVisible === 1 }"
+        >
+          <div class="recommand font-semibold">{{ $t("nav.recommand") }}</div>
+        </div>
+        <div
+          class="feature-wrapper subTitle"
+          @click="navClick(2)"
+          :class="{ selected: ifViewVisible === 2 }"
+        >
+          <div class="feature font-semibold">{{ $t("nav.about") }}</div>
+        </div>
       </div>
       <div class="filter-wrapper">
         <filter-bar></filter-bar>
       </div>
-      <div class="search-warpper text-3xl absolute right-14 flex items-center">
-        <transition name="search">
-          <div
-            class="search-bar relative h-10 mr-1 w-96 bg-gray-200 dark:bg-gray-500 rounded-md flex items-center"
-            v-if="searchVisible"
-          >
-            <input
-              type="text"
-              v-model="inpVal"
-              v-focus
-              class="inpstyle outline-none text-xl w-full h-full bg-transparent dark:text-gray-100"
-              @keyup.enter.exact="search"
-              @keyup.esc.exact="cancel"
-            />
-            <span
-              class="icon-cancel icon mr-2 cursor-pointer"
-              @click="cancel"
-            ></span>
-          </div>
-        </transition>
-      </div>
-      <div
-        class="search-icon-wrapper text-3xl cursor-pointer flex items-center"
-      >
-        <span
-          class="search icon-search icon absolute right-6"
-          @click="search"
-        ></span>
+      <div class="search-warpper text-3xl flex items-center">
+        <!-- 搜索的方框 -->
+        <div class="container">
+          <input type="text" placeholder="Search..." v-model="inpVal" @keyup.enter.exact="search" @keyup.esc.exact="cancel" @click="clickSearch"/>
+          <div class="search"></div>
+        </div>
       </div>
     </div>
   </transition>
@@ -77,8 +57,10 @@ export default {
     filterBar,
   },
   methods: {
+    clickSearch(){
+      this.setSearchVisible(true);
+    },
     search() {
-      if (this.searchVisible) {
         // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
         this.inpVal = this.inpVal.trim();
         this.modifySearchContent(this.inpVal);
@@ -90,9 +72,7 @@ export default {
           .catch((reason) => {
             this.error(reason);
           });
-      } else {
-        this.setSearchVisible(true);
-      }
+          this.setSearchVisible(false);
     },
     cancel() {
       // 取消搜索
@@ -102,7 +82,7 @@ export default {
     },
     navClick(n) {
       this.setIfViewVisible(n);
-      this.info("navgation 82-lines: click " + this.navItems[n].name);
+      this.info("navgation 82-lines: click " + n);
     },
   },
   mounted() {
@@ -116,11 +96,13 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/styles/global.scss";
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
-input[type="text"] {
-  padding-left: 0.7rem;
-  height: 2rem;
-  line-height: 2rem;
-}
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
+
+// input[type="text"] {
+//   padding-left: 0.7rem;
+//   height: 2rem;
+//   line-height: 2rem;
+// }
 .icon-cancel {
   color: #9ca3af !important;
   font-weight: normal !important;
@@ -135,6 +117,11 @@ input[type="text"] {
   top: 0;
   left: 0;
   z-index: 1000;
+  .title-item-wrapper {
+    position: absolute;
+    right: 0;
+    display: flex;
+  }
   .filter-wrapper {
     position: absolute;
     top: 50%;
@@ -146,10 +133,15 @@ input[type="text"] {
   }
   .title-wrapper {
   }
-  .recommand-wrapper{}
-  .feature-wrapper{}
-  .filter-wrapper{}
-  .search-warpper{
+  .recommand-wrapper {
+  }
+  .feature-wrapper {
+  }
+  .filter-wrapper {
+  }
+  .search-warpper {
+    position: absolute;
+    left: 1rem;
     @media screen and (max-width: 768px) {
       width: 30% !important;
     }
@@ -162,7 +154,6 @@ input[type="text"] {
     position: relative;
     font-weight: bold;
   }
-
 }
 
 .subTitle {
@@ -171,8 +162,8 @@ input[type="text"] {
     font-family: "Fira Sans", sans-serif !important;
     font-size: 1.4rem;
   }
-  margin:0 1rem;
-  &:nth-child(1){
+  margin: 0 1rem;
+  &:nth-child(1) {
     margin-left: 2rem;
   }
   &:hover {
@@ -185,5 +176,126 @@ input[type="text"] {
 .icon {
   @apply font-bold hover:text-blue-600;
   font-size: 1.6rem;
+}
+
+.container {
+  position: absolute;
+  margin: auto;
+  // 决定放大镜图标位置
+  top: 50%;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  transform: translate(0, -50%);
+  .search {
+    // 搜索图标背景样式
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    background: crimson;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      // 搜索图标字体样式
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 1.2rem;
+      right: 0;
+      bottom: 0;
+      left: 1.2rem;
+      width: 0.9rem;
+      height: 0.12rem;
+      background: white;
+      transform: rotate(45deg);
+      transition: all 0.3s;
+    }
+    &::after {
+      // 搜索图标字体样式
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: -5px;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: all 0.3s;
+    }
+  }
+  input {
+    font-family: "Inconsolata", monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 8rem;
+    height: 2.8rem;
+    outline: none;
+    border: none;
+    background: crimson;
+    color: white;
+    text-shadow: 0 0 10px crimson;
+    // 控制search输入框里面的内容
+    padding: 0 1.2rem 0 1.2rem;
+    border-radius: 2rem;
+    // box-shadow: 0 0 1.5rem 0 crimson,
+    //             0 1.5rem 1.5rem 0 rgba(0, 0, 0, 0.2);
+    transition: all .6s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      // 控制输入框长度
+      width: 13rem;
+      opacity: 1;
+      cursor: text;
+    }
+    &:focus ~ .search {
+      // 正数相左，负数向右
+      right: -20rem;
+      background: #151515;
+      z-index: 6;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 1.5rem;
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 1.5rem;
+        height: 2px;
+        border: none;
+        background: white;
+        border-radius: 0%;
+        transform: rotate(-45deg);
+      }
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
 }
 </style>

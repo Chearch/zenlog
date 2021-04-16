@@ -1,5 +1,5 @@
 <template>
-  <div class="parallax-carousel ">
+  <div class="parallax-carousel bg-gray-100 text-black dark:bg-gray-800 dark:text-gray-100">
     <div class="stage"></div>
     <div class="container">
       <div class="ring">
@@ -219,7 +219,6 @@ svg {
   font-weight: bold;
   transform: translate(-50%,0);
   .select-platform{
-
   }
 }
 .cards{
@@ -246,6 +245,7 @@ svg {
             position: absolute;
             top: -1.4rem;
             left: 50%;
+            white-space: nowrap;
             transform: translate(-50%,0);
         }
     }
@@ -267,6 +267,7 @@ svg {
         background-color: #60A5FA;
          &:hover::before{
             content: '36Kr';
+
         }        
     }
 }
