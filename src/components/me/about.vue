@@ -44,20 +44,20 @@
     <section id="contact" class="contact-section">
       <h1>{{ $t("me.contact") }}</h1>
       <form action="#">
-        <fieldset>
+        <div class="fieldset">
           <label for="username">{{ $t("me.name") }}</label>
           <input type="text" id="username" name="username" v-model="username" />
-          <label for="mail">{{ $t("me.email") }}</label>
+          <label for="useremail">{{ $t("me.email") }}</label>
           <input
             type="email"
-            id="username"
+            id="useremail"
             name="useremail"
             v-model="useremail"
           />
           <label for="msg">{{ $t("me.message") }}</label>
           <textarea id="msg" name="msg" v-model="msg"></textarea>
-        </fieldset>
-        <button @click="submit">{{ $t("me.send") }}</button>
+        </div>
+        <div  class="button" @click="submit">{{ $t("me.send") }}</div>
       </form>
     </section>
     <footer class="content-footer"></footer>
@@ -79,10 +79,25 @@ export default {
   methods: {
     submit() {
       if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.useremail) && this.msg && this.username ) {
-        axios
-          .post(process.env.VUE_APP_API_ADDRESS + "/email", { username: this.username,useremail: this.useremail,msg: this.msg})
-          .then((result) => {})
-          .catch((error) => {});
+        // 
+        axios({
+          method: 'get',
+          url: `${process.env.VUE_APP_API_ADDRESS}/email?username=${this.username}&useremail=${this.useremail}&msg=${this.msg}`,
+        })
+          .then((result) => {
+            let status = result.status;
+            if(status === 200){
+              this.useremail = '';
+              this.username = '';
+              this.msg = '';
+              alert('消息已发送')
+            }else{
+              alert('发送失败');
+            }
+          })
+          .catch((error) => {
+            alert('发送失败');
+          });
       }else{
         alert('请检查邮箱格式和输入是否为空！');
       }
@@ -258,12 +273,12 @@ p {
     @media screen and (max-width: 768px) {
       margin-top: 2rem;
     }
-    fieldset {
+    .fieldset {
       margin-bottom: 30px;
       border: none;
     }
 
-    button {
+    .button {
       padding: 15px;
       text-align: center;
       width: 90%;
@@ -273,6 +288,8 @@ p {
       background-color: rgb(0, 32, 53);
       color: white;
       margin-left: 20px; /* better way to center elements buttton? */
+      cursor: pointer;
+      user-select: none;
     }
 
     max-width: 900px;
