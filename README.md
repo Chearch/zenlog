@@ -36,8 +36,10 @@
 
  
 
-![完成导航菜单](img/10.png)
 
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/10.png" alt="完成导航菜单"  width="600px" />
+</p>
  
 
  
@@ -60,13 +62,20 @@
 
 6. 解决了element导航栏默认只加载第一个，刷新页面后路由和标签不匹配的BUG
 
-![完成左侧信息列表](img/9.jpg)
+<p align="middle" style="margin: 10px auto;">
+<img src="img/9.jpg" alt="完成左侧信息列表"  width="600px" />
+</p>
 
-![完成友链动画特效](img/8.jpg)
 
- 
 
- 
+ <p align="middle" style="margin: 10px auto;">
+    <img src="img/8.jpg" alt="完成友链动画特效"  width="600px" />
+</p>
+
+
+
+
+
 
 ## 2021/4/5
 
@@ -86,14 +95,36 @@
 
 8. 增加暗黑模式
 
-![修改个人信息列表](img/7.jpg)
 
-![添加暗黑模式](img/6.jpg)
+
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/7.jpg" alt="修改个人信息列表"  width="600px" />
+</p>
+
+
+
+ <p align="middle" style="margin: 10px auto;">
+    <img src="img/6.jpg" alt="添加暗黑模式"  width="600px" />
+</p>
+
+
+
 
 
 
 9. 完成顶部搜索框以及交互动画的编写
-![完成顶部搜索框](img/5.png)
+
+ <p align="middle" style="margin: 10px auto;">
+    <img src="img/5.png"  width="600px" />
+</p>
+
+
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/5.png" alt="完成顶部搜索框" width="600px" />
+</p>
+
+
+
 
 
 
@@ -125,16 +156,25 @@
 - 消遣页面
 - 文章访问次数统计 √ END 2021/4/14
 
-<img src="img/4.png" alt="完善前端页面展示" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/4.png" alt="完善前端页面展示"  width="600px" />
+</p>
 
 
 
-<img src="img/1.png" alt="添加暗黑模式" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/1.png" alt="添加暗黑模式"  width="600px" />
+</p>
 
-![解决文章created时间变化BUG](img/2.png)
 
-<img src="img/3.png" alt="完成markdown渲染" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/2.png" alt="解决文章created时间变化BUG"  width="600px" />
+</p>
 
+
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/3.png" alt="完成markdown渲染"  width="600px" />
+</p>
 
 
 ## 2021/4/13
@@ -151,25 +191,34 @@
 - 完成搜索结果hover展示
 
 
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/11.png" alt="完成过滤功能"  width="600px" />
+</p>
 
-<img src="img/11.png" alt="完成过滤功能" style="zoom:63%;" />
 
-<img src="img/13.png" alt="完成搜索功能" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/13.png" alt="完成搜索功能"  width="600px" />
+</p>
+
 
 
 
 - FIX BUG：数据库自动更新
 
-<img src="img/12.png" style="zoom:67%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/12.png"  width="600px" />
+</p>
+
+
+
 
 ```sql
 update articles set visited=visited+1,created=created where id = ${id};
 ```
 
-
-
-<img src="img/14.png" alt="采用hover完成搜索结果展示" style="zoom:63%;" />
-
+<p align="middle" style="margin: 20px auto;">
+    <img src="img/14.png" alt="采用hover完成搜索结果展示" width="600px" />
+</p>
 
 
 
@@ -191,19 +240,27 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
-![重写鼠标滚轮事件，实现水平滚动](img/15.png)
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/15.png" alt="重写鼠标滚轮事件，实现水平滚动" width="600px" />
+</p>
 
 
 
-<img src="img/16.png" alt="修改footer标签，添加wave效果" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/16.png" alt="修改footer标签，添加wave效果" width="600px" />
+</p>
 
 
 
-<img src="img/image-20210414222513583.png" alt="重写Article-Item" style="zoom:63%;" />
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/image-20210414222513583.png" alt="重写Article-Item" width="600px" />
+</p>
 
 
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/image-20210414223600862.png" alt="推荐页面编写" width="600px" />
+</p>
 
-<img src="img/image-20210414223600862.png" alt="推荐页面编写" style="zoom:63%;" />
 
 
 
@@ -231,7 +288,9 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
-![分页功能](img/image-20210415130555669.png)
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/image-20210415130555669.png" alt="分页功能" width="600px" />
+</p>
 
 
 
@@ -251,13 +310,34 @@ update articles set visited=visited+1,created=created where id = ${id};
 - FIX wave在Mobile模式下距离顶部太近
 - 初始化DarkMode为暗黑模式
 
-![menu](img/image-20210416184102820.png)
+<p align="middle" style="margin: 10px auto;width:100wh">
+    <img src="img/image-20210416184102820.png" alt="menu"  max-width="60%" />
+</p>
 
 
 
-![mobile-project](img/mobile-project.gif)
+
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/mobile-project.gif" alt="mobile-project"  max-width="60%" />
+</p>
 
 
+
+
+
+## 2021/4/17
+
+- 完成"About Me"页面
+- 前端客户联系界面，后端邮件模块
+- 修改组件文件夹
+- 整体代码调试，部署上线
+- 整体国际化
+
+
+
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/image-20210417202827668.png" alt="关于我" width="600px" />
+</p>
 
 
 
