@@ -17,7 +17,7 @@
 <script>
 import articleItem from "./articleItem";
 import util from "@/utils/util.js"
-import pagination from "../common/pagination.vue"
+import pagination from "./pagination.vue"
 
 export default {
   watch: {

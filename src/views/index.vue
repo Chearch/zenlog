@@ -18,17 +18,14 @@
       <my-menu></my-menu>
     </div>
 
-    <!-- 底部 -->
-    <!-- <wave-bar class="w-full"></wave-bar> -->
   </div>
 </template>
 
 <script>
-import waveBar from "@/components/common/wave.vue";
 import mainView from "@/components/main/index.vue";
 import recommandView from "@/components/recommand/index.vue";
 import meView from "@/components/me/index.vue";
-import myNav from "@/components/common/nav.vue";
+import myNav from "@/components/nav/index.vue";
 import myMenu from "@/components/common/menu.vue";
 import api from "@/api/index.js";
 
@@ -44,7 +41,6 @@ export default {
     myNav,
     meView,
     myMenu,
-    waveBar
   },
   methods: {
     mswheel(e) {

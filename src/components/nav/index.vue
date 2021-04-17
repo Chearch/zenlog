@@ -42,9 +42,8 @@
 </template>
 
 <script>
-import iosSwitch from "@/components/common/switch.vue";
 import api from "@/api/index.js";
-import filterBar from "@/components/common/filterBar.vue";
+import filterBar from "./filterBar.vue";
 
 export default {
   data() {
@@ -53,7 +52,6 @@ export default {
     };
   },
   components: {
-    iosSwitch,
     filterBar,
   },
   methods: {

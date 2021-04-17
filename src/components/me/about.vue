@@ -6,53 +6,58 @@
       <h1 class="masthead-heading">Zen du</h1>
       <nav>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#works">Works</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="#about">{{ $t("me.about") }}</a>
+          </li>
+          <li>
+            <a href="#works">{{ $t("me.works") }}</a>
+          </li>
+          <li>
+            <a href="#contact">{{ $t("me.contact") }}</a>
+          </li>
         </ul>
       </nav>
     </header>
     <section id="about" class="about-section">
-      <h1><span>About Me</span></h1>
+      <h1>
+        <span>{{ $t("me.aboutme") }}</span>
+      </h1>
       <div class="content">
-        <img
-          class="pic"
-          src="@/assets/image/photo1.jpg"
-        />
-        <div class="int">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          ut erat vel metus dapibus molestie. In hac habitasse platea dictumst.
-          Etiam sit amet eleifend arcu, at vehicula eros. Nulla vestibulum
-          euismod sem, eget tempus odio condimentum non. Suspendisse nisi ante,
-          luctus in egestas a, mollis id elit. Proin eget sodales erat, nec
-          maximus orci. Vivamus tempus metus eget metus auctor ornare. Proin
-          quis ultricies ante. Pellentesque dignissim nec eros at ullamcorper.
-          Etiam ultrices ante in tempor hendrerit.
-        </div>
+        <img class="pic" src="@/assets/image/photo1.jpg" />
+        <div class="int" v-html="introduction"></div>
       </div>
     </section>
 
     <section id="works" class="works-section">
-      <h1>Works</h1>
+      <h1>{{ $t("me.works") }}</h1>
       <div class="main-grid">
         <img id="item-1" class="grid_images" src="@/assets/image/coding1.jpg" />
         <img id="item-1" class="grid_images" src="@/assets/image/coding2.jpg" />
         <img id="item-1" class="grid_images" src="@/assets/image/coding3.jpg" />
-        <img id="item-1" class="grid_images" src="@/assets/image/coding4.webp" />
+        <img
+          id="item-1"
+          class="grid_images"
+          src="@/assets/image/coding4.webp"
+        />
       </div>
     </section>
     <section id="contact" class="contact-section">
-      <h1>Contact</h1>
-      <form action="index.html" method="post">
+      <h1>{{ $t("me.contact") }}</h1>
+      <form action="#">
         <fieldset>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="user_name" />
-          <label for="mail">Email</label>
-          <input type="email" id="mail" name="user_email" />
-          <label for="message">Message</label>
-          <textarea id="message" name="user_message"></textarea>
+          <label for="username">{{ $t("me.name") }}</label>
+          <input type="text" id="username" name="username" v-model="username" />
+          <label for="mail">{{ $t("me.email") }}</label>
+          <input
+            type="email"
+            id="username"
+            name="useremail"
+            v-model="useremail"
+          />
+          <label for="msg">{{ $t("me.message") }}</label>
+          <textarea id="msg" name="msg" v-model="msg"></textarea>
         </fieldset>
-        <button type="submit">Send</button>
+        <button @click="submit">{{ $t("me.send") }}</button>
       </form>
     </section>
     <footer class="content-footer"></footer>
@@ -60,7 +65,30 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      introduction: `<p>先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。</p>
+      <p>宫中府中，俱为一体；陟罚臧否，不宜异同：若有作奸犯科，及为忠善者，宜付有司，论其刑赏，以昭陛下平明之治；不宜偏私，使内外异法也。侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。</p>`,
+      username: "",
+      useremail: "",
+      msg: "",
+    };
+  },
+  methods: {
+    submit() {
+      if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.useremail) && this.msg && this.username ) {
+        axios
+          .post(process.env.VUE_APP_API_ADDRESS + "/email", { username: this.username,useremail: this.useremail,msg: this.msg})
+          .then((result) => {})
+          .catch((error) => {});
+      }else{
+        alert('请检查邮箱格式和输入是否为空！');
+      }
+    },
+  },
+};
 </script>
 <style lang='scss' scoped>
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css");
@@ -171,15 +199,26 @@ p {
     display: flex;
     justify-content: space-around;
     padding: 2rem 0 0;
-
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
     .pic {
       width: 40%;
       height: auto;
+      @media screen and (max-width: 768px) {
+        width: 85%;
+      }
     }
     .int {
       width: 40%;
       height: 100%;
       margin: auto 0;
+      text-indent: 2rem;
+      @media screen and (max-width: 768px) {
+        margin-top: 2rem;
+        width: 85%;
+      }
     }
   }
 }
@@ -201,8 +240,11 @@ p {
     .grid_images {
       width: 48%;
       padding: 1rem;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
-    img{
+    img {
       height: 20rem;
     }
   }
@@ -213,6 +255,9 @@ p {
 .contact-section {
   max-width: 38em;
   form {
+    @media screen and (max-width: 768px) {
+      margin-top: 2rem;
+    }
     fieldset {
       margin-bottom: 30px;
       border: none;
@@ -223,7 +268,7 @@ p {
       text-align: center;
       width: 90%;
       font-family: "Raleway", sans-serif;
-      text-color: white;
+      color: white;
       text-transform: uppercase;
       background-color: rgb(0, 32, 53);
       color: white;

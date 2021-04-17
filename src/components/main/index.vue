@@ -53,9 +53,9 @@ import timeLine from "@/components/main/timeline.vue";
 import articleList from "@/components/main/articleList.vue";
 import siteInfo from "@/components/main/siteInfo.vue";
 import hotArticles from "@/components/main/hotArticles.vue";
-import waveBar from "@/components/common/wave.vue";
+import waveBar from "../footer/index.vue";
 import friendLink from "@/components/main/friendLink.vue";
-import pagination from "../common/pagination.vue"
+import pagination from "./pagination.vue"
 
 export default {
   components: {

@@ -1,15 +1,15 @@
 <template>
     <div class="me-view" v-if="ifViewVisible === 2">
-        <slide-boomerange></slide-boomerange>
+        <about></about>
     </div>
 </template>
 
 <script>
-import slideBoomerange from "./sliderBoomerange.vue"
+import about from "./about.vue"
 
 export default {
     components:{
-        slideBoomerange,
+        about,
     }
 }
 </script>

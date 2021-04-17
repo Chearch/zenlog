@@ -35,7 +35,7 @@
 <script>
 import axios from "axios";
 import marked from "marked";
-import hljs from "@/utils/highlight.min.js";
+import hljs from "@/utils/highlight.js";
 
 export default {
   data() {

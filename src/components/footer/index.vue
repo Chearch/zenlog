@@ -41,9 +41,6 @@ C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1
   </div>
 </template>
 
-<script>
-export default {};
-</script>
 <style lang='scss' scoped>
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 p {

@@ -22,6 +22,16 @@ const messages = {
         mode: 'Mode',
         lang: 'Lang',
         share: 'Share'
+    },
+    me:{
+        about: "About",
+        works: "Works",
+        contact: "contact",
+        aboutme: "About Me",
+        name: 'Name',
+        email: 'Email',
+        message: 'Message',
+        send: 'Send'
     }
 }
 
