@@ -2,14 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import util from "@/utils/util.js"
 import api from "@/api/index.js"
-import {setCurrentIndex,getCurrentIndex,setDarkMode,getDarkMode} from "@/utils/localstorage.js"
+import {setCurrentIndex,getCurrentIndex,setDarkMode,getDarkMode,saveIfViewVisible,getIfViewVisible} from "@/utils/localstorage.js"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     // 显示信息
-    ifViewVisible: 0, // 0 首页 1 推荐 2 精选 3 简历
+    ifViewVisible: 0, // 0 首页 1 推荐 2 关于我
     ifShowNav: false,       // 是否显示导航栏
     searchVisible: false,   // 是否显示导航栏搜索框
     ifDarkMode: true,    // 是否开启暗黑模式
@@ -56,13 +56,16 @@ export default new Vuex.Store({
     setSelectTimeLine(state, options) {state.selectTimeLine = options;},
     setSearchResult(state,options){state.searchResult = options;},
     setRecommandArticles(state,options){state.recommandArticles = options;},
-    setIfViewVisible(state,options){state.ifViewVisible = options;},
+    setIfViewVisible(state,options){
+      console.log('保存ifViewVisible');
+      saveIfViewVisible(options);
+      state.ifViewVisible = options;
+    },
     setIfShowNav(state,options){state.ifShowNav = options;},
     setSearchVisible(state,options){state.searchVisible = options;},
     setIfDarkMode(state,options){
       state.ifDarkMode = options;
       setDarkMode(options);
-      console.log('设置的darkMode为：',options);
       if(options){ 
         document.documentElement.classList.add("dark")
       }else{
@@ -111,7 +114,13 @@ export default new Vuex.Store({
     selectTimeLine: state => state.selectTimeLine,
     searchResult: state => state.searchResult,
     recommandArticles: state => state.recommandArticles,
-    ifViewVisible: state => state.ifViewVisible,
+    ifViewVisible: state => {
+      let v = getIfViewVisible();
+      if(typeof v === 'number'){
+        state.ifViewVisible = v;
+      }
+      return state.ifViewVisible;
+    },
     ifShowNav: state => state.ifShowNav,
     searchVisible: state => state.searchVisible,
     currentIndex: state => {

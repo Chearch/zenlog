@@ -63,3 +63,22 @@ export function saveLocale(lang){
     // 设置本地语言
     setLocalStorage(`locale-info`, lang)
 }
+
+
+
+
+export function saveIfViewVisible(value) {
+    let p = getLocalStorage(`page-info`);
+    if (!p) p = {}
+    p['ifViewVisible'] = value;
+    setLocalStorage(`page-info`, p)
+}
+
+export function getIfViewVisible() {
+    let p = getLocalStorage(`page-info`);
+    if (p) {
+        return p['ifViewVisible']
+    } else {
+        return null
+    }
+}

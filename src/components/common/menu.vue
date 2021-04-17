@@ -88,6 +88,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 .menu-button{
   z-index: 100;

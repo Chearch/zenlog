@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import api from "@/api/index.js";
 // 初始化REM
 document.addEventListener("DOMContentLoaded", (e) => {
   let fontSize = window.innerWidth / 37.5 > 15 ? 15 : window.innerWidth / 37.5;
