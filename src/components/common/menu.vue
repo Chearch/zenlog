@@ -159,8 +159,8 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.8, 0.52, 0.52);
   // box-shadow: 0px 0px 0px 4px rgba(92, 103, 255, 0.3);
   box-shadow: 0px 0px 0px 4px rgba(162, 164, 190, 0.3);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 3.8rem;
+  height: 3.8rem;
   border: none;
   padding: 0;
   cursor: pointer;
@@ -184,15 +184,15 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.8, 0.52, 0.52);
 
   &-list {
     background-color: $list-bg;
-    border-radius: 8px;
+    border-radius: .8rem;
     list-style-type: none;
-    width: 140px;
-    height: 170px;
+    width: 14rem;
+    height: 17rem;
     box-shadow: 0px 0px 4px 4px rgba(150, 157, 249, 0.16);
     padding: 0;
-    padding: 6px;
+    padding: .5rem;
     position: absolute;
-    right: 24px;
+    right: 1.5rem;
     bottom: 0;
     opacity: 0;
     transform: scale(0);
@@ -264,8 +264,8 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.8, 0.52, 0.52);
 
 .menu-icon-wrapper {
   border-radius: 2px;
-  width: 20px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

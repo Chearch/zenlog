@@ -230,6 +230,9 @@ p {
       height: 100%;
       margin: auto 0;
       text-indent: 2rem;
+       line-height: 2.2rem;
+    
+    
       @media screen and (max-width: 768px) {
         margin-top: 2rem;
         width: 85%;

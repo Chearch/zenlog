@@ -344,13 +344,21 @@ update articles set visited=visited+1,created=created where id = ${id};
 
 
 
+## 2021/4/18
+
+Todo
+
+- [x] Navigation的响应式布局
+- [ ] 数据库建立第二张表，用来存放网站站点信息
+- [ ] 登录模块和登录解决方案，前后端怎么写
+- [ ] 文章列表
+- [ ] 文章的新建、修改、删除
 
 
 
-
-
-
-
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/09D5C9AFA25B3A9D46AD9A5307680CC5.png" alt="nav响应式" height="600px" />
+</p>
 
 
 

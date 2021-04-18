@@ -114,11 +114,8 @@ export default {
   }
   .menu-abs {
     position: fixed;
-    bottom: 1rem;
+    bottom: 1.5rem;
     right: 1rem;
-  }
-  .footer{
-
   }
 }
 </style>

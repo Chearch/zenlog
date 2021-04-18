@@ -4,36 +4,53 @@
       class="navagation flex items-center bg-gray-100 text-black dark:bg-gray-900 dark:text-white"
       v-if="ifShowNav"
     >
-      <div class="title-item-wrapper">
-        <div
-          class="title-wrapper subTitle"
-          @click="navClick(0)"
-          :class="{ selected: ifViewVisible === 0 }"
-        >
-          <div class="title font-semibold">{{ $t("nav.home") }}</div>
+      <div class="menu-totle-wrapper">
+        <div id="resp-menu" class="responsive-menu" @click="respClick">
+          <i class="icon-uniE903"></i> Menu
         </div>
+
         <div
-          class="recommand-wrapper subTitle"
-          @click="navClick(1)"
-          :class="{ selected: ifViewVisible === 1 }"
+          class="menu-wrapper bg-gray-100 text-black dark:bg-gray-900 dark:text-gray-50"
+          ref="menu"
         >
-          <div class="recommand font-semibold">{{ $t("nav.recommand") }}</div>
-        </div>
-        <div
-          class="feature-wrapper subTitle"
-          @click="navClick(2)"
-          :class="{ selected: ifViewVisible === 2 }"
-        >
-          <div class="feature font-semibold">{{ $t("nav.about") }}</div>
+          <div
+            class="title-wrapper subTitle"
+            @click="navClick(0)"
+            :class="{ selected: ifViewVisible === 0 }"
+          >
+            <div class="title font-semibold">{{ $t("nav.home") }}</div>
+          </div>
+          <div
+            class="recommand-wrapper subTitle"
+            @click="navClick(1)"
+            :class="{ selected: ifViewVisible === 1 }"
+          >
+            <div class="recommand font-semibold">{{ $t("nav.recommand") }}</div>
+          </div>
+          <div
+            class="feature-wrapper subTitle"
+            @click="navClick(2)"
+            :class="{ selected: ifViewVisible === 2 }"
+          >
+            <div class="feature font-semibold">{{ $t("nav.about") }}</div>
+          </div>
         </div>
       </div>
+      <!-- 过滤 -->
       <div class="filter-wrapper">
         <filter-bar></filter-bar>
       </div>
+      <!-- 搜索的方框 -->
       <div class="search-warpper text-3xl flex items-center">
-        <!-- 搜索的方框 -->
         <div class="container">
-          <input type="text" placeholder="Search..." v-model="inpVal" @keyup.enter.exact="search" @keyup.esc.exact="cancel" @click="clickSearch"/>
+          <input
+            type="text"
+            placeholder="Search..."
+            v-model="inpVal"
+            @keyup.enter.exact="search"
+            @keyup.esc.exact="cancel"
+            @click="clickSearch"
+          />
           <div class="search"></div>
         </div>
       </div>
@@ -44,33 +61,33 @@
 <script>
 import api from "@/api/index.js";
 import filterBar from "./filterBar.vue";
-
 export default {
   data() {
     return {
       inpVal: "",
+      ifSlideDown: false,
     };
   },
   components: {
     filterBar,
   },
   methods: {
-    clickSearch(){
+    clickSearch() {
       this.setSearchVisible(true);
     },
     search() {
-        // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
-        this.inpVal = this.inpVal.trim();
-        this.modifySearchContent(this.inpVal);
-        api
-          .search(this.inpVal)
-          .then((result) => {
-            this.setSearchResult(result);
-          })
-          .catch((reason) => {
-            this.error(reason);
-          });
-          this.setSearchVisible(false);
+      // 进行搜索，将searchContent进行修改，则需要用到的地方监听searchContent
+      this.inpVal = this.inpVal.trim();
+      this.modifySearchContent(this.inpVal);
+      api
+        .search(this.inpVal)
+        .then((result) => {
+          this.setSearchResult(result);
+        })
+        .catch((reason) => {
+          this.error(reason);
+        });
+      this.setSearchVisible(false);
     },
     cancel() {
       // 取消搜索
@@ -81,6 +98,18 @@ export default {
     navClick(n) {
       this.setIfViewVisible(n);
       this.info("navgation 82-lines: click " + n);
+       this.$refs.menu.style.display = 'none';
+    },
+    respClick(e) {
+      e.preventDefault();
+      let ifDisplay = this.$refs.menu.style.display ;
+      if( ifDisplay =='none' || ifDisplay == ''){
+        this.$refs.menu.style.display = 'block'
+      }else if(ifDisplay == 'block'){
+        this.$refs.menu.style.display = 'none';
+      }else{
+        this.$refs.menu.style.display = 'none';
+      }
     },
   },
   mounted() {
@@ -96,11 +125,6 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 
-// input[type="text"] {
-//   padding-left: 0.7rem;
-//   height: 2rem;
-//   line-height: 2rem;
-// }
 .icon-cancel {
   color: #9ca3af !important;
   font-weight: normal !important;
@@ -115,27 +139,71 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-  .title-item-wrapper {
+.menu-totle-wrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  #resp-menu {
+    display: none;
+    width: 100%;
+    padding: 1.4rem 1rem;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: right;
+    font-size: 1.6rem;
+  }
+
+  .menu-wrapper {
     position: absolute;
     right: 0;
     display: flex;
   }
+}
+
+
   .filter-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   @media screen and (max-width: 768px) {
     height: 5rem;
-  }
-  .title-wrapper {
-  }
-  .recommand-wrapper {
-  }
-  .feature-wrapper {
-  }
-  .filter-wrapper {
+    .menu-totle-wrapper {
+      display: block;
+      width: 100%;
+      user-select: none;
+      background: transparent;
+      #resp-menu {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+      }
+      .menu-wrapper {
+        user-select: none;
+        display: none;
+        // width: 30%;
+        margin-top: -1rem;
+        padding-top: 1rem;
+        .subTitle {
+          display: block;
+          padding: 1rem 2rem;
+          margin: 0;
+          div{
+            font-size: 1.6rem !important;
+          }
+          text-align: right;
+          &:hover {
+            background-color: #f10215;
+            color: white;
+          }
+        }
+      }
+    }
   }
   .search-warpper {
     position: absolute;
@@ -156,6 +224,7 @@ export default {
 
 .subTitle {
   @apply text-xl cursor-pointer dark:hover:text-blue-600;
+  text-transform: uppercase;
   div {
     font-family: "Fira Sans", sans-serif !important;
     font-size: 1.4rem;
@@ -254,7 +323,7 @@ export default {
     border-radius: 2rem;
     // box-shadow: 0 0 1.5rem 0 crimson,
     //             0 1.5rem 1.5rem 0 rgba(0, 0, 0, 0.2);
-    transition: all .6s;
+    transition: all 0.6s;
     opacity: 0;
     z-index: 5;
     font-weight: bolder;
