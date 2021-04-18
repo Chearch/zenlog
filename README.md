@@ -349,7 +349,7 @@ update articles set visited=visited+1,created=created where id = ${id};
 Todo
 
 - [x] Navigation的响应式布局
-- [ ] 数据库建立第二张表，用来存放网站站点信息
+- [x] 后端登录接口 + 前端登录页面 （如果Admin管理页面没有Cookie信息，则会强制跳转到login页面）
 - [ ] 登录模块和登录解决方案，前后端怎么写
 - [ ] 文章列表
 - [ ] 文章的新建、修改、删除
@@ -361,12 +361,9 @@ Todo
 </p>
 
 
-
-
-
-
-
-
+<p align="middle" style="margin: 10px auto;">
+    <img src="img/image-20210418223954737.png" alt="登录模块" height="600px" />
+</p>
 
 
 
@@ -409,5 +406,13 @@ http://106.15.107.100:3000/hot?platform=kr
 
 
 
+数据库站点信息
 
+```
+用户名 密码
+
+访问记录	day1 day2 day3 ....
+累计访问
+上周访问
+```
 

@@ -6,18 +6,29 @@ const routes = [
     {
         path: '/',
         name: 'page',
+        redirect: '/login'
+    },
+    {
+        path: '/home',
+        name: 'home',
         component: ()=> import (/*webpackChunkName: "page" */ '@/views/index.vue')
     },
-    // {
-    //     path: '/main',
-    //     name: 'main',
-    //     component: () => import ( /* webpackChunkName: "main" */ '@/views/main.vue')
-    // },
     {
         path: '/article',
         name: 'article',
         component: () => import ( /* webpackChunkName: "article" */ '@/components/article/index.vue')
     },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import ( /* webpackChunkName: "article" */ '@/views/login.vue')
+    },
+    {
+        path: '/admin',
+        name: 'admin',
+        component: () => import ( /* webpackChunkName: "article" */ '@/views/admin.vue')
+    },
+    
 ]
 
 const router = new VueRouter({

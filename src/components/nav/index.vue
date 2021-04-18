@@ -98,17 +98,21 @@ export default {
     navClick(n) {
       this.setIfViewVisible(n);
       this.info("navgation 82-lines: click " + n);
-       this.$refs.menu.style.display = 'none';
+      if (window.innerWidth < 768) {
+        this.$refs.menu.style.display = "none";
+      }
     },
     respClick(e) {
       e.preventDefault();
-      let ifDisplay = this.$refs.menu.style.display ;
-      if( ifDisplay =='none' || ifDisplay == ''){
-        this.$refs.menu.style.display = 'block'
-      }else if(ifDisplay == 'block'){
-        this.$refs.menu.style.display = 'none';
-      }else{
-        this.$refs.menu.style.display = 'none';
+      if (window.innerWidth < 768) {
+        let ifDisplay = this.$refs.menu.style.display;
+        if (ifDisplay == "none" || ifDisplay == "") {
+          this.$refs.menu.style.display = "block";
+        } else if (ifDisplay == "block") {
+          this.$refs.menu.style.display = "none";
+        } else {
+          this.$refs.menu.style.display = "none";
+        }
       }
     },
   },
@@ -139,29 +143,28 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-.menu-totle-wrapper{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  #resp-menu {
-    display: none;
+  .menu-totle-wrapper {
     width: 100%;
-    padding: 1.4rem 1rem;
-    background: transparent;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-align: right;
-    font-size: 1.6rem;
-  }
-
-  .menu-wrapper {
-    position: absolute;
-    right: 0;
+    height: 100%;
     display: flex;
-  }
-}
+    align-items: center;
+    #resp-menu {
+      display: none;
+      width: 100%;
+      padding: 1.4rem 1rem;
+      background: transparent;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: right;
+      font-size: 1.6rem;
+    }
 
+    .menu-wrapper {
+      position: absolute;
+      right: 0;
+      display: flex;
+    }
+  }
 
   .filter-wrapper {
     position: absolute;
@@ -193,7 +196,7 @@ export default {
           display: block;
           padding: 1rem 2rem;
           margin: 0;
-          div{
+          div {
             font-size: 1.6rem !important;
           }
           text-align: right;

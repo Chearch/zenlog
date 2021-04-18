@@ -52,11 +52,11 @@ export default {
         // 跳转到指定路由
         jumpto(pathName) {
             let path = "/" + pathName;
-            this.info('jumpto ',path);
+            this.info('jumpto ', path);
             if (this.$route.fullPath !== path) {
-                this.$router.push({
-                    path
-                });
+                this.$router.push({path,query:{
+                    now:Date.now(),
+                },});
             }
         },
         // 跳转到指定链接
@@ -64,9 +64,9 @@ export default {
             window.open(href);
         },
         // 跳转路由
-        showArticle(articleId){
+        showArticle(articleId) {
             // 
-            this.$router.push({path: '/article?id='+articleId});
+            this.$router.push({ path: '/article?id=' + articleId });
         },
         // 获取当前时间
         getNowTime() {
@@ -80,28 +80,28 @@ export default {
             return [year, month + 1, day, hour, minute, second]
         },
         // 返回上层
-        goback(){
+        goback() {
             this.$router.go(-1);
         },
         // 格式化时间为英文字符
         // 2021/04/03 => 03 March 2021
-        fmtEn(time){
-            let [year,month,day] = time.split('/');
+        fmtEn(time) {
+            let [year, month, day] = time.split('/');
             month = this.monthToEn(month);
             return `${day} ${month} ${year}`
         },
-        clearAllTags(){
+        clearAllTags() {
             this.modifySearchContent('');
             this.setSearchResult([]);
             this.setSelectTimeLine('');
             this.modifyCategory('');
             this.clearTags();
         },
-        throttle(func,time,params){
+        throttle(func, time, params) {
             let task = null;
-            return function(){
-                if(task) return ;
-                func.call(null,params);
+            return function () {
+                if (task) return;
+                func.call(null, params);
                 task = setTimeout(() => {
                     task = null;
                 }, time);
@@ -128,10 +128,10 @@ export default {
             let styles = ['color: green', 'background: white', 'font-weight: 900'].join(';');
             flag ? console.log('%c%s', styles, msg) : null;
         },
-        monthToEn(m){
+        monthToEn(m) {
             m = String(m);
             m = m.length === 1 ? '0' + m : m;
-            switch(m){
+            switch (m) {
                 case '01': return 'January';
                 case '02': return 'February';
                 case '03': return 'March';
@@ -145,6 +145,21 @@ export default {
                 case '11': return 'November';
                 case '12': return 'December';
             }
+        },
+        setCookie(val, expire) {
+            let d = new Date();
+            d.setTime(d.getTime() + (expire * 24 * 60 * 60 * 1000));
+            var expire = "expires=" + d.toGMTString();
+            document.cookie = 'isVisit' + "=" + val + "; " + expire;
+        },
+        getCookie() {
+            var name = "isVisit=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
         }
     },
 }
