@@ -187,7 +187,7 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.8, 0.52, 0.52);
     border-radius: .8rem;
     list-style-type: none;
     width: 14rem;
-    height: 17rem;
+    height: 12rem;
     box-shadow: 0px 0px 4px 4px rgba(150, 157, 249, 0.16);
     padding: 0;
     padding: .5rem;
@@ -198,7 +198,9 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.8, 0.52, 0.52);
     transform: scale(0);
     transform-origin: bottom right;
     transition: all 0.3s ease 0.1s;
-
+    @media screen and (max-width: 768px) {
+      height: 17rem;
+    }
     li {
       opacity: 0;
     }

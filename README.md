@@ -368,6 +368,21 @@ Todo
 
 
 
+## 2021/4/19
+
+- FIX BUG 点击nav/filter-bar会打开menu，因为menu的width=100%，采用绝对定位修改menu位置和宽度
+- 移动端调整Timeline和SiteInfo的宽度间距
+- 移动端调整搜索框的大小
+- 开始编写DashBoard
+
+- [ ]  编辑、删除、查询、新增等功能待实现
+
+![DarshBoard初稿](img/image-20210419221617113.png)
+
+
+
+
+
 
 
 

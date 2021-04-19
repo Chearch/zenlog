@@ -52,6 +52,11 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.item{
+  @media screen and (max-width: 768px) {
+    padding: 1rem 2rem;
+  }
+}
 .time-line {
   border: 1px solid #eee;
  box-shadow: 0px 1rem 7.5rem rgba(34, 35, 58, 0.2);

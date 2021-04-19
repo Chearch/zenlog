@@ -8,16 +8,16 @@
       <span class="icon-lighting text-3xl icon mt-1"></span>
       <span class="title font-bold">{{ $t('card.siteinfo') }}</span>
     </div>
-    <div class="article-count flex justify-between items-center py-2 mt-1 ">
+    <div class="item article-count flex justify-between items-center py-2 mt-1 ">
       <div class="mx-6">{{ $t('card.articleCount') }}:</div>
       <div class="mx-6">{{articleCount}} {{ $t('card.unit') }}</div>
     </div>
-    <div class="site-time-wrapper flex justify-between items-center py-2 ">
+    <div class="item site-time-wrapper flex justify-between items-center py-2 ">
       <div class="mx-6">{{ $t('card.runTime') }}:</div>
       <div class="mx-6">{{ runTime }} {{ $t('card.day') }}</div>
     </div>
     <div
-      class="last-modified-wrapper flex justify-between items-center py-2 mb-1  pb-4"
+      class="item last-modified-wrapper flex justify-between items-center py-2 mb-1  pb-4"
     >
       <div class="mx-6">{{ $t('card.latestUpdate') }}:</div>
       <div class="mx-6">{{ lastModified }}</div>
@@ -56,5 +56,10 @@ export default {
 }
 .icon{
   color: #fd3838;
+}
+.item{
+  @media screen and (max-width: 768px) {
+    padding: 1rem 1rem;
+  }
 }
 </style>

@@ -148,11 +148,10 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
+
     #resp-menu {
       display: none;
-      width: 100%;
-      padding: 1.4rem 1rem;
-      background: transparent;
       text-transform: uppercase;
       font-weight: 600;
       text-align: right;
@@ -165,7 +164,6 @@ export default {
       display: flex;
     }
   }
-
   .filter-wrapper {
     position: absolute;
     top: 50%;
@@ -182,16 +180,17 @@ export default {
       background: transparent;
       #resp-menu {
         display: block;
-        position: relative;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-10%, -50%);
         cursor: pointer;
         user-select: none;
       }
       .menu-wrapper {
         user-select: none;
         display: none;
-        // width: 30%;
-        margin-top: -1rem;
-        padding-top: 1rem;
+        margin-top: 5rem;
         .subTitle {
           display: block;
           padding: 1rem 2rem;
@@ -272,6 +271,10 @@ export default {
     transition: all 1s;
     z-index: 4;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    @media screen and (max-width: 768px) {
+      height: 3.5rem;
+      width: 3.5rem;
+    }
     &:hover {
       cursor: pointer;
     }
@@ -331,12 +334,16 @@ export default {
     z-index: 5;
     font-weight: bolder;
     letter-spacing: 0.1em;
+    @media screen and (max-width: 768px) {
+      height: 3.3rem;
+    }
     &:hover {
       cursor: pointer;
     }
     &:focus {
       // 控制输入框长度
       width: 13rem;
+
       opacity: 1;
       cursor: text;
     }

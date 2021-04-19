@@ -27,7 +27,7 @@ import recommandView from "@/components/recommand/index.vue";
 import meView from "@/components/me/index.vue";
 import myNav from "@/components/nav/index.vue";
 import myMenu from "@/components/common/menu.vue";
-import api from "@/api/index.js";
+
 
 export default {
   data() {
@@ -79,20 +79,7 @@ export default {
         this.task = null;
       }, 500);
     },
-    getArticles() {
-      api
-        .articleLists()
-        .then((res) => {
-          this.modifyArticles(res);
-        })
-        .catch((reason) => {
-          console.log(reason);
-          let flag = confirm("网络请求失败，确认刷新，取消放弃！");
-          if (flag) {
-            this.getArticles();
-          }
-        });
-    },
+    
   },
   beforeMount() {
     this.getArticles();

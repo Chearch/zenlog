@@ -100,8 +100,12 @@ export default {
             })
         }
     },
-    mounted(){
-      console.log('1 login mounted');
+    created(){
+      console.log('login');
+     let cookie = this.getCookie();
+     if(cookie.length !== 0){
+       this.jumpto('/admin');
+     }
     }
 };
 </script>

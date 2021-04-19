@@ -7,18 +7,17 @@ import './assets/styles/icon.scss'
 import 'tailwindcss/tailwind.css'
 import mixins from '@/utils/mixins.js'
 import 'github-markdown-css/github-markdown.css'
-
 import i18n from "@/lang/index.js"
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+
+
+Vue.use(ElementUI)
+
 
 Vue.config.productionTip = false
-// Vue.use(VueI18n)
 
 Vue.mixin(mixins)
-Vue.directive('focus', {
-  inserted: function (el) {
-    el.focus()
-  }
-})
 
 new Vue({
   router,

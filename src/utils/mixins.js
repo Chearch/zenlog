@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
+import api from "@/api/index.js";
 const flag = true;
 
 export default {
@@ -52,11 +53,10 @@ export default {
         // 跳转到指定路由
         jumpto(pathName) {
             let path = "/" + pathName;
-            this.info('jumpto ', path);
+            this.info('jumpto ', pathName);
+            let t = Date.now();
             if (this.$route.fullPath !== path) {
-                this.$router.push({path,query:{
-                    now:Date.now(),
-                },});
+                this.$router.push({path,query:{ t }});
             }
         },
         // 跳转到指定链接
@@ -114,7 +114,7 @@ export default {
             let styles = ['color: orange', 'background: white', 'font-weight: 900'].join(';');
             flag ? console.log('%c%s', styles, msg) : null;
         },
-        error(msg) {
+        errors(msg) {
             if (typeof msg !== 'string') {
                 throw new Error("msg must be string")
             }
@@ -160,6 +160,20 @@ export default {
                 if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
             }
             return "";
-        }
+        },
+        getArticles() {
+            api
+              .articleLists()
+              .then((res) => {
+                this.modifyArticles(res);
+              })
+              .catch((reason) => {
+                console.log(reason);
+                let flag = confirm("网络请求失败，确认刷新，取消放弃！");
+                if (flag) {
+                  this.getArticles();
+                }
+              });
+          },
     },
 }

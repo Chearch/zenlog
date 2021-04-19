@@ -2,13 +2,13 @@
 <template>
 <div class="filter-bar" v-if="ifShowFilterBar">
   <!-- 过滤分类 -->
-  <div class="category relative ml-3 rounded-md text-md bg-purple-400  p-1 px-3  flex items-center" v-if="category">
+  <div class="item category relative ml-3 rounded-md text-md bg-purple-400  p-1 px-3  flex items-center" v-if="category">
     <span class="text-md">{{ category }}</span>
     <span class="icon-error text-2xl cursor-pointer" @click="clearCategory()"></span>
   </div>
 
   <!-- 过滤标签 -->
-  <div class="tags ml-3 h-10 flex items-center" v-for="(item, index) in tags" :key="index">
+  <div class="item tags ml-3 h-10 flex items-center" v-for="(item, index) in tags" :key="index">
     <div class="tag relative  p-1 px-3  rounded-md bg-green-400">
       <span class="text-md">{{ item }}</span>
       <span class="icon-error text-2xl cursor-pointer" @click="modifyTags(item)"></span>
@@ -16,13 +16,13 @@
   </div>
 
   <!-- 过滤timeline -->
-  <div class="timeline relative ml-3 rounded-md text-md bg-yellow-400  p-1 px-3  flex items-center" v-if="selectTimeLine">
+  <div class="item timeline relative ml-3 rounded-md text-md bg-yellow-400  p-1 px-3  flex items-center" v-if="selectTimeLine">
     <span class="text-md">{{ selectTimeLine }}</span>
     <span class="icon-error text-2xl cursor-pointer absolute error-icon" @click="clearTimeline()"></span>
   </div>
 
   <!-- 过滤searchContent -->
-  <div class="searchContent relative ml-3 rounded-md text-md bg-pink-400  p-1 px-3  flex items-center" v-if="searchContent">
+  <div class="item searchContent relative ml-3 rounded-md text-md bg-pink-400  p-1 px-3  flex items-center" v-if="searchContent">
     <span class="text-md">{{ searchContent }}</span>
     <span class="icon-error text-2xl cursor-pointer absolute error-icon" @click="clearSearchContent()"></span>
   </div>
@@ -67,6 +67,7 @@ export default {
 .filter-bar{
   display: flex;
   align-items: center;
+  z-index: 1000;
 }
 .tag,
 .category,
@@ -95,5 +96,11 @@ export default {
   margin: 0 3rem;
     cursor: pointer;
 
+}
+.item{
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+    // padding: .3rem .5rem;
+  }
 }
 </style>
