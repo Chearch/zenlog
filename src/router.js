@@ -6,7 +6,7 @@ const routes = [
     {
         path: '/',
         name: 'page',
-        redirect: '/login'
+        redirect: '/home'
     },
     {
         path: '/home',
@@ -40,9 +40,25 @@ const router = new VueRouter({
 })
 
 
-// router.beforeEach((to,from,next)=>{
-//     console.log();
-// })
+router.beforeEach((to,from,next)=>{
+    console.log(to,from);
+    if(to.path === '/admin'){
+        let cookiePool = document.cookie.split(';');
+        let key = "isVisit" + "=";
+        let flag = false;
+        for(let item of cookiePool){
+            if(item.indexOf(key) === 0) flag = true;
+        }
+        console.log('flag:',flag);
+        if(!flag){
+            next('/login');
+        }else{
+            next();
+        }
+    }else{
+        next();
+    }
+})
 
 
 

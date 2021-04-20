@@ -54,9 +54,8 @@ export default {
         jumpto(pathName) {
             let path = "/" + pathName;
             this.info('jumpto ', pathName);
-            let t = Date.now();
             if (this.$route.fullPath !== path) {
-                this.$router.push({path,query:{ t }});
+                this.$router.push({path});
             }
         },
         // 跳转到指定链接
