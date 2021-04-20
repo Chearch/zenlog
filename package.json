@@ -7,10 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.13.15",
     "@tailwindcss/postcss7-compat": "^2.0.4",
     "autoprefixer": "^9",
     "axios": "^0.21.1",
     "babel-plugin-component": "^1.1.1",
+    "babel-preset-es2015": "^6.24.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.1",
     "github-markdown-css": "^4.0.0",

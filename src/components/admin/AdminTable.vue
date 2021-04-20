@@ -12,7 +12,7 @@
       </div>
 
     <!--列表-->
-    <el-table :data="adminArticles" v-loading="listLoading" style="width: 100%" class="admin-list">
+    <el-table :data="adminArticles"  style="width: 100%" class="admin-list">
       <el-table-column prop="title" label="标题" width="300"></el-table-column>
       <el-table-column prop="tags" label="标签" width="150"> </el-table-column>
       <el-table-column prop="category" label="分类" width="150" sortable></el-table-column>
@@ -40,7 +40,7 @@
 
       <div slot="footer" class="dialog-footer">
         <el-button @click.native="editFormVisible = false">取消</el-button>
-        <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+        <el-button type="primary" @click.native="editSubmit" >提交</el-button>
       </div>
     </el-dialog>
 
@@ -56,7 +56,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click.native="addFormVisible = false">取消</el-button>
-        <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
+        <el-button type="primary" @click.native="addSubmit">提交</el-button>
       </div>
     </el-dialog>
   </section>
@@ -69,9 +69,7 @@ export default {
     return {
       searchText: "",      
       adminArticles: [],
-      listLoading: false,
       editFormVisible: false, //编辑界面是否显示
-      editLoading: false,
       editFormRules: {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
       },
@@ -84,7 +82,6 @@ export default {
         content: "",
       },
       addFormVisible: false, //新增界面是否显示
-      addLoading: false,
       addFormRules: {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
       },

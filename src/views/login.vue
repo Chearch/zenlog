@@ -69,7 +69,6 @@ export default {
     },
     methods:{
         login(){
-            console.log('execute login');
             axios.post(process.env.VUE_APP_API_ADDRESS +'/login',{
                 username: this.username,
                 password: this.password
@@ -79,7 +78,9 @@ export default {
                 if(res.status === 200){
                     // 登录成功，设置cookie，并且跳转到管理页面
                     this.setCookie(data.value,data.expire);
-                    this.jumpto('admin');
+                    this.$router.replace({path: "/admin"}).catch(err=>{
+                      console.log(err);
+                    })
                 }else{
                     console.log('登陆失败');
                 }
@@ -88,13 +89,6 @@ export default {
             })
         }
     },
-    created(){
-      console.log('login');
-     let cookie = this.getCookie();
-     if(cookie.length !== 0){
-       this.jumpto('/admin');
-     }
-    }
 };
 </script>
 <style lang='scss' scoped>

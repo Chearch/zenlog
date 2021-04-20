@@ -1,6 +1,8 @@
 import axios from 'axios'
 const T = 2000;
-const defaultURL = "http://localhost:30000"; //process.env.VUE_APP_API_ADDRESS
+// const defaultURL = "http://localhost:30000"; 
+const defaultURL = process.env.VUE_APP_API_ADDRESS ; 
+
 export default {
     /*
     articleListFormat: { 
@@ -127,6 +129,20 @@ export default {
               }).catch(err=>{
                   reject(err);
               })
+        })
+    },
+    verify(cookie){
+        return new Promise((resolve,reject)=>{
+            axios({
+                url: defaultURL + '/verity?cookie='+cookie,
+                method: 'get',
+                timeout: T,
+            }).then(res=>{
+                console.log('cookie res: ',res);
+                resolve(res)
+            }).catch(err=>{
+                reject(err);
+            })
         })
     }
 }
