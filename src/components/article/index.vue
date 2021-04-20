@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import axios from "axios";
 import marked from "marked";
 import hljs from "@/utils/highlight.js";
+import api from "@/api/index.js"
 
 export default {
   data() {
@@ -62,12 +62,12 @@ export default {
   },
   methods: {
     getContent() {
-      axios({
-        url: process.env.VUE_APP_API_ADDRESS + "/article?id=" + this.articleId,
-        method: "get",
-      }).then((res) => {
-        this.articleContent = res.data;
-        this.rendermk(this.articleContent);
+      api.getOneArticle(this.articleId).then(res=>{
+        console.log(res);
+          this.articleContent = res.data;
+          this.rendermk(this.articleContent);
+      }).catch(err=>{
+        alert('文章请求失败')
       });
     },
     rendermk(content) {

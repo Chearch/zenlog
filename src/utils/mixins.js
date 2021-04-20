@@ -175,5 +175,18 @@ export default {
                 }
               });
           },
+        warningEmpty(v){
+            // 检测字符串和数组
+            if(typeof v !== 'function' && typeof v !== 'object'){
+                v = String(v);
+            }
+            if(typeof v === 'string' || Array.isArray(v)){
+                if(v.length === 0){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }
     },
 }

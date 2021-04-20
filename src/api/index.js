@@ -1,6 +1,6 @@
 import axios from 'axios'
-
-
+const T = 2000;
+const defaultURL = "http://localhost:30000"; //process.env.VUE_APP_API_ADDRESS
 export default {
     /*
     articleListFormat: { 
@@ -16,7 +16,7 @@ export default {
     articleLists() {
         return new Promise((resolve, reject) => {
             axios({
-                url: process.env.VUE_APP_API_ADDRESS + "/articles",
+                url: defaultURL + "/articles",
                 method: 'get',
                 timeout: 2000
             }).then(res => {
@@ -58,7 +58,7 @@ export default {
     search(keyword){
         return new Promise((resolve,reject)=>{
             axios({
-                url: process.env.VUE_APP_API_ADDRESS + "/search?keyword=" + keyword,
+                url: defaultURL + "/search?keyword=" + keyword,
                 method: 'get',
                 timeout: 2000
             }).then(res=>{
@@ -79,7 +79,7 @@ export default {
     getRecommandArticles(platform){
         return new Promise((resolve,reject)=>{
             axios({
-                url: process.env.VUE_APP_API_ADDRESS + "/hot?platform=" + platform,
+                url: defaultURL + "/hot?platform=" + platform,
                 method: 'get',
                 timeout: 2000
             }).then(result=>{
@@ -87,6 +87,46 @@ export default {
             }).catch(reason=>{
                 reject(reason)
             })
+        })
+    },
+    getOneArticle(articleId){
+        return new Promise((resolve,reject)=>{
+            axios({
+                url: defaultURL + "/article?id=" + articleId,
+                method: "get",
+                timeout:T,
+                }).then((res) => {
+                resolve(res);
+                }).catch(err=>{
+                    reject(err);
+                })
+        })
+    },
+    updateEdit(item){
+        return new Promise((resolve,reject)=>{
+            axios.post( defaultURL + "/update",item).then((res) => {
+                resolve(res);
+              }).catch(err=>{
+                  reject(err);
+              })
+        })
+    },
+    addNewArticle(item){
+        return new Promise((resolve,reject)=>{
+            axios.post( defaultURL + "/add",item).then((res) => {
+                resolve(res);
+              }).catch(err=>{
+                  reject(err);
+              })
+        })
+    },
+    delArticle(articleId){
+        return new Promise((resolve,reject)=>{
+            axios.post( defaultURL + "/del",{id: articleId}).then((res) => {
+                resolve(res);
+              }).catch(err=>{
+                  reject(err);
+              })
         })
     }
 }

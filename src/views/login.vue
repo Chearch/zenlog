@@ -1,20 +1,14 @@
 <template>
   <div class="align body">
     <div class="grid">
-      <form :action="loginlink" method="POST" class="form login">
+      <form class="form login">
         <div class="form__field">
           <label for="login__username"
             ><svg class="icon">
               <use xlink:href="#icon-user"></use></svg
             ><span class="hidden">Username</span></label
           >
-          <input
-            autocomplete="username"
-            id="login__username"
-            type="text"
-            name="username"
-            class="form__input"
-            placeholder="Username"
+          <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Username"
             v-model="username"
             required
           />
@@ -73,16 +67,10 @@ export default {
             password: '',
         }
     },
-    computed:{
-        loginlink(){
-            // process.env.VUE_APP_API_ADDRESS
-            return   'http://localhost:3000/login';
-        }
-    },
     methods:{
         login(){
             console.log('execute login');
-            axios.post('http://localhost:3000/login',{
+            axios.post(process.env.VUE_APP_API_ADDRESS +'/login',{
                 username: this.username,
                 password: this.password
             }).then(res=>{
