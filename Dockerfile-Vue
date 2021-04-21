@@ -1,0 +1,12 @@
+FROM nginx
+LABEL maintainer="zendu <2212585023@qq.com>"
+
+# dist 为打包文件目录 https://github.com/ArchKS/zenlog
+COPY ./dist/ /usr/share/nginx/html/
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+EXPOSE 80
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]
+
