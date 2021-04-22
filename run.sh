@@ -1,6 +1,6 @@
 [ `rpm -qa git | wc -l` -eq 0  ] && yum -y install git
 
-git clone https://github.com/ArchKS/zenlog client
+git clone http://github.com.cnpmjs.org/ArchKS/zenlog client
 
 cp client/Dockerfile-Vue .
 cp -r client/dist .
